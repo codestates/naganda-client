@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-## Description
+## Suggestion
 >  제목만 보아도 무엇인지 알 수 있는 이슈 카드를 만들어주세요!
 
 ## Condition
