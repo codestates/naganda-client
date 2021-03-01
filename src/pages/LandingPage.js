@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Header from '../components/Header';
 import SearchBanner from '../components/SearchBanner';
@@ -7,12 +7,15 @@ import IntroDesc from '../components/IntroDesc';
 import Footer from '../components/Footer';
 
 const LandingPage = () => {
+  const onScroll = () => {
+    let header = document.querySelector('header');
+    header.classList.toggle('sticky', window.scrollY > 0);
+  };
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      let header = document.querySelector('header');
-      header.classList.toggle('sticky', window.scrollY > 0);
-    });
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
   return (
     <div className="wrapper">
       <Header />
