@@ -122,3 +122,11 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+// ! 기타 클래스 변수 초기화, 숨기기 옵션 (display: none) 을 위한 적용
+
+.hide,
+.hide2,
+.gif-hide {
+  display: none;
+}

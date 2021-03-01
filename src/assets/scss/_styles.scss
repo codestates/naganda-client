@@ -1,3 +1,153 @@
-.main-wrapper {
-  background: red;
+@import 'variables';
+@import 'mixin';
+@import 'reset';
+
+// ! LandingPage 에서 스크롤 이벤트가 발생할 때 변화하는 Header 에 대한 스타일링
+header.sticky {
+  padding: 15px 20px;
+  background: #fff;
+
+  .logo1,
+  a {
+    color: $text-white;
+  }
+  .login-btn {
+    background: $btn-color1;
+
+    &:hover {
+      background: $btn-hover1;
+      transition-duration: 0.1s;
+    }
+    &::after {
+      border-bottom: none;
+    }
+  }
+
+  .signup-btn {
+    background: $btn-color2;
+
+    &:hover {
+      background: $btn-hover2;
+      transition-duration: 0.1s;
+    }
+    &::after {
+      border-bottom: none;
+    }
+  }
+  .login-btn,
+  .signup-btn {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2),
+      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 1.2em;
+    padding: 20px 30px;
+    text-align: center;
+    cursor: pointer;
+    width: 80%;
+    display: inline-block;
+    border-radius: 10px;
+    margin-right: 0px;
+  }
+}
+
+// ! 랜딩 페이지의 메인 배너 이미지에 대한 기본 스타일 지정
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('../images/landingPage-img.jpg');
+  background-size: cover;
+}
+
+// ! mixin 웹 반응형에 따른 메인 배너 이미지 스타일 변경
+@include tablet {
+  .banner {
+    background: url('../images/landingPage-tablet.jpg');
+    background-size: cover;
+  }
+}
+
+@include mobile {
+  .banner {
+    background: url('../images/landingPage-mobile.jpg');
+    background-size: cover;
+  }
+  header.sticky {
+    padding: 15px 0px;
+    background: #fff;
+    .login-btn,
+    .signup-btn {
+      font-size: 1em;
+      padding: 20px 20px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70%;
+    }
+  }
+}
+
+// ! SearchBanner 부분에 있는 버튼 스타일링 하기
+.btn-search {
+  width: 100%;
+  height: 50px;
+  background: $btn-color1;
+  border: none;
+  color: white;
+  padding: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 12px 0;
+  border-radius: 5px;
+  &:hover {
+    background: $btn-color2;
+    transition-duration: 0.3s;
+  }
+}
+
+// ! SearchBanner 부분에 있는 인풋박스 스타일링 하기
+.inputbox {
+  width: 100%;
+  overflow: hidden;
+  font-size: 20px;
+  padding: 8px 0;
+  background: white;
+  border-radius: 5px;
+
+  i {
+    width: 26px;
+    font-size: 30px;
+    float: left;
+    text-align: center;
+    color: black;
+    padding-left: 10px;
+  }
+
+  input {
+    border: none;
+    outline: none;
+    background: none;
+    color: black;
+    font-size: 24px;
+    text-align: center;
+    width: 80%;
+    float: left;
+    margin: 0 10px;
+  }
+}
+
+// ! LandingPage 내 추천 해시태그를 누를 것을 강조하는 프로모션 메시지 스타일링.
+.desc-hashtag {
+  line-height: 1.5em;
+  background-image: linear-gradient(120deg, $btn-hover2 0%, $btn-color1 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 10%;
+  background-position: 0 88%;
+  transition: background-size 0.25s ease-in;
+  border-radius: 5px;
+  padding: 10px 15px;
+
+  &:hover {
+    background-size: 100% 100%;
+  }
 }

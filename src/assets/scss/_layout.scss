@@ -1,7 +1,565 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import 'variables';
+@import 'mixin';
+@import 'reset';
 
 body * {
   font-family: 'Noto Sans KR', sans-serif;
   letter-spacing: 1px;
   outline: none;
+  box-sizing: border-box;
+}
+
+// ! LandingPage 를 감싸는 wrapper 의 최소 높이값 지정
+.wrapper {
+  min-height: 300vh;
+}
+
+// ! Page 별 공통 적용 되는 Header 부분 구성
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.6s;
+  padding: 40px 30px;
+  z-index: 10000;
+
+  .logo1 {
+    position: relative;
+    transition: 0.6s;
+    .logo-img {
+      width: 205px;
+      height: 50px;
+    }
+  }
+
+  ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li {
+      position: relative;
+      list-style: none;
+
+      a {
+        position: relative;
+        margin: 0 30px;
+        text-decoration: none;
+        color: $text-white;
+        letter-spacing: 2px;
+        font-weight: 500;
+        font-size: 1.5em;
+        transition: 0.6s;
+
+        display: inline-block;
+
+        &::after {
+          display: block;
+          content: '';
+          padding-bottom: 5px;
+          border-bottom: solid 5px #99ddfe;
+          cursor: pointer;
+          transform: scaleX(0);
+          transition: transform 250ms ease-in-out;
+        }
+        &:hover::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+}
+
+// ! 맞춤 스케줄을 검색하는 SearchBanner 레이아웃 구성 하기
+.search-box {
+  width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $text-white;
+  border-radius: 5px;
+
+  h1 {
+    float: left;
+    font-size: 40px;
+    font-weight: 700;
+    border-bottom: 6px solid #f5f5f5;
+    margin-bottom: 50px;
+    padding: 13px 0;
+    position: relative;
+
+    &::before {
+      transform: scaleX(0);
+      transform-origin: bottom right;
+    }
+    &:hover::before {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+    &::before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      inset: 0 0 0 0;
+      background: #99ddfe;
+      z-index: -1;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// ! 모바일 화면일 때 (반응형) 인풋창의 크기 조절
+@include mobile {
+  .search-box {
+    width: 60%;
+  }
+}
+
+// ! 추천 스케줄 (4개에 대한) 에 바로 들어갈 수 있게 해주는 Recommended
+.recommend {
+  border-top: 5px solid $text-white;
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  background: $bg-color1;
+  display: flex;
+
+  .recommend-box {
+    width: 600px;
+    height: 100%;
+    color: $text-white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h2 {
+      font-size: 35px;
+      font-weight: 700;
+      text-align: center;
+      margin-left: 100px;
+      position: relative;
+      width: 80%;
+      top: 6%;
+      left: 2%;
+
+      span {
+        background: $btn-color1;
+        line-height: 1.5em;
+      }
+    }
+  }
+}
+
+// ! 추천 박스 (액자) 안에 있는 4가지의 스케줄 썸네일 이미지 레이아웃 구성.
+.top4box {
+  position: relative;
+  height: 100%;
+  background: url('../images/custom-frame.svg');
+  background-size: cover;
+
+  display: grid;
+  grid-template-columns: repeat(2, 140px);
+  grid-template-rows: repeat(2, 140px);
+  gap: 10px;
+
+  justify-content: center;
+  align-content: center;
+
+  padding-left: 20px;
+
+  // ! 각각의 top4 스케줄러 썸네일 이미지는 현재 mockup 데이터로 대체하였음. 이점 기능구현시 재확인 요함.
+  .item {
+    position: relative;
+    border: 5px solid $text-white;
+    opacity: 0.4;
+    border-radius: 5px;
+    left: 5%;
+    cursor: pointer;
+    &:nth-child(1) {
+      background: url('../images/mockup-thumb1.jpg');
+      background-size: cover;
+      background-position: 50% 50%;
+    }
+    &:nth-child(2) {
+      background: url('../images/mockup-thumb2.jpg');
+      background-size: cover;
+      background-position: 50% 50%;
+    }
+    &:nth-child(3) {
+      background: url('../images/mockup-thumb3.jpg');
+      background-size: cover;
+      background-position: 50% 50%;
+    }
+    &:nth-child(4) {
+      background: url('../images/mockup-thumb4.jpg');
+      background-size: cover;
+      background-position: 50% 50%;
+      opacity: 1;
+      // ! 선택한 썸네일에 한해서 opacity 가 1 이 된다는 것을 표현, 이 또한 목업 데이터임.
+    }
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+// ! 추천 네 종류 썸네일 중 하나를 눌렀을 때 나오는 선택된 이미지에 대한 정보가 담긴 selected-box
+.selected-box {
+  width: 500px;
+  min-width: 350px;
+  height: 100%;
+  flex-grow: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    position: relative;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+    font-size: 1.5em;
+    color: $text-white;
+    text-align: center;
+  }
+}
+
+.items-hashtags {
+  width: 85%;
+  height: 85%;
+  background: $text-white;
+  border-radius: 15px;
+
+  display: flex;
+  align-items: center;
+
+  // ! 4개 이미지 중에서 선택된 하나의 이미지, 마찬가지로 mockup data 이다.
+  .selected-item {
+    position: relative;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    width: 50%;
+    height: 100%;
+    background: url('../images/mockup-thumb4.jpg');
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  .hashtags {
+    position: relative;
+    font-size: 2em;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+
+    .tag {
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      margin-top: 20px;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      &:nth-child(1) {
+        margin-top: 0;
+      }
+      &:hover {
+        color: $text-white;
+        background: $btn-hover1;
+        transition-duration: 0.5s;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .selected-box {
+    display: none;
+  }
+  .hide {
+    color: $text-white;
+    display: block;
+    position: relative;
+    font-size: 1.8em;
+
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    margin: auto auto;
+
+    .tag {
+      margin-top: 20px;
+      width: 200px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.2),
+        0 6px 20px 0 rgba(255, 255, 255, 0.19);
+      background: $btn-color1;
+      color: $text-white;
+      border-radius: 10px;
+      cursor: pointer;
+      &:nth-child(1) {
+        margin-top: 0;
+      }
+      &:hover {
+        color: $text-white;
+        background: $btn-hover1;
+        transition-duration: 0.5s;
+      }
+    }
+  }
+}
+
+@include mobile {
+  .selected-box {
+    display: none;
+  }
+  .top4box {
+    background-image: none;
+    padding-left: 0;
+    width: 100%;
+  }
+  .recommend-box {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    h2 {
+      margin-left: 0;
+    }
+  }
+
+  .hide2 {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+
+    .tag {
+      display: flex;
+      justify-content: center;
+      align-items: space-around;
+      font-size: 1.6em;
+      margin: 0 auto;
+      padding: 5px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+
+      &:hover {
+        background: #ff2281;
+        transition-duration: 0.5s;
+      }
+    }
+  }
+}
+
+// ! 프로젝트 소개하는 움짤과 텍스트가 위치한 인트로, gif 또한 현재 임시로 넣었습니다.
+
+.intro-description {
+  border-top: 5px solid $text-white;
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  background: $bg-color2;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-left: 50px;
+  padding-right: 50px;
+
+  .intro-gif {
+    background: url('../images/ghost.gif');
+    background-size: cover;
+    background-position: 50% 50%;
+    position: relative;
+    height: 50vh;
+    border-radius: 10px;
+    min-width: 50%;
+    padding: 20px 40px;
+    box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.2),
+      0 6px 20px 0 rgba(255, 255, 255, 0.19);
+  }
+  .intro-text {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 400px;
+    flex-shrink: 3;
+    padding: 0 20px;
+
+    h2,
+    p {
+      color: $text-white;
+    }
+    h2 {
+      font-size: 2.4em;
+      font-weight: 500;
+    }
+    p {
+      font-size: 1.7em;
+      margin-top: 80px;
+      line-height: 150%;
+    }
+  }
+}
+
+.second-intro {
+  background: $bg-color3;
+
+  .intro-gif {
+    order: 1;
+    background: url('../images/hammerdins.gif');
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+}
+
+// ! 모바일 화면일 때 설명과, gif 레이아웃
+@include mobile {
+  .intro-description {
+    display: flex;
+  }
+  .intro-gif {
+    display: none;
+    width: 100%;
+  }
+
+  .second-intro {
+    .intro-text {
+      display: none;
+    }
+    .intro-gif {
+      display: block;
+      width: 100%;
+    }
+  }
+}
+
+// ! footer 부분 레이아웃 진행
+
+footer {
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  background: rgb(34, 34, 34);
+  color: #fff;
+
+  .footer-info {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    padding: 50px 0;
+
+    .footer-width {
+      padding: 0 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+
+      p {
+        line-height: 1.5em;
+      }
+    }
+  }
+
+  .about,
+  .contact {
+    width: 40%;
+  }
+
+  .link {
+    width: 20%;
+
+    li {
+      margin-bottom: 15px;
+      font-size: 18px;
+      a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        &:hover {
+          color: $btn-hover1;
+        }
+      }
+    }
+  }
+
+  .logoToGithub {
+    margin-top: 30px;
+    position: relative;
+    left: -10px;
+    .logo-img {
+      width: 55%;
+    }
+  }
+
+  .contact {
+    ul {
+      li {
+        display: flex;
+        margin-bottom: 15px;
+        align-items: center;
+        span {
+          margin-right: 15px;
+        }
+        a {
+          color: $text-white;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .copy-right {
+    padding: 15px 0;
+    text-align: center;
+    background: black;
+  }
+  @media screen and (max-width: 992px) {
+    .about,
+    .contact {
+      width: 35%;
+    }
+    .link {
+      width: 30%;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .about,
+    .link,
+    .contact {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .footer-info {
+      flex-direction: column;
+    }
+  }
 }
