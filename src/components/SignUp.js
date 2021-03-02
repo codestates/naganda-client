@@ -42,16 +42,14 @@ const SignUp = (props) => {
       };
       dispatch(registerUser(body))
         .then((res) => {
-          if (res.payload.data) {
-            console.log('응답', res.payload);
-            setErrorMessage(res.payload.data.message);
-          } else {
-            console.log('회원가입이 이루어졌습니다 >>>>>', res);
-            setErrorMessage('⏪⏪이제 로그인하러 가볼까용?🍄');
-            // history.push('/signin');
-          }
+          console.log(res);
+          setErrorMessage('회원가입 완료 되었습니다!');
+          window.location.replace('/signin');
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err.response);
+          setErrorMessage(err.response.data.message);
+        });
     } else {
       console.log('비밀번호가 일치하지 않습니다.');
       setErrorMessage('비밀번호가 일치하지 않네요 🍭');
