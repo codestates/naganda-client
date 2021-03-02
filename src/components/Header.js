@@ -16,14 +16,7 @@ const Header = () => {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, [headerRef]);
-  // const onScroll = () => {
-  //   let header = document.querySelector('header');
-  //   header.classList.toggle('sticky', window.scrollY > 0);
-  // };
-  // useEffect(() => {
-  //   window.addEventListener('scroll', onScroll);
-  //   return () => window.removeEventListener('scroll', onScroll);
-  // }, []);
+
   return (
     <header ref={headerRef}>
       <Link to="/" className="logo1">
