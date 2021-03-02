@@ -1,14 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { withRouter, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { signinUser } from '../_actions/userAction';
+
 import logo1 from '../assets/images/logo1.png';
 const SignIn = () => {
+  const [Email, setEmail] = useState('');
+  const [Password, setPassword] = useState('');
+  const [ErrorMessage, setErrorMessage] = useState('');
+
+  const dispatch = useDispatch();
+
+  const history = useHistory();
+
+  const onEmailHandler = (e) => {
+    setEmail(e.currentTarget.value);
+  };
+
+  const onPasswordHandler = (e) => {
+    setPassword(e.currentTarget.value);
+  };
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+
+    const body = {
+      email: Email,
+      password: Password,
+    };
+    dispatch(signinUser(body))
+      .then((res) => {
+        console.log(res);
+        console.log(res.payload.accessToken);
+        let tokenData = res.payload.accessToken;
+        localStorage.setItem('CC_Token', tokenData);
+        history.push('/mypage');
+      })
+      .catch((err) => {
+        console.log(err.response);
+        setErrorMessage(err.response.data.message);
+      });
+  };
   return (
     <div className="form-container sign-in-container">
-      <form action="#">
+      <form onSubmit={onSubmitHandler}>
         <h1>LOGIN</h1>
         <div className="social-container naganda-logo">
           <img className="logo-img" src={logo1} alt="logo-image" />
         </div>
-        <span className="login-validation">🐝JOIN NOW🐝</span>
+        {ErrorMessage ? (
+          <span className="login-validation">🐝{ErrorMessage}🐝</span>
+        ) : (
+          <span className="login-validation">🐝JOIN NOW🐝</span>
+        )}
         <div className="email">
           <label htmlFor="inputEmail">
             <i className="fas fa-envelope"></i>
@@ -17,6 +61,8 @@ const SignIn = () => {
             id="inputEmail"
             type="email"
             name="email"
+            value={Email}
+            onChange={onEmailHandler}
             placeholder="Email"
           />
         </div>
@@ -28,12 +74,16 @@ const SignIn = () => {
             id="inputPassword"
             type="password"
             name="password"
+            value={Password}
+            onChange={onPasswordHandler}
             placeholder="password"
           />
         </div>
         <a href="#">Guest Login also available</a>
         <div className="login-btns">
-          <button className="normal-btn">LogIn</button>
+          <button className="normal-btn" type="submit">
+            LogIn
+          </button>
           <button className="guest-btn">Guest Login</button>
         </div>
       </form>
@@ -41,4 +91,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default withRouter(SignIn);
