@@ -5,9 +5,26 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './assets/scss/main.scss';
 
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
+import promiseMiddleware from 'redux-promise';
+import reduxThunk from 'redux-thunk';
+import reducer from './_reducers';
+
+const createStoreWithMiddleware = applyMiddleware(
+  promiseMiddleware,
+  reduxThunk,
+)(createStore);
+
 ReactDOM.render(
-  <BrowserRouter>
+  <Provider
+    store={createStoreWithMiddleware(
+      reducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__(),
+    )}
+  >
     <App />
-  </BrowserRouter>,
+  </Provider>,
   document.getElementById('root'),
 );
