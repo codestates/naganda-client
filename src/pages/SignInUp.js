@@ -6,6 +6,7 @@ import SocialLogin from '../components/SocialLogin';
 import logo1 from '../assets/images/logo1.png';
 
 const SignInUp = () => {
+  const onClickHandler = () => {};
   const onToggle = () => {
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
@@ -40,7 +41,7 @@ const SignInUp = () => {
             <div className="overlay-panel overlay-right">
               <h1>Don&apos;t have an Account?</h1>
               <p>이메일과 비밀번호 만으로 간편한 가입을 할 수 있습니다.</p>
-              <button className="ghost" id="signUp">
+              <button className="ghost" id="signUp" onClick={onClickHandler}>
                 Sign Up
               </button>
               <SocialLogin />
