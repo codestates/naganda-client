@@ -10,7 +10,8 @@ export const request = (method, url, data) => {
     method,
     url: DOMAIN + url,
     data,
-  }).then((res) => res.data);
+  }).then((res) => res);
+  // .then((res) => res.data);
   // .catch((err) => {
   //   console.log(err);
   //   return err.response;
