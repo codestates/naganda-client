@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import Header from '../components/Header';
+import MypageHeader from '../components/MypageHeader';
 import UserInfo from '../components/UserInfo';
 import Schedules from '../components/Schedules';
 import Footer from '../components/Footer';
@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 const MyPage = () => {
   return (
     <div className="wrapper">
-      <Header />
+      <MypageHeader />
       <UserInfo />
       <Schedules />
       <Footer />

@@ -47,7 +47,10 @@ header {
       position: relative;
       list-style: none;
 
-      a {
+      a,
+      button {
+        border: none;
+        background: none;
         position: relative;
         margin: 0 30px;
         text-decoration: none;
