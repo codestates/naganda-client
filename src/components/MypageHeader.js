@@ -35,11 +35,13 @@ const MypageHeader = (props) => {
         .then((res) => {
           console.log('당신은 게스트이므로 유저정보를 모두 삭제합니다.', res);
           localStorage.removeItem('CC_Token');
+          localStorage.removeItem('RF_Token');
           history.push('/');
         })
         .catch((err) => console.log(err));
     } else {
       localStorage.removeItem('CC_Token');
+      localStorage.removeItem('RF_Token');
       history.push('/');
     }
   };
