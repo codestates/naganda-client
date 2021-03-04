@@ -30,9 +30,6 @@ const SignIn = () => {
     };
     dispatch(signinUser(body))
       .then((res) => {
-        console.log(res);
-        console.log(res.payload.data.accessToken);
-        console.log('리프레시토큰!', res.payload.headers['refresh-token']);
         let tokenData = res.payload.data.accessToken;
         localStorage.setItem('CC_Token', tokenData);
 
