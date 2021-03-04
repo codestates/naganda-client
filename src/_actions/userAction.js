@@ -1,4 +1,10 @@
-import { REGISTER_USER, SIGNIN_USER, LOGOUT_USER, MYINFO_USER } from './types';
+import {
+  REGISTER_USER,
+  SIGNIN_USER,
+  LOGOUT_USER,
+  MYINFO_USER,
+  REGISTER_GUEST,
+} from './types';
 import { request } from '../utils/axios';
 
 const axios = require('axios');
@@ -10,6 +16,15 @@ export function registerUser(dataToSubmit) {
 
   return {
     type: REGISTER_USER,
+    payload: data,
+  };
+}
+
+export function registerGuest() {
+  const data = request('post', USER_URL + '/guest');
+
+  return {
+    type: REGISTER_GUEST,
     payload: data,
   };
 }

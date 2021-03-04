@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { withRouter, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { signinUser } from '../_actions/userAction';
+import { signinUser, registerGuest } from '../_actions/userAction';
 
 import logo1 from '../assets/images/logo1.png';
 const SignIn = () => {
@@ -41,6 +41,24 @@ const SignIn = () => {
         console.log(err.response);
         setErrorMessage(err.response.data.message);
       });
+  };
+
+  const onGuestLoginHandler = (e) => {
+    e.preventDefault();
+    console.log('이것이 바로 게스트 로그인!');
+
+    dispatch(registerGuest())
+      .then((res) => {
+        console.log(res.payload.data.accessToken);
+        let tokenData = res.payload.data.accessToken;
+        localStorage.setItem('CC_Token', tokenData);
+
+        let refreshTokenData = res.payload.headers['refresh-token'];
+        localStorage.setItem('RF_Token', refreshTokenData);
+        setErrorMessage(res.payload.data.message);
+        history.push('/mypage');
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div className="form-container sign-in-container">
@@ -85,7 +103,9 @@ const SignIn = () => {
           <button className="normal-btn" type="submit">
             LogIn
           </button>
-          <button className="guest-btn">Guest Login</button>
+          <button className="guest-btn" onClick={onGuestLoginHandler}>
+            Guest Login
+          </button>
         </div>
       </form>
     </div>
