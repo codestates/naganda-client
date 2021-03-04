@@ -11,8 +11,8 @@ const Header = () => {
   };
 
   useEffect(() => {
-    console.log(headerRef.current);
-    console.log(headerRef);
+    // console.log(headerRef.current);
+    // console.log(headerRef);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, [headerRef]);

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import avatar from '../assets/images/amongus_white.png';
-const UserInfo = () => {
+const UserInfo = (props) => {
   return (
     <section className="mypage">
       <div className="profile-section">
@@ -16,20 +16,18 @@ const UserInfo = () => {
               </button>
             </div>
             <div className="username-title">
-              <h1>Kwangmook</h1>
+              <h1>{props.nickname}</h1>
             </div>
           </div>
           <div className="white-space"></div>
           <div className="info">
             <div className="wrap-modify">
-              <span className="block small">Nickname : Kwangmook Jung</span>
+              <span className="block small">Nickname : {props.nickname}</span>
               <button className="modify light">Modify</button>
             </div>
 
             <div className="wrap-modify">
-              <span className="block small">
-                E-mail : seolleung22@gmail.com
-              </span>
+              <span className="block small">E-mail : {props.email}</span>
               <button className="modify light">Modify</button>
             </div>
 

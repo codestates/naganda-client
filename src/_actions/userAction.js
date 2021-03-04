@@ -1,5 +1,7 @@
-import { REGISTER_USER, SIGNIN_USER, LOGOUT_USER } from './types';
+import { REGISTER_USER, SIGNIN_USER, LOGOUT_USER, MYINFO_USER } from './types';
 import { request } from '../utils/axios';
+
+const axios = require('axios');
 
 const USER_URL = '/users';
 
@@ -21,6 +23,34 @@ export function signinUser(dataToSubmit) {
   };
 }
 
-export function logoutUser(dataToSubmit) {
-  const data = request('post', USER_URL + '/logout', dataToSubmit);
-}
+export const logoutUser = async () => {
+  const token = localStorage.getItem('CC_Token');
+
+  const data = await axios.delete(
+    'http://localhost:4000' + USER_URL + '/logout',
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
+
+  return {
+    type: LOGOUT_USER,
+    payload: data,
+  };
+};
+
+export const myinfoUser = async () => {
+  const token = localStorage.getItem('CC_Token');
+
+  const data = await axios.get('http://localhost:4000' + USER_URL + '/myinfo', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return {
+    type: MYINFO_USER,
+    payload: data,
+  };
+};
