@@ -3,13 +3,14 @@ import {
   SIGNIN_USER,
   LOGOUT_USER,
   MYINFO_USER,
-  MYINFO_USER2,
-  LOGOUT_USER2,
+  REGISTER_GUEST,
 } from '../_actions/types';
 
 export default function (state = {}, action) {
   switch (action.type) {
     case REGISTER_USER:
+      return { ...state, registerSuccess: action.payload };
+    case REGISTER_GUEST:
       return { ...state, registerSuccess: action.payload };
     case SIGNIN_USER:
       return { ...state, signinSuccess: action.payload };
