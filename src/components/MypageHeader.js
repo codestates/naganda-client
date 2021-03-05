@@ -13,6 +13,7 @@ const MypageHeader = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const headerRef = useRef(null);
+  let userEmail = props.email;
 
   const handleLogout = () => {
     const token = localStorage.getItem('CC_Token');
@@ -24,7 +25,7 @@ const MypageHeader = (props) => {
       },
     };
 
-    let userEmail = props.email;
+    // let userEmail = props.email;
 
     let numberOfGuestWords = userEmail.split('@').filter((el) => {
       return el.includes('guest');
@@ -65,9 +66,18 @@ const MypageHeader = (props) => {
       </Link>
       <ul>
         <li>
-          <button className="login-btn" onClick={handleLogout}>
-            Logout
-          </button>
+          {userEmail ? (
+            <button className="login-btn" onClick={handleLogout}>
+              Logout
+            </button>
+          ) : (
+            <button
+              className="login-btn"
+              onClick={() => history.push('/signin')}
+            >
+              SignIn
+            </button>
+          )}
         </li>
       </ul>
     </header>

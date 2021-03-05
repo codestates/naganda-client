@@ -7,6 +7,7 @@ import MypageHeader from '../components/MypageHeader';
 import UserInfo from '../components/UserInfo';
 import Schedules from '../components/Schedules';
 import Footer from '../components/Footer';
+import UnauthorizedPopup from '../components/UnauthorizedPopup';
 
 const MyPage = () => {
   const [Nickname, setNickname] = useState('');
@@ -16,18 +17,31 @@ const MyPage = () => {
   useEffect(() => {
     dispatch(myinfoUser())
       .then((res) => {
-        console.log(res.payload.data);
+        console.log('응답페이로드 데이터', res.payload.data);
         let userinfo = res.payload.data;
         setNickname(userinfo.nickname);
         setEmail(userinfo.email);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
   return (
     <div className="wrapper">
       <MypageHeader email={Email} />
-      <UserInfo nickname={Nickname} email={Email} />
-      <Schedules />
+      {Email ? (
+        <>
+          <UserInfo nickname={Nickname} email={Email} />
+          <Schedules />
+        </>
+      ) : (
+        <>
+          <UserInfo nickname={Nickname} email={Email} />
+          <Schedules />
+          <UnauthorizedPopup />
+        </>
+      )}
+
       <Footer />
     </div>
   );
