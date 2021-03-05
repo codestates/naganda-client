@@ -4,6 +4,7 @@ import {
   LOGOUT_USER,
   MYINFO_USER,
   REGISTER_GUEST,
+  AUTH_USER,
 } from './types';
 import { request } from '../utils/axios';
 
