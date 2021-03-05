@@ -40,6 +40,7 @@ const MypageHeader = (props) => {
         })
         .catch((err) => console.log(err));
     } else {
+      console.log('로그아웃이 되었습니다.');
       localStorage.removeItem('CC_Token');
       localStorage.removeItem('RF_Token');
       history.push('/');
