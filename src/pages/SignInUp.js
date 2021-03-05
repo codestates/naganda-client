@@ -1,12 +1,17 @@
 import React, { useRef, useEffect } from 'react';
+import { withRouter, useHistory } from 'react-router-dom';
+
 import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
 import SocialLogin from '../components/SocialLogin';
 
+const axios = require('axios');
 const SignInUp = () => {
   const containerRef = useRef(null);
   const signUpBtnRef = useRef(null);
   const signInBtnRef = useRef(null);
+
+  const history = useHistory();
 
   const onToggle = () => {
     signUpBtnRef.current.addEventListener('click', () => {
@@ -16,6 +21,29 @@ const SignInUp = () => {
       containerRef.current.classList.remove('right-panel-active');
     });
   };
+
+  useEffect(async () => {
+    const getAccessToken = async (authorizationCode) => {
+      let tokenData = await axios
+        .post('http://localhost:4000/users/kakao', {
+          authorizationCode,
+        })
+        .then((res) => {
+          console.log(res.data.accessToken);
+          let accessToken = res.data.accessToken;
+          let refreshToken = res.headers['refresh-token'];
+          localStorage.setItem('CC_Token', accessToken);
+          localStorage.setItem('RF_Token', refreshToken);
+          history.push('/mypage');
+        });
+    };
+    const url = new URL(window.location.href);
+    const authorizationCode = url.searchParams.get('code');
+    console.log('인증 코드', authorizationCode);
+    if (authorizationCode) {
+      await getAccessToken(authorizationCode);
+    }
+  }, []);
 
   useEffect(() => {
     window.addEventListener('click', onToggle);
