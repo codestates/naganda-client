@@ -9,9 +9,10 @@ import Scheduler from './pages/Scheduler';
 function App() {
   return (
     <Router>
+      <Route path="/" component={LandingPage} exact />
       <Switch>
-        <Route path="/" component={LandingPage} exact />
         <Route path="/signin" component={SignInUp} />
+        <Route path="/mypage/:username" component={MyPage} />
         <Route path="/mypage" component={MyPage} />
         <Route path="/scheduler" component={Scheduler} />
       </Switch>

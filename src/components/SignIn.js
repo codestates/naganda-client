@@ -30,12 +30,15 @@ const SignIn = () => {
     };
     dispatch(signinUser(body))
       .then((res) => {
+        // console.log(JSON.parse(res.payload.config.data).email);
         let tokenData = res.payload.data.accessToken;
         localStorage.setItem('CC_Token', tokenData);
 
         let refreshTokenData = res.payload.headers['refresh-token'];
         localStorage.setItem('RF_Token', refreshTokenData);
-        history.push('/mypage');
+        let emailHead = JSON.parse(res.payload.config.data).email.split('@')[0];
+        // console.log('이메일의 접두사!', emailHead);
+        history.push(`/mypage/:${emailHead}?detail=true`);
       })
       .catch((err) => {
         console.log(err.response);
@@ -49,14 +52,14 @@ const SignIn = () => {
 
     dispatch(registerGuest())
       .then((res) => {
-        console.log(res.payload.data.accessToken);
+        // console.log(res.payload.data.accessToken);
         let tokenData = res.payload.data.accessToken;
         localStorage.setItem('CC_Token', tokenData);
 
         let refreshTokenData = res.payload.headers['refresh-token'];
         localStorage.setItem('RF_Token', refreshTokenData);
         setErrorMessage(res.payload.data.message);
-        history.push('/mypage');
+        history.push('/mypage/:guest?detail=true');
       })
       .catch((err) => console.log(err));
   };

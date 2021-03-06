@@ -9,7 +9,12 @@ import Schedules from '../components/Schedules';
 import Footer from '../components/Footer';
 import UnauthorizedPopup from '../components/UnauthorizedPopup';
 
-const MyPage = () => {
+import queryString from 'query-string';
+const MyPage = ({ location, match }) => {
+  const query = queryString.parse(location.search);
+  // console.log('쿼리', query);
+  // console.log(match.params);
+  // const detail = query.detail === 'true';
   const [Nickname, setNickname] = useState('');
   const [Email, setEmail] = useState('');
   const dispatch = useDispatch();
@@ -17,7 +22,7 @@ const MyPage = () => {
   useEffect(() => {
     dispatch(myinfoUser())
       .then((res) => {
-        console.log('응답페이로드 데이터', res.payload.data);
+        // console.log('응답페이로드 데이터', res.payload.data);
         let userinfo = res.payload.data;
         setNickname(userinfo.nickname);
         setEmail(userinfo.email);
