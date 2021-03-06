@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { withRouter, useHistory } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../_actions/userAction';
 
 import logo1 from '../assets/images/logo1.png';
 
-const SignUp = (props) => {
+const SignUp = () => {
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
   const [NickName, setNickName] = useState('');
@@ -13,8 +13,6 @@ const SignUp = (props) => {
   const [ErrorMessage, setErrorMessage] = useState('');
 
   const dispatch = useDispatch();
-
-  const history = useHistory();
 
   const onEmailHandler = (e) => {
     setEmail(e.currentTarget.value);

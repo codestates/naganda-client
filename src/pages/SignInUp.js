@@ -1,5 +1,7 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { withRouter, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { myinfoUser } from '../_actions/userAction';
 
 import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
@@ -11,7 +13,13 @@ const SignInUp = () => {
   const signUpBtnRef = useRef(null);
   const signInBtnRef = useRef(null);
 
+  const [Nickname, setNickname] = useState('');
+  const [Email, setEmail] = useState('');
+  const dispatch = useDispatch();
+
   const history = useHistory();
+
+  // console.log('이메일이 들어갓나?', Email);
 
   const onToggle = () => {
     signUpBtnRef.current.addEventListener('click', () => {
@@ -29,17 +37,32 @@ const SignInUp = () => {
           authorizationCode,
         })
         .then((res) => {
-          console.log(res.data.accessToken);
+          // console.log(res.data);
           let accessToken = res.data.accessToken;
           let refreshToken = res.headers['refresh-token'];
           localStorage.setItem('CC_Token', accessToken);
           localStorage.setItem('RF_Token', refreshToken);
-          history.push('/mypage');
+        })
+        .then(() => {
+          dispatch(myinfoUser())
+            .then((res) => {
+              // console.log('응답페이로드 데이터', res.payload.data);
+              let userinfo = res.payload.data;
+              // console.log(userinfo);
+              setNickname(userinfo.nickname);
+              setEmail(userinfo.email);
+              const headEmail = userinfo.email.split('@')[0];
+              // console.log('내가 바로 이메일접두사', headEmail);
+              history.push(`/mypage/:${headEmail}?detail=true`);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         });
     };
     const url = new URL(window.location.href);
     const authorizationCode = url.searchParams.get('code');
-    console.log('인증 코드', authorizationCode);
+    // console.log('인증 코드', authorizationCode);
     if (authorizationCode) {
       await getAccessToken(authorizationCode);
     }
@@ -79,4 +102,4 @@ const SignInUp = () => {
   );
 };
 
-export default SignInUp;
+export default withRouter(SignInUp);

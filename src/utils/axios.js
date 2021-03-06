@@ -6,13 +6,13 @@ const DOMAIN = 'http://localhost:4000';
 axios.defaults.withCredentials = true;
 
 export const request = (method, url, data) => {
-  console.log(data);
+  // console.log(data);
   return axios({
     method,
     url: DOMAIN + url,
     data,
   }).then((res) => {
-    console.log('axios response', res);
+    // console.log('axios response', res);
     return res;
   });
   // .then((res) => res.data);
@@ -21,11 +21,3 @@ export const request = (method, url, data) => {
   //   return err.response;
   // });
 };
-
-// axios
-// .get(`http://localhost:4000/users/myinfo`, {
-//   headers: {
-//     Authorization: `Bearer ${token}`,
-//   },
-// })
-// .then((res) => console.log(res));

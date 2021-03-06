@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom';
 
 import logo1 from '../assets/images/logo1.png';
 
-const axios = require('axios');
-
 const MypageHeader = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -16,17 +14,6 @@ const MypageHeader = (props) => {
   let userEmail = props.email;
 
   const handleLogout = () => {
-    const token = localStorage.getItem('CC_Token');
-    // console.log('로그아웃 시의 토큰입니다', token);
-
-    const data = {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    };
-
-    // let userEmail = props.email;
-
     let numberOfGuestWords = userEmail.split('@').filter((el) => {
       return el.includes('guest');
     }).length;

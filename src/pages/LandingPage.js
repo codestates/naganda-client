@@ -1,4 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { myinfoUser } from '../_actions/userAction';
 
 import Header from '../components/Header';
 import SearchBanner from '../components/SearchBanner';
@@ -7,18 +10,30 @@ import IntroDesc from '../components/IntroDesc';
 import Footer from '../components/Footer';
 
 const LandingPage = () => {
-  // const onScroll = () => {
-  //   let header = document.querySelector('header');
-  //   header.classList.toggle('sticky', window.scrollY > 0);
-  // };
-  // useEffect(() => {
-  //   window.addEventListener('scroll', onScroll);
-  //   return () => window.removeEventListener('scroll', onScroll);
-  // }, []);
+  const [Nickname, setNickname] = useState('');
+  const [Email, setEmail] = useState('');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (window.localStorage.CC_Token) {
+      dispatch(myinfoUser())
+        .then((res) => {
+          // console.log('응답페이로드 데이터', res.payload.data);
+          let userinfo = res.payload.data;
+          setNickname(userinfo.nickname);
+          setEmail(userinfo.email);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return;
+    }
+  }, []);
 
   return (
     <div className="wrapper">
-      <Header />
+      <Header Nickname={Nickname} Email={Email} />
       <SearchBanner />
       <Recommended />
       <IntroDesc />
@@ -27,4 +42,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default withRouter(LandingPage);
