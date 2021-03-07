@@ -5,11 +5,14 @@ import avatar from '../assets/images/amongus_white.png';
 import ModifyNickname from './PopupModify/ModifyNickname';
 import ModifyEmail from './PopupModify/ModifyEmail';
 import ModifyPassword from './PopupModify/ModifyPassword';
+
+import WithdrawalService from './PopupWithdrawal/WithdrawalService';
 const UserInfo = (props) => {
   const [Modify, setModify] = useState({
     nickname: false,
     email: false,
     password: false,
+    withdrawal: false,
   });
 
   const toggleModifyNickname = () => {
@@ -27,6 +30,12 @@ const UserInfo = (props) => {
   const toggleModifyPassword = () => {
     setModify({
       password: !Modify.password,
+    });
+  };
+
+  const toggleWithdrawal = () => {
+    setModify({
+      withdrawal: !Modify.withdrawal,
     });
   };
 
@@ -93,8 +102,17 @@ const UserInfo = (props) => {
 
             <div className="wrap-modify delete">
               <span className="block small">Delete Userinfo</span>
-              <button className="modify light">Delete</button>
+              <button
+                className="modify light"
+                disabled={Modify.withdrawal}
+                onClick={toggleWithdrawal}
+              >
+                Delete
+              </button>
             </div>
+            {Modify.withdrawal && (
+              <WithdrawalService toggleWithdrawal={toggleWithdrawal} />
+            )}
           </div>
         </div>
       </div>
