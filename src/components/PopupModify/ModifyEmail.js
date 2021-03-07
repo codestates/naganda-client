@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Logo from '../../assets/images/logo1.png';
 
-const ModifyEmail = ({ toggleModifyEmail }) => {
+const ModifyEmail = ({ toggleModifyEmail, modifyUserInfo, match }) => {
   const [NewEmail, setNewEmail] = useState('');
 
   const onChangeEmail = (e) => {
@@ -10,7 +10,17 @@ const ModifyEmail = ({ toggleModifyEmail }) => {
   return (
     <div id="modify">
       <div>
-        <button className="btn-changed">Make A Change</button>
+        <button
+          className="btn-changed"
+          onClick={() => {
+            modifyUserInfo({ email: NewEmail });
+            console.log(match);
+            let newParam = NewEmail.split('@')[0];
+            match.params.username = `:${newParam}`;
+          }}
+        >
+          Make A Change
+        </button>
         <button className="btn-closed" onClick={toggleModifyEmail}>
           X
         </button>

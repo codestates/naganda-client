@@ -5,6 +5,7 @@ import {
   MYINFO_USER,
   REGISTER_GUEST,
   DELETE_USER,
+  UPDATE_USERINFO,
 } from './types';
 import { request } from '../utils/axios';
 
@@ -85,6 +86,25 @@ export const unregisterUser = async () => {
 
   return {
     type: DELETE_USER,
+    payload: data,
+  };
+};
+
+export const updateUserInfo = async (dataToSubmit) => {
+  const token = localStorage.getItem('CC_Token');
+
+  const data = await axios.patch(
+    'http://localhost:4000' + USER_URL + '/updateUserinfo',
+    dataToSubmit,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
+
+  return {
+    type: UPDATE_USERINFO,
     payload: data,
   };
 };

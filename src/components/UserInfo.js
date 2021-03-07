@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { updateUserInfo } from '../_actions/userAction';
 
 import avatar from '../assets/images/amongus_white.png';
 
@@ -7,7 +10,10 @@ import ModifyEmail from './PopupModify/ModifyEmail';
 import ModifyPassword from './PopupModify/ModifyPassword';
 
 import WithdrawalService from './PopupWithdrawal/WithdrawalService';
+
 const UserInfo = (props) => {
+  const dispatch = useDispatch();
+
   const [Modify, setModify] = useState({
     nickname: false,
     email: false,
@@ -39,6 +45,32 @@ const UserInfo = (props) => {
     });
   };
 
+  const modifyUserInfo = (body) => {
+    dispatch(updateUserInfo(body))
+      .then((res) => {
+        // console.log('리덕스리듀스로닉네임수정!', res);
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // const modifyUserInfo2 = () => {
+  //   const token = localStorage.getItem('CC_Token');
+  //   let body = {
+  //     nickname: 'goodmooks',
+  //   };
+  //   axios
+  //     .patch('http://localhost:4000/users/updateUserinfo', body, {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //     .then((res) => {
+  //       console.log(res);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+
   return (
     <section className="mypage">
       <div className="profile-section">
@@ -69,7 +101,10 @@ const UserInfo = (props) => {
               </button>
             </div>
             {Modify.nickname && (
-              <ModifyNickname toggleModifyNickname={toggleModifyNickname} />
+              <ModifyNickname
+                toggleModifyNickname={toggleModifyNickname}
+                modifyUserInfo={modifyUserInfo}
+              />
             )}
 
             <div className="wrap-modify">
@@ -83,7 +118,11 @@ const UserInfo = (props) => {
               </button>
             </div>
             {Modify.email && (
-              <ModifyEmail toggleModifyEmail={toggleModifyEmail} />
+              <ModifyEmail
+                toggleModifyEmail={toggleModifyEmail}
+                modifyUserInfo={modifyUserInfo}
+                match={props.match}
+              />
             )}
 
             <div className="wrap-modify">
@@ -97,7 +136,10 @@ const UserInfo = (props) => {
               </button>
             </div>
             {Modify.password && (
-              <ModifyPassword toggleModifyPassword={toggleModifyPassword} />
+              <ModifyPassword
+                toggleModifyPassword={toggleModifyPassword}
+                modifyUserInfo={modifyUserInfo}
+              />
             )}
 
             <div className="wrap-modify delete">
@@ -120,4 +162,4 @@ const UserInfo = (props) => {
   );
 };
 
-export default UserInfo;
+export default withRouter(UserInfo);
