@@ -1,11 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { withRouter, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { unregisterUser } from '../../_actions/userAction';
+
 import Logo from '../../assets/images/logo1.png';
 
 const WithdrawalService = ({ toggleWithdrawal }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleUnregister = () => {
+    dispatch(unregisterUser())
+      .then((res) => {
+        console.log(res);
+        console.log('회원탈퇴가 되었군요..');
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div id="modify">
       <div>
-        <button className="btn-changed">Yes, I want</button>
+        <button className="btn-changed" onClick={handleUnregister}>
+          Yes, I want
+        </button>
         <button className="btn-closed" onClick={toggleWithdrawal}>
           X
         </button>
@@ -24,4 +41,4 @@ const WithdrawalService = ({ toggleWithdrawal }) => {
   );
 };
 
-export default WithdrawalService;
+export default withRouter(WithdrawalService);
