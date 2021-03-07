@@ -419,7 +419,7 @@ div[id*='popup'] {
     height: 300px;
     background: $text-white;
     border-radius: 15px;
-    z-index: 2;
+    z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -470,6 +470,119 @@ div[id*='popup'] {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
+}
+
+// ! POP-UP For users to change their Nickname, Email, Password and to delete their Userinfo.
+
+div[id*='modify'] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  opacity: 1;
+  visibility: visible;
+  transition: all 1s;
+
+  div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 300px;
+    background: $text-white;
+    border-radius: 15px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 25px;
+
+    .btn-closed {
+      position: absolute;
+      top: 0%;
+      right: 0%;
+      transform: translate(50%, -50%);
+      padding: 10px 20px;
+      // width: 200px;
+      background: $btn-color2;
+      border-radius: 100%;
+      border: none;
+      z-index: 1;
+      color: $text-white;
+      font-weight: 500;
+      font-size: 1em;
+      cursor: pointer;
+
+      &:hover {
+        background: $btn-hover1;
+        transition-duration: 0.5s;
+      }
+    }
+
+    .btn-changed {
+      position: absolute;
+      top: 85%;
+      right: 50%;
+      transform: translate(50%, -50%);
+      padding: 10px 20px;
+      // width: 200px;
+      background: $btn-color1;
+      border-radius: 15px;
+      border: none;
+      z-index: 1;
+      color: $text-white;
+      font-weight: 500;
+      font-size: 1em;
+      cursor: pointer;
+
+      &:hover {
+        background: $btn-hover1;
+        transition-duration: 0.5s;
+      }
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 10px;
+
+      label {
+        text-align: center;
+        padding-bottom: 20px;
+      }
+      input {
+        border: 2px solid $btn-color1;
+        border-radius: 10px;
+        outline: none;
+        background: none;
+        color: black;
+        font-size: 24px;
+        text-align: center;
+        width: 100%;
+        float: left;
+        margin: 0 10px;
+      }
+    }
+
+    img {
+      width: 80%;
+    }
+  }
+
+  .bottom-label {
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px 30px;
+    border-radius: 15px;
     z-index: 1;
   }
 }
