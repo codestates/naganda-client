@@ -4,7 +4,7 @@ import {
   LOGOUT_USER,
   MYINFO_USER,
   REGISTER_GUEST,
-  AUTH_USER,
+  DELETE_USER,
 } from './types';
 import { request } from '../utils/axios';
 
@@ -67,6 +67,24 @@ export const myinfoUser = async () => {
   });
   return {
     type: MYINFO_USER,
+    payload: data,
+  };
+};
+
+export const unregisterUser = async () => {
+  const token = localStorage.getItem('CC_Token');
+
+  const data = await axios.delete(
+    'http://localhost:4000' + USER_URL + '/delete',
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
+
+  return {
+    type: DELETE_USER,
     payload: data,
   };
 };
