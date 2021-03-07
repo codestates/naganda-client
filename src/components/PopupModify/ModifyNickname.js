@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Logo from '../../assets/images/logo1.png';
 
-const ModifyNickname = ({ toggleModifyNickname }) => {
+const ModifyNickname = ({ toggleModifyNickname, modifyUserInfo }) => {
   const [NewNickname, setNewNickname] = useState('');
 
   const onChangeNickname = (e) => {
     setNewNickname(e.target.value);
   };
+
   return (
     <div id="modify">
       <div>
-        <button className="btn-changed">Make A Change</button>
+        <button
+          className="btn-changed"
+          onClick={() => modifyUserInfo({ nickname: NewNickname })}
+        >
+          Make A Change
+        </button>
         <button className="btn-closed" onClick={toggleModifyNickname}>
           X
         </button>
