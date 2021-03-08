@@ -23,10 +23,11 @@ header.sticky {
     }
   }
   .scheduler-btn {
-    background: $btn-hover1;
+    background: #6ab43e;
 
     &:hover {
-      background: $btn-color1;
+      background: #735cb0;
+
       transition-duration: 0.1s;
     }
     &::after {
@@ -238,6 +239,10 @@ header.sticky {
             position: absolute;
             top: 90%;
             left: 15%;
+            &:hover {
+              background: $bg-color2;
+              transition-duration: 0.1s;
+            }
           }
           .upload-files {
             position: absolute;
@@ -256,7 +261,7 @@ header.sticky {
           .btn-avatar-modify {
             position: absolute;
             top: 102%;
-            left: 80%;
+            left: 120%;
             transform: translate(-50%, -50%);
             background: none;
             border: none;
@@ -264,6 +269,13 @@ header.sticky {
             i {
               font-size: 3em;
               color: $btn-color1;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 200px;
+              span {
+                font-size: 15px;
+              }
 
               &:hover {
                 color: $btn-hover1;
@@ -340,11 +352,12 @@ header.sticky {
           }
           button {
             border-radius: 10px;
+            display: block;
             border: none;
             background-color: $bg-color2;
             color: $text-white;
             font-size: 14px;
-            padding: 12px 20px;
+            padding: 12px 23px;
             letter-spacing: 1px;
             text-transform: uppercase;
             transition: transform 80ms ease-in;
@@ -359,6 +372,7 @@ header.sticky {
   }
 }
 
+// ! 스케줄 카드 리스트 스타일링 부분
 .schedules {
   height: 300vh;
   background-color: $bg-color1;
@@ -438,6 +452,9 @@ header.sticky {
     .go-delete {
       color: red;
       cursor: pointer;
+      &:hover {
+        color: blue;
+      }
     }
   }
 }

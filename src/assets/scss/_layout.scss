@@ -79,6 +79,14 @@ header {
   }
 }
 
+@include mobile {
+  header.sticky {
+    .scheduler-btn {
+      display: none;
+    }
+  }
+}
+
 // ! 맞춤 스케줄을 검색하는 SearchBanner 레이아웃 구성 하기
 .search-box {
   width: 500px;

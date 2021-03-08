@@ -53,19 +53,26 @@ const MypageHeader = (props) => {
       </Link>
       <ul>
         <li>
-          {userEmail ? (
-            <button className="login-btn" onClick={handleLogout}>
+          <Link to={'/scheduler'} className="scheduler-btn">
+            Scheduler
+          </Link>
+        </li>
+        {userEmail ? (
+          <li>
+            <Link to="#" className="login-btn" onClick={handleLogout}>
               Logout
-            </button>
-          ) : (
+            </Link>
+          </li>
+        ) : (
+          <li>
             <button
               className="login-btn"
               onClick={() => history.push('/signin')}
             >
               SignIn
             </button>
-          )}
-        </li>
+          </li>
+        )}
       </ul>
     </header>
   );
