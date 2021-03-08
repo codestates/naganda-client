@@ -5,7 +5,7 @@ import { myinfoUser } from '../_actions/userAction';
 
 import MypageHeader from '../components/MypageHeader';
 import UserInfo from '../components/UserInfo';
-import Schedules from '../components/Schedules';
+import MySchedulesList from '../components/MySchedulesList';
 import Footer from '../components/Footer';
 import UnauthorizedPopup from '../components/UnauthorizedPopup';
 
@@ -28,6 +28,8 @@ const MyPage = ({ location, match }) => {
     fileName: '',
     filePath: Avatar,
   });
+
+  const accessToken = localStorage.getItem('CC_Token');
 
   // ! 유저 아바타 변경을 위한 onSubmit 그리고 Content 와 UploadedImg (using useState)
   const onSubmit = (e) => {
@@ -78,8 +80,8 @@ const MyPage = ({ location, match }) => {
         UploadedImg={UploadedImg}
         avatar={Avatar}
       />
-      <Schedules />
-      {!Email && <UnauthorizedPopup />}
+      <MySchedulesList />
+      {!accessToken && <UnauthorizedPopup />}
       <Footer />
     </div>
   );
