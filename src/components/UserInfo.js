@@ -55,7 +55,7 @@ const UserInfo = (props) => {
   return (
     <section className="mypage">
       <div className="profile-section">
-        <h1 className="mypage-title">Profile</h1>
+        <h1 className="mypage-title">🚌Profile Page🚕</h1>
 
         <div className="mypage-info">
           <div className="avatar-name">
@@ -67,19 +67,19 @@ const UserInfo = (props) => {
               UploadedImg={props.UploadedImg}
             />
             <div className="username-title">
-              <h1>{props.nickname}</h1>
+              <h1>🚨{props.nickname}</h1>
             </div>
           </div>
           <div className="white-space"></div>
           <div className="info">
             <div className="wrap-modify">
-              <span className="block small">Nickname : {props.nickname}</span>
+              <span className="block small">🍄Nickname : {props.nickname}</span>
               <button
                 className="modify light"
                 disabled={Modify.nickname}
                 onClick={toggleModifyNickname}
               >
-                Modify
+                Edit
               </button>
             </div>
             {Modify.nickname && (
@@ -90,13 +90,13 @@ const UserInfo = (props) => {
             )}
 
             <div className="wrap-modify">
-              <span className="block small">E-mail : {props.email}</span>
+              <span className="block small">📮E-mail : {props.email}</span>
               <button
                 className="modify light"
                 disabled={Modify.email}
                 onClick={toggleModifyEmail}
               >
-                Modify
+                Edit
               </button>
             </div>
             {Modify.email && (
@@ -108,13 +108,13 @@ const UserInfo = (props) => {
             )}
 
             <div className="wrap-modify">
-              <span className="block small">Change Password</span>
+              <span className="block small">🔐Change Password</span>
               <button
                 className="modify light"
                 disabled={Modify.password}
                 onClick={toggleModifyPassword}
               >
-                Modify
+                Edit
               </button>
             </div>
             {Modify.password && (
@@ -125,7 +125,7 @@ const UserInfo = (props) => {
             )}
 
             <div className="wrap-modify delete">
-              <span className="block small">Delete Userinfo</span>
+              <span className="block small">✋Delete Userinfo</span>
               <button
                 className="modify light"
                 disabled={Modify.withdrawal}

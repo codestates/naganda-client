@@ -17,7 +17,9 @@ const ModifyAvatar = (props) => {
         onChange={onChange}
       />
       <button className="btn-avatar-modify" type="submit">
-        <i className="fas fa-cloud-upload-alt"></i>
+        <i className="fas fa-cloud-upload-alt">
+          <span>업로드 후 눌러요!</span>
+        </i>
       </button>
     </form>
   );
