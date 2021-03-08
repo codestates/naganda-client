@@ -1,0 +1,588 @@
+@import 'variables';
+@import 'mixin';
+@import 'reset';
+
+// ! LandingPage 에서 스크롤 이벤트가 발생할 때 변화하는 Header 에 대한 스타일링
+header.sticky {
+  padding: 15px 20px;
+  background: #fff;
+
+  .logo1,
+  a {
+    color: $text-white;
+  }
+  .login-btn {
+    background: $btn-color1;
+
+    &:hover {
+      background: $btn-hover1;
+      transition-duration: 0.1s;
+    }
+    &::after {
+      border-bottom: none;
+    }
+  }
+
+  .signup-btn {
+    background: $btn-color2;
+
+    &:hover {
+      background: $btn-hover2;
+      transition-duration: 0.1s;
+    }
+    &::after {
+      border-bottom: none;
+    }
+  }
+  .login-btn,
+  .signup-btn {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2),
+      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 1.2em;
+    padding: 20px 30px;
+    text-align: center;
+    cursor: pointer;
+    width: 80%;
+    display: inline-block;
+    border-radius: 10px;
+    margin-right: 0px;
+  }
+}
+
+// ! 랜딩 페이지의 메인 배너 이미지에 대한 기본 스타일 지정
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('../images/landingPage-img.jpg');
+  background-size: cover;
+}
+
+// ! mixin 웹 반응형에 따른 메인 배너 이미지 스타일 변경
+@include tablet {
+  .banner {
+    background: url('../images/landingPage-tablet.jpg');
+    background-size: cover;
+  }
+}
+
+@include mobile {
+  .banner {
+    background: url('../images/landingPage-mobile.jpg');
+    background-size: cover;
+  }
+  header.sticky {
+    padding: 15px 0px;
+    background: #fff;
+    .login-btn,
+    .signup-btn {
+      font-size: 1em;
+      padding: 20px 20px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70%;
+    }
+  }
+}
+
+// ! SearchBanner 부분에 있는 버튼 스타일링 하기
+.btn-search {
+  width: 100%;
+  height: 50px;
+  background: $btn-color1;
+  border: none;
+  color: white;
+  padding: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 12px 0;
+  border-radius: 5px;
+  &:hover {
+    background: $btn-color2;
+    transition-duration: 0.3s;
+  }
+}
+
+// ! SearchBanner 부분에 있는 인풋박스 스타일링 하기
+.inputbox {
+  width: 100%;
+  overflow: hidden;
+  font-size: 20px;
+  padding: 8px 0;
+  background: white;
+  border-radius: 5px;
+
+  i {
+    width: 26px;
+    font-size: 30px;
+    float: left;
+    text-align: center;
+    color: black;
+    padding-left: 10px;
+  }
+
+  input {
+    border: none;
+    outline: none;
+    background: none;
+    color: black;
+    font-size: 24px;
+    text-align: center;
+    width: 80%;
+    float: left;
+    margin: 0 10px;
+  }
+}
+
+// ! LandingPage 내 추천 해시태그를 누를 것을 강조하는 프로모션 메시지 스타일링.
+.desc-hashtag {
+  line-height: 1.5em;
+  background-image: linear-gradient(120deg, $btn-hover2 0%, $btn-color1 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 10%;
+  background-position: 0 88%;
+  transition: background-size 0.25s ease-in;
+  border-radius: 5px;
+  padding: 10px 15px;
+
+  &:hover {
+    background-size: 100% 100%;
+  }
+}
+
+// ! MyPage 컴포넌트 스타일링 시작
+.mypage {
+  height: 80vh;
+  position: relative;
+  width: 100%;
+  background: #515151;
+
+  .mypage-title {
+    color: $text-white;
+    font-size: 2em;
+    font-weight: 500;
+    align-self: flex-start;
+
+    margin-bottom: 20px;
+  }
+
+  .profile-section {
+    width: 50vw;
+    min-width: 470px;
+    min-height: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .mypage-info {
+      background: $bg-color1;
+      border-radius: 15px;
+      width: 100%;
+      height: 50vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .avatar-name {
+        display: flex;
+        align-items: center;
+        padding: 5px 0px;
+        width: 90%;
+        z-index: 2;
+
+        .avatar {
+          text-align: center;
+          position: relative;
+          .avatar-img {
+            width: 175px;
+            display: block;
+            border: 8px solid white;
+            border-radius: 50%;
+            background: $btn-color1;
+            background-size: cover;
+          }
+          .btn-avatar-modify {
+            position: absolute;
+            top: 85%;
+            left: 85%;
+            transform: translate(-50%, -50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            i {
+              font-size: 3em;
+              color: $bg-color2;
+
+              &:hover {
+                color: $btn-hover2;
+              }
+            }
+          }
+        }
+
+        .username-title {
+          border: 8px solid white;
+          width: 50%;
+          height: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: $bg-color3;
+          border-radius: 25px;
+          margin-left: -40px;
+
+          h1 {
+            font-weight: 500;
+            font-size: 2em;
+            text-align: center;
+            color: $text-white;
+            overflow: hidden;
+            white-space: nowrap;
+            line-height: 50px;
+            text-overflow: ellipsis;
+            padding: 0 50px;
+          }
+        }
+      }
+
+      .white-space {
+        width: 90%;
+        height: 100px;
+        display: block;
+        position: absolute;
+        top: 32%;
+        background: white;
+        z-index: 1;
+        border-top-right-radius: 10px;
+      }
+
+      .info {
+        background: white;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        width: 90%;
+        height: 25vh;
+        padding: 25px 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5em;
+        font-weight: 500;
+
+        .wrap-modify {
+          width: 100%;
+          display: flex;
+          padding: 10px 15px;
+          justify-content: center;
+          align-items: center;
+
+          .block {
+            flex-grow: 1;
+            overflow: hidden;
+            white-space: nowrap;
+            line-height: 30px;
+            text-overflow: ellipsis;
+            text-align: start;
+            padding-left: 100px;
+          }
+          button {
+            border-radius: 10px;
+            border: none;
+            background-color: $bg-color2;
+            color: $text-white;
+            font-size: 14px;
+            padding: 12px 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+            cursor: pointer;
+            &:hover {
+              background: $btn-color1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.schedules {
+  height: 300vh;
+  background-color: $bg-color1;
+  line-height: 1.3;
+  font-size: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .mypage-title {
+    color: $text-white;
+    font-size: 2rem;
+    font-weight: 500;
+    align-self: flex-start;
+    padding: 3rem;
+  }
+}
+
+.cards {
+  display: flex;
+  padding: 3rem;
+  padding-top: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 300px;
+  max-width: 450px;
+  overflow: hidden;
+  background: #ffffff;
+  color: black;
+  border-radius: 5px;
+  box-shadow: 3px 2px 14px rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    transform: translateY(-1rem);
+    box-shadow: 2px 3px 18px rgba(255, 255, 255, 0.4);
+  }
+
+  &-image {
+    flex: 0 0 120px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  &-content {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    height: 100%;
+  }
+  &-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  &-snippet {
+    margin-bottom: 0.5rem;
+  }
+  &-readmore {
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .go-schedule {
+      cursor: pointer;
+    }
+    .go-delete {
+      color: red;
+      cursor: pointer;
+    }
+  }
+}
+
+// ! POP-UP For Unauthorized Users
+
+div[id*='popup'] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  opacity: 1;
+  visibility: visible;
+  transition: all 1s;
+
+  div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 300px;
+    background: $text-white;
+    border-radius: 15px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 25px;
+
+    button {
+      position: absolute;
+      top: 85%;
+      right: 50%;
+      transform: translate(50%, -50%);
+      padding: 20px;
+      width: 200px;
+      background: $btn-color2;
+      border-radius: 15px;
+      border: none;
+      z-index: 1;
+      color: $text-white;
+      font-weight: 500;
+      font-size: 1em;
+      cursor: pointer;
+
+      &:hover {
+        background: $btn-hover1;
+        transition-duration: 0.5s;
+      }
+    }
+
+    img {
+      width: 80%;
+    }
+
+    h1 {
+      font-weight: 500;
+      font-size: 1.5em;
+      text-align: center;
+      line-height: 1.3em;
+    }
+
+    span {
+      padding-top: 15px;
+    }
+  }
+
+  label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
+}
+
+// ! POP-UP For users to change their Nickname, Email, Password and to delete their Userinfo.
+
+div[id*='modify'] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  opacity: 1;
+  visibility: visible;
+  transition: all 1s;
+
+  div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 300px;
+    background: $text-white;
+    border-radius: 15px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 25px;
+
+    .btn-closed {
+      position: absolute;
+      top: 0%;
+      right: 0%;
+      transform: translate(50%, -50%);
+      padding: 10px 20px;
+      // width: 200px;
+      background: $btn-color2;
+      border-radius: 100%;
+      border: none;
+      z-index: 1;
+      color: $text-white;
+      font-weight: 500;
+      font-size: 1em;
+      cursor: pointer;
+
+      &:hover {
+        background: $btn-hover1;
+        transition-duration: 0.5s;
+      }
+    }
+
+    .btn-changed {
+      position: absolute;
+      top: 85%;
+      right: 50%;
+      transform: translate(50%, -50%);
+      padding: 10px 20px;
+      // width: 200px;
+      background: $btn-color1;
+      border-radius: 15px;
+      border: none;
+      z-index: 1;
+      color: $text-white;
+      font-weight: 500;
+      font-size: 1em;
+      cursor: pointer;
+
+      &:hover {
+        background: $btn-hover1;
+        transition-duration: 0.5s;
+      }
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 10px;
+
+      label {
+        text-align: center;
+        padding-bottom: 20px;
+      }
+      input {
+        border: 2px solid $btn-color1;
+        border-radius: 10px;
+        outline: none;
+        background: none;
+        color: black;
+        font-size: 24px;
+        text-align: center;
+        width: 100%;
+        float: left;
+        margin: 0 10px;
+      }
+    }
+
+    img {
+      width: 80%;
+    }
+  }
+
+  .bottom-label {
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px 30px;
+    border-radius: 15px;
+    z-index: 1;
+  }
+}

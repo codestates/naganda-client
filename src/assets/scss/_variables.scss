@@ -1,0 +1,21 @@
+// ! 자주 쓰는 프로젝트의 테마 색상을 변수로 지정해 사용합니다.
+
+// ? 자주 쓰는 프로젝트의 css 속성 (e.g : border-radius, input 창의 글꼴 크기 등의 통일) 을 정의합니다.
+
+$text-white: #f5f5f5;
+
+$btn-color1: #ff514f;
+$btn-color2: #005eb6;
+
+$btn-hover1: #00b6ab;
+$btn-hover2: #30a9de;
+
+$bg-color1: #262626;
+$bg-color2: #353866;
+$bg-color3: #282c37;
+
+// 반응형 MediaQuery 를 사용하기 위한 SCSS 변수 적용
+
+$breakpoint-mobile: 335px;
+$breakpoint-tablet: 758px;
+$breakpoint-desktop: 1024px;
