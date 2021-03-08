@@ -202,26 +202,58 @@ header.sticky {
           position: relative;
           .avatar-img {
             width: 175px;
+            height: 175px;
             display: block;
             border: 8px solid white;
             border-radius: 50%;
             background: $btn-color1;
             background-size: cover;
           }
+          h3 {
+            position: absolute;
+          }
+          label {
+            display: inline-block;
+            padding: 0.5em 0.75em;
+            color: $text-white;
+            font-size: inherit;
+            line-height: normal;
+            vertical-align: middle;
+            background-color: $bg-color1;
+            cursor: pointer;
+            border-radius: 0.25em;
+            position: absolute;
+            top: 90%;
+            left: 15%;
+          }
+          .upload-files {
+            position: absolute;
+            // top: 0;
+            left: 0;
+            bottom: 0;
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+          }
           .btn-avatar-modify {
             position: absolute;
-            top: 85%;
-            left: 85%;
+            top: 102%;
+            left: 80%;
             transform: translate(-50%, -50%);
             background: none;
             border: none;
             cursor: pointer;
             i {
               font-size: 3em;
-              color: $bg-color2;
+              color: $btn-color1;
 
               &:hover {
-                color: $btn-hover2;
+                color: $btn-hover1;
               }
             }
           }

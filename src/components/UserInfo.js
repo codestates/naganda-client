@@ -3,11 +3,10 @@ import { withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { updateUserInfo } from '../_actions/userAction';
 
-import avatar from '../assets/images/amongus_white.png';
-
 import ModifyNickname from './PopupModify/ModifyNickname';
 import ModifyEmail from './PopupModify/ModifyEmail';
 import ModifyPassword from './PopupModify/ModifyPassword';
+import ModifyAvatar from './PopupModify/ModifyAvatar';
 
 import WithdrawalService from './PopupWithdrawal/WithdrawalService';
 
@@ -48,28 +47,10 @@ const UserInfo = (props) => {
   const modifyUserInfo = (body) => {
     dispatch(updateUserInfo(body))
       .then((res) => {
-        // console.log('리덕스리듀스로닉네임수정!', res);
         window.location.reload();
       })
       .catch((err) => console.log(err));
   };
-
-  // const modifyUserInfo2 = () => {
-  //   const token = localStorage.getItem('CC_Token');
-  //   let body = {
-  //     nickname: 'goodmooks',
-  //   };
-  //   axios
-  //     .patch('http://localhost:4000/users/updateUserinfo', body, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
 
   return (
     <section className="mypage">
@@ -78,12 +59,13 @@ const UserInfo = (props) => {
 
         <div className="mypage-info">
           <div className="avatar-name">
-            <div className="avatar">
-              <img className="avatar-img" src={avatar} alt="user-avatar" />
-              <button className="btn-avatar-modify" type="button">
-                <i className="fas fa-plus-circle"></i>
-              </button>
-            </div>
+            <ModifyAvatar
+              modifyUserInfo={modifyUserInfo}
+              avatar={props.avatar}
+              setContent={props.setContent}
+              onSubmit={props.onSubmit}
+              UploadedImg={props.UploadedImg}
+            />
             <div className="username-title">
               <h1>{props.nickname}</h1>
             </div>

@@ -10,6 +10,8 @@ import Footer from '../components/Footer';
 import UnauthorizedPopup from '../components/UnauthorizedPopup';
 
 import queryString from 'query-string';
+
+const axios = require('axios');
 const MyPage = ({ location, match }) => {
   const query = queryString.parse(location.search);
   // console.log('쿼리', query);
@@ -17,15 +19,49 @@ const MyPage = ({ location, match }) => {
   // const detail = query.detail === 'true';
   const [Nickname, setNickname] = useState('');
   const [Email, setEmail] = useState('');
+  const [Avatar, setAvatar] = useState('');
+
   const dispatch = useDispatch();
+
+  const [Content, setContent] = useState('');
+  const [UploadedImg, setUploadedImg] = useState({
+    fileName: '',
+    filePath: Avatar,
+  });
+
+  // ! 유저 아바타 변경을 위한 onSubmit 그리고 Content 와 UploadedImg (using useState)
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('img', Content);
+
+    const token = localStorage.getItem('CC_Token');
+
+    axios
+      .patch('http://localhost:4000/users/updateUserinfo', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log('파일 들어간다!', res.data);
+        setUploadedImg({
+          fileName: res.data.fileName,
+          filePath: res.data.filePath,
+        });
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     dispatch(myinfoUser())
       .then((res) => {
-        // console.log('응답페이로드 데이터', res.payload.data);
         let userinfo = res.payload.data;
         setNickname(userinfo.nickname);
         setEmail(userinfo.email);
+        setAvatar(userinfo.avatar);
       })
       .catch((err) => {
         console.log(err);
@@ -34,19 +70,16 @@ const MyPage = ({ location, match }) => {
   return (
     <div className="wrapper">
       <MypageHeader email={Email} />
-      {Email ? (
-        <>
-          <UserInfo nickname={Nickname} email={Email} />
-          <Schedules />
-        </>
-      ) : (
-        <>
-          <UserInfo nickname={Nickname} email={Email} />
-          <Schedules />
-          <UnauthorizedPopup />
-        </>
-      )}
-
+      <UserInfo
+        nickname={Nickname}
+        email={Email}
+        setContent={setContent}
+        onSubmit={onSubmit}
+        UploadedImg={UploadedImg}
+        avatar={Avatar}
+      />
+      <Schedules />
+      {!Email && <UnauthorizedPopup />}
       <Footer />
     </div>
   );
