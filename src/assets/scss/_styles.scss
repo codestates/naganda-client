@@ -22,6 +22,17 @@ header.sticky {
       border-bottom: none;
     }
   }
+  .scheduler-btn {
+    background: $btn-hover1;
+
+    &:hover {
+      background: $btn-color1;
+      transition-duration: 0.1s;
+    }
+    &::after {
+      border-bottom: none;
+    }
+  }
 
   .signup-btn {
     background: $btn-color2;
@@ -35,7 +46,8 @@ header.sticky {
     }
   }
   .login-btn,
-  .signup-btn {
+  .signup-btn,
+  .scheduler-btn {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2),
       0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-size: 1.2em;
@@ -75,7 +87,8 @@ header.sticky {
     padding: 15px 0px;
     background: #fff;
     .login-btn,
-    .signup-btn {
+    .signup-btn,
+    .scheduler-btn {
       font-size: 1em;
       padding: 20px 20px;
       text-align: center;

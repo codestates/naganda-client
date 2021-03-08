@@ -2,8 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logoutUser } from '../_actions/userAction';
-import logo1 from '../assets/images/logo1.png';
+import { logoutUser } from '../../_actions/userAction';
+import logo1 from '../../assets/images/logo1.png';
 
 const Header = (props) => {
   const headerRef = useRef(null);

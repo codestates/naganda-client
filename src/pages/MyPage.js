@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { myinfoUser } from '../_actions/userAction';
 
-import MypageHeader from '../components/MypageHeader';
+import MypageHeader from '../components/Headers/MypageHeader';
 import UserInfo from '../components/UserInfo';
 import MySchedulesList from '../components/MySchedulesList';
 import Footer from '../components/Footer';

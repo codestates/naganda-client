@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import { withRouter, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logoutUser } from '../_actions/userAction';
+import { logoutUser } from '../../_actions/userAction';
 
 import { Link } from 'react-router-dom';
 
-import logo1 from '../assets/images/logo1.png';
+import logo1 from '../../assets/images/logo1.png';
 
 const MypageHeader = (props) => {
   const dispatch = useDispatch();
