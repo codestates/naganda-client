@@ -13,6 +13,9 @@ const axios = require('axios');
 
 const USER_URL = '/users';
 
+// const DOMAIN = 'http://localhost:4000';
+const DOMAIN = 'http://13.125.241.217:4000';
+
 export function registerUser(dataToSubmit) {
   const data = request('post', USER_URL + '/signup', dataToSubmit);
 
@@ -43,14 +46,11 @@ export function signinUser(dataToSubmit) {
 export const logoutUser = async () => {
   const token = localStorage.getItem('CC_Token');
 
-  const data = await axios.delete(
-    'http://localhost:4000' + USER_URL + '/logout',
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+  const data = await axios.delete(DOMAIN + USER_URL + '/logout', {
+    headers: {
+      Authorization: `Bearer ${token}`,
     },
-  );
+  });
 
   return {
     type: LOGOUT_USER,
@@ -61,7 +61,7 @@ export const logoutUser = async () => {
 export const myinfoUser = async () => {
   const token = localStorage.getItem('CC_Token');
 
-  const data = await axios.get('http://localhost:4000' + USER_URL + '/myinfo', {
+  const data = await axios.get(DOMAIN + USER_URL + '/myinfo', {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -75,14 +75,11 @@ export const myinfoUser = async () => {
 export const unregisterUser = async () => {
   const token = localStorage.getItem('CC_Token');
 
-  const data = await axios.delete(
-    'http://localhost:4000' + USER_URL + '/delete',
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+  const data = await axios.delete(DOMAIN + USER_URL + '/delete', {
+    headers: {
+      Authorization: `Bearer ${token}`,
     },
-  );
+  });
 
   return {
     type: DELETE_USER,
@@ -94,7 +91,7 @@ export const updateUserInfo = async (dataToSubmit) => {
   const token = localStorage.getItem('CC_Token');
 
   const data = await axios.patch(
-    'http://localhost:4000' + USER_URL + '/updateUserinfo',
+    DOMAIN + USER_URL + '/updateUserinfo',
     dataToSubmit,
     {
       headers: {
