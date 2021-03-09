@@ -36,7 +36,12 @@ const MypageHeader = (props) => {
   };
 
   const onScroll = () => {
-    headerRef.current.classList.toggle('sticky', window.scrollY > 0);
+    if (headerRef.current !== null) {
+      headerRef.current.classList.toggle('sticky', window.scrollY > 0);
+    } else {
+      console.log('HeaderRef.current is NULL');
+      return;
+    }
   };
 
   useEffect(() => {

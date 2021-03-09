@@ -12,7 +12,12 @@ const Header = (props) => {
   const Email = props.Email;
   const headEmail = Email.split('@')[0];
   const onScroll = () => {
-    headerRef.current.classList.toggle('sticky', window.scrollY > 0);
+    if (headerRef.current !== null) {
+      headerRef.current.classList.toggle('sticky', window.scrollY > 0);
+    } else {
+      console.log('HeaderRef.current is NULL');
+      return;
+    }
   };
 
   useEffect(() => {
