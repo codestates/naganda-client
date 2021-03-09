@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import { withRouter, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logoutUser } from '../_actions/userAction';
+import { logoutUser } from '../../_actions/userAction';
 
 import { Link } from 'react-router-dom';
 
-import logo1 from '../assets/images/logo1.png';
+import logo1 from '../../assets/images/logo1.png';
 
 const MypageHeader = (props) => {
   const dispatch = useDispatch();
@@ -53,19 +53,26 @@ const MypageHeader = (props) => {
       </Link>
       <ul>
         <li>
-          {userEmail ? (
-            <button className="login-btn" onClick={handleLogout}>
+          <Link to={'/scheduler'} className="scheduler-btn2">
+            Scheduler
+          </Link>
+        </li>
+        {userEmail ? (
+          <li>
+            <Link to="#" className="login-btn" onClick={handleLogout}>
               Logout
-            </button>
-          ) : (
+            </Link>
+          </li>
+        ) : (
+          <li>
             <button
               className="login-btn"
               onClick={() => history.push('/signin')}
             >
               SignIn
             </button>
-          )}
-        </li>
+          </li>
+        )}
       </ul>
     </header>
   );

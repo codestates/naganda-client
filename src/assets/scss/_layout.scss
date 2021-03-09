@@ -79,6 +79,37 @@ header {
   }
 }
 
+// ! 모바일 화면일 때 헤더 부분 Scheduler 버튼 안보이게
+@include mobile {
+  header.sticky {
+    .scheduler-btn {
+      display: none;
+    }
+    ul {
+      li {
+        a {
+          margin-left: 30px;
+        }
+      }
+    }
+  }
+  header {
+    ul {
+      li {
+        a {
+          margin-right: 0;
+        }
+      }
+    }
+    .scheduler-btn {
+      display: none;
+    }
+    .scheduler-btn2 {
+      margin-left: 0;
+    }
+  }
+}
+
 // ! 맞춤 스케줄을 검색하는 SearchBanner 레이아웃 구성 하기
 .search-box {
   width: 500px;

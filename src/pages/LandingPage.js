@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { myinfoUser } from '../_actions/userAction';
 
-import Header from '../components/Header';
+import Header from '../components/Headers/Header';
 import SearchBanner from '../components/SearchBanner';
 import Recommended from '../components/Recommended';
 import IntroDesc from '../components/IntroDesc';

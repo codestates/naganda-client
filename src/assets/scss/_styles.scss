@@ -22,6 +22,19 @@ header.sticky {
       border-bottom: none;
     }
   }
+  .scheduler-btn,
+  .scheduler-btn2 {
+    background: #6ab43e;
+
+    &:hover {
+      background: #735cb0;
+
+      transition-duration: 0.1s;
+    }
+    &::after {
+      border-bottom: none;
+    }
+  }
 
   .signup-btn {
     background: $btn-color2;
@@ -35,7 +48,9 @@ header.sticky {
     }
   }
   .login-btn,
-  .signup-btn {
+  .signup-btn,
+  .scheduler-btn,
+  .scheduler-btn2 {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2),
       0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-size: 1.2em;
@@ -75,7 +90,9 @@ header.sticky {
     padding: 15px 0px;
     background: #fff;
     .login-btn,
-    .signup-btn {
+    .signup-btn,
+    .scheduler-btn,
+    .scheduler-btn2 {
       font-size: 1em;
       padding: 20px 20px;
       text-align: center;
@@ -161,7 +178,7 @@ header.sticky {
 
   .mypage-title {
     color: $text-white;
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: 500;
     align-self: flex-start;
 
@@ -202,26 +219,69 @@ header.sticky {
           position: relative;
           .avatar-img {
             width: 175px;
+            height: 175px;
             display: block;
             border: 8px solid white;
             border-radius: 50%;
             background: $btn-color1;
             background-size: cover;
           }
+          h3 {
+            position: absolute;
+          }
+          label {
+            display: inline-block;
+            padding: 0.5em 0.75em;
+            color: $text-white;
+            font-size: inherit;
+            line-height: normal;
+            vertical-align: middle;
+            background-color: $bg-color1;
+            cursor: pointer;
+            border-radius: 0.25em;
+            position: absolute;
+            top: 90%;
+            left: 10%;
+            &:hover {
+              background: $bg-color2;
+              transition-duration: 0.1s;
+            }
+          }
+          .upload-files {
+            position: absolute;
+            // top: 0;
+            left: 0;
+            bottom: 0;
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+          }
           .btn-avatar-modify {
             position: absolute;
-            top: 85%;
-            left: 85%;
+            top: 102%;
+            left: 110%;
             transform: translate(-50%, -50%);
             background: none;
             border: none;
             cursor: pointer;
             i {
               font-size: 3em;
-              color: $bg-color2;
+              color: $btn-color1;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 200px;
+              span {
+                font-size: 15px;
+              }
 
               &:hover {
-                color: $btn-hover2;
+                color: $btn-hover1;
               }
             }
           }
@@ -240,7 +300,7 @@ header.sticky {
 
           h1 {
             font-weight: 500;
-            font-size: 2em;
+            font-size: 1.5em;
             text-align: center;
             color: $text-white;
             overflow: hidden;
@@ -274,7 +334,7 @@ header.sticky {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        font-size: 1.5em;
+        font-size: 1.2em;
         font-weight: 500;
 
         .wrap-modify {
@@ -295,11 +355,12 @@ header.sticky {
           }
           button {
             border-radius: 10px;
+            display: block;
             border: none;
             background-color: $bg-color2;
             color: $text-white;
             font-size: 14px;
-            padding: 12px 20px;
+            padding: 12px 23px;
             letter-spacing: 1px;
             text-transform: uppercase;
             transition: transform 80ms ease-in;
@@ -314,6 +375,7 @@ header.sticky {
   }
 }
 
+// ! 스케줄 카드 리스트 스타일링 부분
 .schedules {
   height: 300vh;
   background-color: $bg-color1;
@@ -325,7 +387,7 @@ header.sticky {
 
   .mypage-title {
     color: $text-white;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 500;
     align-self: flex-start;
     padding: 3rem;
@@ -393,6 +455,9 @@ header.sticky {
     .go-delete {
       color: red;
       cursor: pointer;
+      &:hover {
+        color: blue;
+      }
     }
   }
 }

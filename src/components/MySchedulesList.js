@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Schedule from './Schedule';
+import MySchedulesItem from './MySchedulesItem';
 
-const Schedules = () => {
+const MySchedulesList = () => {
   const [schedules, setSchedules] = useState([
     {
       id: 1,
@@ -74,10 +74,10 @@ const Schedules = () => {
     <section className="schedules">
       <h1 className="mypage-title">My Schedules</h1>
       <div className="cards">
-        <Schedule schedules={schedules} />
+        <MySchedulesItem schedules={schedules} />
       </div>
     </section>
   );
 };
 
-export default Schedules;
+export default MySchedulesList;
