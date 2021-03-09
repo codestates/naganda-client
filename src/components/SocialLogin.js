@@ -1,10 +1,10 @@
 import React from 'react';
 
-import dotenv from 'dotenv';
-dotenv.config();
+// const DOMAIN = 'http://localhost:4000';
+const DOMAIN = 'http://13.125.241.217:4000';
 
 const SocialLogin = () => {
-  const kakaoApi = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=6370162a2378b6dc8ed964549346d472&redirect_uri=http://localhost:3000/signin`;
+  const kakaoApi = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=6370162a2378b6dc8ed964549346d472&redirect_uri=${DOMAIN}/signin`;
 
   const kakaoLoginHandler = () => {
     window.location.assign(kakaoApi);
