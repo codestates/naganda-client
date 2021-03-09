@@ -53,7 +53,7 @@ const MypageHeader = (props) => {
       </Link>
       <ul>
         <li>
-          <Link to={'/scheduler'} className="scheduler-btn">
+          <Link to={'/scheduler'} className="scheduler-btn2">
             Scheduler
           </Link>
         </li>

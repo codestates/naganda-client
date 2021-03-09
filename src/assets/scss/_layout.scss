@@ -79,10 +79,33 @@ header {
   }
 }
 
+// ! 모바일 화면일 때 헤더 부분 Scheduler 버튼 안보이게
 @include mobile {
   header.sticky {
     .scheduler-btn {
       display: none;
+    }
+    ul {
+      li {
+        a {
+          margin-left: 30px;
+        }
+      }
+    }
+  }
+  header {
+    ul {
+      li {
+        a {
+          margin-right: 0;
+        }
+      }
+    }
+    .scheduler-btn {
+      display: none;
+    }
+    .scheduler-btn2 {
+      margin-left: 0;
     }
   }
 }
