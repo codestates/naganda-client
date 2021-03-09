@@ -16,9 +16,16 @@ const Scheduler = () => {
   const [Email, setEmail] = useState('');
   const [Avatar, setAvatar] = useState('');
 
+  const [MorningList, setMorningList] = useState([]);
+  const [AfternoonList, setAfternoonList] = useState([]);
+  const [MidnightList, setMidnightList] = useState([]);
+  const [EmptyList, setEmptyList] = useState([]);
+
   const dispatch = useDispatch();
 
-  console.log('목업데이터', MockData);
+  // console.log('아침계획리스트', MorningList);
+  // console.log('오후계획리스트', AfternoonList);
+  // console.log('심야계획리스트', MidnightList);
 
   useEffect(() => {
     dispatch(myinfoUser())
@@ -32,12 +39,39 @@ const Scheduler = () => {
         console.log(err);
       });
   }, []);
+
+  useEffect(() => {
+    let morning = [];
+    let afternoon = [];
+    let midnight = [];
+    let empty = [];
+    MockData.map((data) => {
+      if (data.type === 'am') {
+        morning.push(data);
+      } else if (data.type === 'pm') {
+        afternoon.push(data);
+      } else if (data.type === 'mid') {
+        midnight.push(data);
+      } else if (data.type === 'empty') {
+        empty.push(data);
+      }
+    });
+    setMorningList(morning);
+    setAfternoonList(afternoon);
+    setMidnightList(midnight);
+    setEmptyList(empty);
+  }, []);
   return (
     <div className="wrapper">
       <ScheduleHeader Email={Email} />
       <SchedulerMain />
       <SchedulerHashtags />
-      <SchedulerBoard />
+      <SchedulerBoard
+        MorningList={MorningList}
+        AfternoonList={AfternoonList}
+        MidnightList={MidnightList}
+        EmptyList={EmptyList}
+      />
       <Footer />
     </div>
   );
