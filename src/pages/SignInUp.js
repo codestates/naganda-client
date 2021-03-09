@@ -19,7 +19,8 @@ const SignInUp = () => {
 
   const history = useHistory();
 
-  // console.log('이메일이 들어갓나?', Email);
+  // const DOMAIN = 'http://localhost:4000';
+  const DOMAIN = 'http://13.125.241.217:4000';
 
   const onToggle = () => {
     signUpBtnRef.current.addEventListener('click', () => {
@@ -33,7 +34,7 @@ const SignInUp = () => {
   useEffect(async () => {
     const getAccessToken = async (authorizationCode) => {
       let tokenData = await axios
-        .post('http://localhost:4000/users/kakao', {
+        .post(`${DOMAIN}/users/kakao`, {
           authorizationCode,
         })
         .then((res) => {
