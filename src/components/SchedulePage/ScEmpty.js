@@ -1,5 +1,4 @@
 import React from 'react';
-import ScCardList from './ScCards/ScCardList';
 import AddCard from './ScCards/AddCard';
 
 const ScEmpty = () => {
