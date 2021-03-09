@@ -5,9 +5,11 @@ import { myinfoUser } from '../_actions/userAction';
 
 import ScheduleHeader from '../components/Headers/ScheduleHeader';
 import Footer from '../components/Footer';
-import SchedulerMain from '../components/SchedulerMain';
-import SchedulerHashtags from '../components/SchedulerHashtags';
-import SchedulerBoard from '../components/SchedulerBoard';
+import SchedulerMain from '../components/SchedulePage/SchedulerMain';
+import SchedulerHashtags from '../components/SchedulePage/SchedulerHashtags';
+import SchedulerBoard from '../components/SchedulePage/SchedulerBoard';
+
+import MockData from '../components/mock/ScheduleListData';
 
 const Scheduler = () => {
   const [Nickname, setNickname] = useState('');
@@ -15,6 +17,8 @@ const Scheduler = () => {
   const [Avatar, setAvatar] = useState('');
 
   const dispatch = useDispatch();
+
+  console.log('목업데이터', MockData);
 
   useEffect(() => {
     dispatch(myinfoUser())
@@ -31,13 +35,9 @@ const Scheduler = () => {
   return (
     <div className="wrapper">
       <ScheduleHeader Email={Email} />
-      <section className="sch-wrapper">
-        <SchedulerMain />
-        <article className="sch">
-          <SchedulerHashtags />
-          <SchedulerBoard />
-        </article>
-      </section>
+      <SchedulerMain />
+      <SchedulerHashtags />
+      <SchedulerBoard />
       <Footer />
     </div>
   );
