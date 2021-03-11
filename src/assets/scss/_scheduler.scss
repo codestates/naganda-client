@@ -438,3 +438,17 @@
     max-width: 555px;
   }
 }
+
+.textareaInput {
+  color: $bg-color1;
+  background: $text-white;
+  resize: none;
+  width: 100%;
+  padding: 10px 15px;
+  margin-top: 13px;
+  border-radius: 5px;
+  border: none;
+  text-overflow: hidden;
+  overflow: scroll;
+  white-space: wrap;
+}

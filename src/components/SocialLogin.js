@@ -1,7 +1,7 @@
 import React from 'react';
 
-// const DOMAIN = 'http://localhost:4000';
-const DOMAIN = 'http://naganda.tk';
+// const DOMAIN = 'http://localhost:3000';
+const DOMAIN = 'https://naganda.tk';
 
 const SocialLogin = () => {
   const kakaoApi = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=6370162a2378b6dc8ed964549346d472&redirect_uri=${DOMAIN}/signin`;
