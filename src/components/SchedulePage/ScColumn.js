@@ -3,7 +3,7 @@ import ScCard from './ScCards/ScCard';
 import AddCard from './ScCards/AddCard';
 import { Droppable } from 'react-beautiful-dnd';
 
-const ScColumn = ({ listID, title, cards }) => {
+const ScColumn = ({ listID, title, cards, props }) => {
   return (
     <Droppable droppableId={String(listID)}>
       {(provided) => (
@@ -28,8 +28,9 @@ const ScColumn = ({ listID, title, cards }) => {
               comment={card.comment}
             />
           ))}
-          <AddCard />
+
           {provided.placeholder}
+          <AddCard props={props} />
         </div>
       )}
     </Droppable>
