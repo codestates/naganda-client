@@ -1,23 +1,25 @@
 import React from 'react';
 
-import ScMorning from './ScMorning';
-import ScAfternoon from './ScAfternoon';
-import ScNight from './ScNight';
-import ScEmpty from './ScEmpty';
+import ScColumn from './ScColumn';
+import { DragDropContext } from 'react-beautiful-dnd';
 
-const SchedulerBoard = ({
-  MorningList,
-  AfternoonList,
-  MidnightList,
-  EmptyList,
-}) => {
+const SchedulerBoard = ({ ScheduleList }) => {
+  const onDragEnd = () => {
+    // ! TODO reordering logic
+  };
   return (
-    <section className="schedules-container">
-      <ScMorning MorningList={MorningList} />
-      <ScAfternoon AfternoonList={AfternoonList} />
-      <ScNight MidnightList={MidnightList} />
-      <ScEmpty EmptyList={EmptyList} />
-    </section>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <section className="schedules-container">
+        {ScheduleList.map((list) => (
+          <ScColumn
+            key={list.id}
+            listID={list.id}
+            title={list.title}
+            cards={list.cards}
+          />
+        ))}
+      </section>
+    </DragDropContext>
   );
 };
 
