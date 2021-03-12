@@ -1,5 +1,5 @@
 import React from 'react';
-import Avatar from '../../assets/images/cooking-point.jpeg';
+import Avatar from '../../assets/images/amongus_white.png';
 
 const SchedulerMain = () => {
   return (
@@ -10,8 +10,9 @@ const SchedulerMain = () => {
         </div>
         <div className="schedule-title">
           <h2>
-            ✈️도토리묵 님의 3월 20일 이국적인 카페 돌아보기 PLAN😋☕️ 산
-            히네스는 과연 대한민국에서 맛볼 수 있을까?🤔
+            미슐랭 2스타🌟🌟 정식당에서 운영하는 정식바, 연인과 혹은 친구와
+            분위기를 내면 좋은 곳이다! 하지만 혼자 가도 그 분위기를 120% 느낄 수
+            있다!🚨🚨 치즈에🧀🧀 레드와인🍷🍷 감튀🍟 면 모든게 끝난다!
           </h2>
           <div className="thumbs">
             <i className="fas fa-thumbs-up">
