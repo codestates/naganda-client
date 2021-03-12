@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Textarea from 'react-textarea-autosize';
 import { v4 as uuid } from 'uuid';
 import { connect } from 'react-redux';
-import { addCard } from '../../../_actions';
+import { deleteCard, addCard } from '../../../_actions';
 
 const AddCard = (props) => {
   const [IsFormOpen, setIsFormOpen] = useState(false);
@@ -14,7 +14,7 @@ const AddCard = (props) => {
   // const { lists } = props.props;
   // console.log(lists);
 
-  // console.log('프롭스', props);
+  console.log('프롭스', props);
 
   const openForm = () => {
     setIsFormOpen(true);

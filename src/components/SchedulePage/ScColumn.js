@@ -27,6 +27,8 @@ const ScColumn = ({ listID, title, cards, props }) => {
               time={card.time}
               place={card.place}
               comment={card.comment}
+              listID={listID}
+              props={props}
             />
           ))}
 

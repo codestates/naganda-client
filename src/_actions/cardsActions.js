@@ -7,7 +7,12 @@ export const addCard = (listID, text, detailTitle, time, place) => {
   };
 };
 
-// type: 'am',
+export const deleteCard = (id, listID) => {
+  return {
+    type: CONSTANTS.DELETE_CARD,
+    payload: { id, listID },
+  };
+}; // type: 'am',
 // detailTitle: 'Go and eat Taco🌮🌮',
 // time: '10:00',
 // place: 'Yeongdongdaero, 622, Samsung - 1 dong',
