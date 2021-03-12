@@ -7,12 +7,7 @@ const SearchBanner = () => {
         <h1>담고 싶은 일정을 검색하세요</h1>
         <div className="inputbox">
           <i className="fas fa-running"></i>
-          <input
-            type="text"
-            placeholder="#서울 #가로수길 #소주"
-            name=""
-            defaultValue="#소고기파티"
-          />
+          <input type="text" placeholder="#Seoul🇰🇷#MyTrip🎒#Daily📆" />
         </div>
         <button className="btn-search" type="button">
           Search

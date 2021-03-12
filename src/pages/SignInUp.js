@@ -19,8 +19,8 @@ const SignInUp = () => {
 
   const history = useHistory();
 
-  // const DOMAIN = 'http://localhost:4000';
-  const DOMAIN = 'http://13.125.241.217:4000';
+  const DOMAIN = 'http://localhost:4000';
+  // const DOMAIN = 'http://13.125.241.217:4000';
 
   const onToggle = () => {
     signUpBtnRef.current.addEventListener('click', () => {
