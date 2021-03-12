@@ -1,47 +1,109 @@
 import { CONSTANTS } from '../_actions';
+import { v4 as uuid } from 'uuid';
 
-const listID = 2;
-const cardID = 6;
+const listID = 4;
+let cardID = 9;
 
 const initialState = [
   {
-    title: 'Last Episode',
+    title: '🌳Morning',
     id: `list-${0}`,
     cards: [
       {
         id: `card-${0}`,
-        text: 'we created a static list and a static card',
+        type: 'am',
+        detailTitle: 'Go and eat Taco🌮🌮',
+        time: '10:00',
+        place: 'Yeongdongdaero, 622, Samsung - 1 dong',
+        text: `I’m going to Mexican Restaurant at ten o’clock this morning🌻. Not
+      lonely at all because I’m going with friends 🚗🚗Danbi, Suhyun and
+      Junghwan are all nice people!`,
       },
       {
         id: `card-${1}`,
-        text: 'we used a mix between material UI React and styled component',
+        type: 'am',
+        detailTitle: 'Starbucks Coffee☕️☕️',
+        time: '11:00',
+        place: '1F, Sehwa Building 889-40 Daechi-Dong',
+        text: `It’s surprising how different brewing methods can enhance particular characteristics in your coffee.
+      Let us help you unlock the full potential of your coffee—for the perfect cup every time.`,
       },
     ],
   },
   {
-    title: 'This Episode',
+    title: '🍄Afternoon',
     id: `list-${1}`,
     cards: [
       {
         id: `card-${2}`,
-        text: 'we will create out first reducer',
+        type: 'pm',
+        detailTitle: 'Eat Sashimi Rolls🍣🍣',
+        time: '14:00',
+        place: 'Yeongdongdaero, 622, Samsung - 1 dong',
+        text: `The first difference is that sashimi is thinly sliced raw meat, typically fish that is served without rice.
+    Typically, sashimi is some type of salmon or tuna. Other popular types of sashimi are mackerel, yellowtail, shrimp, scallops, clams and octopus.
+    Translated, sashimi means “pierced fish."`,
       },
       {
         id: `card-${3}`,
-        text:
-          'we will also make some little change i forgot in the last episode',
+        type: 'pm',
+        detailTitle: '밤에 뭐먹으면 살찐다😋😋',
+        time: '16:00',
+        place: 'Yeongdongdaero, 622, Samsung - 1 dong',
+        text: `A great Neapolitan pizza has the best sauce, the finest mozzarella, and maybe a few whole basil leaves. But before you can get into the toppings, you'll need to make the perfect crust.`,
       },
       {
         id: `card-${4}`,
-        text:
-          'we will also make some little change i forgot in the last episode',
+        type: 'pm',
+        detailTitle: 'Get Some Drinks🍺🍺',
+        time: '17:00',
+        place: 'Yeongdongdaero, 622, Samsung - 1 dong',
+        text: `These are terms that can applied to any style of beer, not just IPAs. For instance, you can have a session West Coast IPA and a session Belgian IPA.`,
       },
       {
         id: `card-${5}`,
-        text:
-          'we will also make some little change i forgot in the last episode',
+        type: 'pm',
+        detailTitle: '좋은 개발자가 되고 싶다👨🏻‍💻👨🏻‍💻',
+        time: '17:35',
+        place: 'Yeongdongdaero, 622, Samsung - 1 dong',
+        text: `A great Neapolitan pizza has the best sauce, the finest mozzarella, and maybe a few whole basil leaves. But before you can get into the toppings, you'll need to make the perfect crust.`,
       },
     ],
+  },
+  {
+    title: '🌝Midnight',
+    id: `list-${2}`,
+    cards: [
+      {
+        id: `card-${6}`,
+        type: 'mid',
+        detailTitle: 'Wine and Pizza🍷🍕',
+        time: '23:00',
+        place: 'Yeongdongdaero, 622, Samsung - 1 dong',
+        text: `A great Neapolitan pizza has the best sauce, the finest mozzarella, and maybe a few whole basil leaves. But before you can get into the toppings, you'll need to make the perfect crust.`,
+      },
+      {
+        id: `card-${7}`,
+        type: 'mid',
+        detailTitle: 'Chicken Party🐔🍗',
+        time: '23:30',
+        place: 'Yeongdongdaero, 622, Samsung - 1 dong',
+        text: `A great Neapolitan pizza has the best sauce, the finest mozzarella, and maybe a few whole basil leaves. But before you can get into the toppings, you'll need to make the perfect crust.`,
+      },
+      {
+        id: `card-${8}`,
+        type: 'mid',
+        detailTitle: 'Soju & Vodka🍹🍹',
+        time: '23:40',
+        place: 'Yeongdongdaero, 622, Samsung - 1 dong',
+        text: `A great Neapolitan pizza has the best sauce, the finest mozzarella, and maybe a few whole basil leaves. But before you can get into the toppings, you'll need to make the perfect crust.`,
+      },
+    ],
+  },
+  {
+    title: '👀Empty',
+    id: `list-${3}`,
+    cards: [],
   },
 ];
 
@@ -61,9 +123,12 @@ const listsReducer = (state = initialState, action) => {
     case CONSTANTS.ADD_CARD: {
       const newCard = {
         text: action.payload.text,
+        detailTitle: action.payload.detailTitle,
+        time: action.payload.time,
+        place: action.payload.place,
         id: `card-${cardID}`,
       };
-      // cardID += 1; //! check : !//
+      cardID += 1; //! check : !//
 
       const newState = state.map((list) => {
         if (list.id === action.payload.listID) {

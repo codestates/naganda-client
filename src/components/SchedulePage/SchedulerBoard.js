@@ -30,7 +30,7 @@ const SchedulerBoard = (props) => {
   // console.log(props);
 
   const { lists } = props;
-  console.log(lists);
+  // console.log(lists);
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
