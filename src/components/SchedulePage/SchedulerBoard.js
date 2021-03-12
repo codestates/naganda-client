@@ -4,6 +4,8 @@ import ScColumn from './ScColumn';
 import { connect } from 'react-redux';
 import { DragDropContext } from 'react-beautiful-dnd';
 
+import MockData from '../mock/ScheduleListData';
+
 const SchedulerBoard = (props) => {
   const onDragEnd = () => {
     // ! TODO reordering logic
@@ -20,7 +22,7 @@ const SchedulerBoard = (props) => {
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <section className="schedules-container">
-        {lists.map((list) => (
+        {MockData.map((list) => (
           <ScColumn
             key={list.id}
             listID={list.id}

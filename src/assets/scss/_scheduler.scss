@@ -452,3 +452,18 @@
   overflow: scroll;
   white-space: wrap;
 }
+
+.btn-addCard {
+  border: none;
+  width: 60px;
+  height: 35px;
+  position: relative;
+  top: -22%;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: $btn-color1;
+  color: $text-white;
+  &:hover {
+    background-color: $btn-hover2;
+  }
+}
