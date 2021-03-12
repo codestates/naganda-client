@@ -144,6 +144,19 @@ const listsReducer = (state = initialState, action) => {
       return newState;
     }
 
+    case CONSTANTS.DELETE_CARD: {
+      const { listID, id } = action.payload;
+      // console.log('aaaaaaa', action.payload);
+      // console.log(action.payload.listID);
+      const mylist = state.filter((list) => list.id === listID);
+      console.log('마이리스트', mylist);
+      // const list = state[listID];
+      console.log('리스트리스트', mylist);
+      const newCards = mylist[0].cards.filter((cardID) => cardID !== id);
+
+      return { ...state, [listID]: { ...mylist, cards: newCards } };
+    }
+
     case CONSTANTS.DRAG_HAPPEND: {
       const {
         droppableIdStart,
