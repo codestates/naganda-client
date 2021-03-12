@@ -5,7 +5,7 @@ const MySchedulesItem = ({ schedules }) => {
   return (
     <>
       {schedules.map((card) => (
-        <Link to="#" className="card" key={card.id}>
+        <Link to="/scheduler" className="card" key={card.id}>
           <div
             className="card-image"
             style={{

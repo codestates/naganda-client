@@ -20,7 +20,7 @@ const MySchedulesList = () => {
     {
       id: 3,
       thumbnail: '/images/jungsikbar.jpg',
-      scheduleTitle: '정식바🍷🥃',
+      scheduleTitle: '서울의 밤거리 투어🍷🥃',
       desc: `미슐랭 2스타🌟🌟 정식당에서 운영하는 정식바, 연인과 혹은 친구와 분위기를 내면 좋은 곳이다! 하지만 혼자 가도 그 분위기를 120% 느낄 수 있다!🚨🚨
       치즈에🧀🧀 레드와인🍷🍷 감튀🍟 면 모든게 끝난다!`,
     },
