@@ -8,43 +8,6 @@ const AddCard = (props) => {
   // const { lists } = props.props;
   // console.log(lists);
 
-  const renderForm = () => {
-    const { lists } = props.props;
-    const placeholder = lists
-      ? 'Enter list title...'
-      : 'Enter a title for this card...';
-
-    const buttonTitle = lists ? 'Add List' : 'Add Card';
-    return (
-      <div
-        style={{
-          overflow: 'visible',
-          minHeight: 80,
-          minWidth: 272,
-          padding: '6px 8px 2px',
-        }}
-      >
-        <Textarea
-          placeholder={placeholder}
-          autoFocus
-          onBlur={closeForm}
-          value={Text}
-          onChange={handleInputChange}
-          style={{
-            resize: 'none',
-            width: '100%',
-            overflow: 'hidden',
-            outline: 'none',
-            border: 'none',
-          }}
-        />
-        <div>
-          <button>Add</button>
-        </div>
-      </div>
-    );
-  };
-
   const openForm = () => {
     setIsFormOpen(true);
   };
@@ -69,7 +32,7 @@ const AddCard = (props) => {
                   type="text"
                   placeholder="제목을 입력하세요"
                   style={{
-                    width: '100%',
+                    width: '90%',
                     border: 'none',
                     height: '2em',
                     borderRadius: '5px',
@@ -84,7 +47,7 @@ const AddCard = (props) => {
                   placeholder="AM 10:00"
                   style={{
                     border: 'none',
-                    width: '48%',
+                    width: '43%',
                     borderRadius: '5px',
                     padding: '3px',
                     paddingLeft: '10px',
@@ -106,7 +69,7 @@ const AddCard = (props) => {
           <Textarea
             className="textareaInput"
             maxRows="2"
-            onBlur={closeForm}
+            // onBlur={closeForm}
             placeholder="내용을 입력하세요"
           />
 
@@ -116,7 +79,7 @@ const AddCard = (props) => {
                 type="text"
                 placeholder="주소를 입력하세요"
                 style={{
-                  width: '200px',
+                  width: '170px',
                   border: 'none',
                   height: '1.5em',
                   borderRadius: '5px',
@@ -126,18 +89,7 @@ const AddCard = (props) => {
             </h4>
             <i className="fas fa-map-marker-alt"></i>
           </div>
-          <button
-            type="submit"
-            style={{
-              border: 'none',
-              width: '60px',
-              height: '35px',
-              position: 'relative',
-              top: '-22%',
-              cursor: 'pointer',
-              borderRadius: '5px',
-            }}
-          >
+          <button type="submit" className="btn-addCard">
             Add
           </button>
         </div>
