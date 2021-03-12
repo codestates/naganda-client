@@ -1,51 +1,45 @@
+import { CONSTANTS } from '../_actions';
+
+const listID = 2;
+const cardID = 6;
+
 const initialState = [
   {
     title: 'Last Episode',
-    id: 0,
+    id: `list-${0}`,
     cards: [
       {
-        id: 0,
-        type: 'am',
-        detailTitle: 'Go and eat Taco🌮🌮',
-        time: '10:00',
-        place: 'Yeongdongdaero, 622, Samsung - 1 dong',
-        comment: `I’m going to Mexican Restaurant at ten o’clock this morning🌻. Not
-      lonely at all because I’m going with friends 🚗🚗Danbi, Suhyun and
-      Junghwan are all nice people!`,
+        id: `card-${0}`,
+        text: 'we created a static list and a static card',
       },
       {
-        id: 1,
-        type: 'am',
-        detailTitle: 'Starbucks Coffee☕️☕️',
-        time: '11:00',
-        place: '1F, Sehwa Building 889-40 Daechi-Dong',
-        comment: `It’s surprising how different brewing methods can enhance particular characteristics in your coffee.
-      Let us help you unlock the full potential of your coffee—for the perfect cup every time.`,
+        id: `card-${1}`,
+        text: 'we used a mix between material UI React and styled component',
       },
     ],
   },
   {
     title: 'This Episode',
-    id: 1,
+    id: `list-${1}`,
     cards: [
       {
-        id: 0,
-        type: 'am',
-        detailTitle: 'Go and eat Taco🌮🌮',
-        time: '10:00',
-        place: 'Yeongdongdaero, 622, Samsung - 1 dong',
-        comment: `I’m going to Mexican Restaurant at ten o’clock this morning🌻. Not
-      lonely at all because I’m going with friends 🚗🚗Danbi, Suhyun and
-      Junghwan are all nice people!`,
+        id: `card-${2}`,
+        text: 'we will create out first reducer',
       },
       {
-        id: 1,
-        type: 'am',
-        detailTitle: 'Starbucks Coffee☕️☕️',
-        time: '11:00',
-        place: '1F, Sehwa Building 889-40 Daechi-Dong',
-        comment: `It’s surprising how different brewing methods can enhance particular characteristics in your coffee.
-      Let us help you unlock the full potential of your coffee—for the perfect cup every time.`,
+        id: `card-${3}`,
+        text:
+          'we will also make some little change i forgot in the last episode',
+      },
+      {
+        id: `card-${4}`,
+        text:
+          'we will also make some little change i forgot in the last episode',
+      },
+      {
+        id: `card-${5}`,
+        text:
+          'we will also make some little change i forgot in the last episode',
       },
     ],
   },
@@ -53,6 +47,81 @@ const initialState = [
 
 const listsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case CONSTANTS.ADD_LIST: {
+      const newList = {
+        // title: action.payload, //! check : action.payload
+        title: action.payload.title, //! check : action.payload
+        cards: [],
+        id: `list-${listID}`,
+      };
+      // listID += 1; //! check : !//
+      return [...state, newList];
+    }
+
+    case CONSTANTS.ADD_CARD: {
+      const newCard = {
+        text: action.payload.text,
+        id: `card-${cardID}`,
+      };
+      // cardID += 1; //! check : !//
+
+      const newState = state.map((list) => {
+        if (list.id === action.payload.listID) {
+          return {
+            ...list,
+            cards: [...list.cards, newCard],
+          };
+        } else {
+          return list;
+        }
+      });
+
+      return newState;
+    }
+
+    case CONSTANTS.DRAG_HAPPEND: {
+      const {
+        droppableIdStart,
+        droppableIdEnd,
+        droppableIndexStart,
+        droppableIndexEnd,
+        draggableId,
+        type,
+      } = action.payload;
+
+      const newState = [...state];
+
+      //? dragging lists around
+      if (type === 'list') {
+        const list = newState.splice(droppableIdStart, 1);
+        newState.splice(droppableIndexEnd, 0, ...list);
+        return newState;
+      }
+
+      //? in the same list
+      if (droppableIdStart === droppableIdStart) {
+        const list = state.find((list) => droppableIdStart === list.id);
+        const card = list.cards.splice(droppableIndexStart, 1);
+        list.cards.splice(droppableIndexEnd, 0, ...card);
+      }
+
+      //? other list
+      if (droppableIdStart !== droppableIdEnd) {
+        //? find the list where drag happend
+        const listStart = state.find((list) => droppableIdStart === list.id);
+
+        //? pull out the card from this list
+        const card = listStart.cards.splice(droppableIndexStart, 1);
+
+        //? find the list where drag ended
+        const listEnd = state.find((list) => droppableIdEnd === list.id);
+
+        //? put the card in the new list
+        listEnd.cards.splice(droppableIndexEnd, 0, ...card);
+      }
+
+      return newState;
+    }
     default:
       return state;
   }

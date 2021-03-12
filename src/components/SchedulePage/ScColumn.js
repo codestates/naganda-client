@@ -3,7 +3,7 @@ import ScCard from './ScCards/ScCard';
 import AddCard from './ScCards/AddCard';
 import { Droppable } from 'react-beautiful-dnd';
 
-const ScColumn = ({ listID, title, cards, props }) => {
+const ScColumn = ({ listID, title, cards, index, props }) => {
   return (
     <Droppable droppableId={String(listID)}>
       {(provided) => (
@@ -21,6 +21,7 @@ const ScColumn = ({ listID, title, cards, props }) => {
               key={card.id}
               id={card.id}
               index={index}
+              text={card.text}
               detailTitle={card.detailTitle}
               type={card.type}
               time={card.time}
@@ -30,7 +31,8 @@ const ScColumn = ({ listID, title, cards, props }) => {
           ))}
 
           {provided.placeholder}
-          <AddCard props={props} />
+          {/* AddCard Component 의 전 위치 */}
+          <AddCard listID={listID} props={props} />
         </div>
       )}
     </Droppable>

@@ -1,33 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import ScColumn from './ScColumn';
 import { connect } from 'react-redux';
 import { DragDropContext } from 'react-beautiful-dnd';
-
+import { sort } from '../../_actions';
 import MockData from '../mock/ScheduleListData';
 
 const SchedulerBoard = (props) => {
-  const onDragEnd = () => {
+  const onDragEnd = (result) => {
     // ! TODO reordering logic
+    const { destination, source, draggableId, type } = result;
+
+    if (!destination) {
+      return;
+    }
+
+    props.dispatch(
+      sort(
+        source.droppableId,
+        destination.droppableId,
+        source.index,
+        destination.index,
+        draggableId,
+        type,
+      ),
+    );
   };
-  // const { lists } = props;
 
   // console.log(props);
 
   const { lists } = props;
-
-  // ! mockup 데이터파일의 ScheduleList 를 가져다 map 을 돌리는 것이 아닌,
-  // ! redux 의 상태 관리, mapStateToProps 를 통해 끌어올려놓은 lists 를 가져다 쓴다!
+  console.log(lists);
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <section className="schedules-container">
-        {MockData.map((list) => (
+        {lists.map((list, index) => (
           <ScColumn
             key={list.id}
             listID={list.id}
             title={list.title}
             cards={list.cards}
+            index={index}
             props={props}
           />
         ))}
