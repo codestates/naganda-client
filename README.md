@@ -100,4 +100,4 @@
 |박수현|🎠Backend|tngus2057@gmail.com|
 
 # For project details
-🧚‍♀[Checkout WIKI](https://github.com/codestates/naganda-client/wiki)🧚‍♂
+## 🧚‍♀[Checkout WIKI](https://github.com/codestates/naganda-client/wiki)🧚‍♂
