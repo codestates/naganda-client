@@ -48,39 +48,7 @@
 
 ![https://user-images.githubusercontent.com/65241463/110813635-07290480-82cc-11eb-83f8-0c2c301eae65.gif](https://user-images.githubusercontent.com/65241463/110813635-07290480-82cc-11eb-83f8-0c2c301eae65.gif)
 
-## 📹 시연영상
-
-### 📼 회원가입
-
-![https://user-images.githubusercontent.com/69143207/111059299-e33a0e80-84d7-11eb-9c41-e7558f05625c.gif](https://user-images.githubusercontent.com/69143207/111059299-e33a0e80-84d7-11eb-9c41-e7558f05625c.gif)
-
-### 📼 로그인
-
-![https://user-images.githubusercontent.com/69143207/111059395-8c810480-84d8-11eb-9fa7-03c1a4d992d3.gif](https://user-images.githubusercontent.com/69143207/111059395-8c810480-84d8-11eb-9fa7-03c1a4d992d3.gif)
-
-### 📼 소셜로그인(카카오)
-
-![https://user-images.githubusercontent.com/69143207/111059516-96efce00-84d9-11eb-83d0-d77409201295.gif](https://user-images.githubusercontent.com/69143207/111059516-96efce00-84d9-11eb-83d0-d77409201295.gif)
-
-### 📼 게스트로그인
-
-![https://user-images.githubusercontent.com/69143207/111059595-27c6a980-84da-11eb-8f7c-6f2dcdb02141.gif](https://user-images.githubusercontent.com/69143207/111059595-27c6a980-84da-11eb-8f7c-6f2dcdb02141.gif)
-
-### 📼 마이페이지
-
-![https://user-images.githubusercontent.com/69143207/111059747-54c78c00-84db-11eb-9f83-15452e32dd28.gif](https://user-images.githubusercontent.com/69143207/111059747-54c78c00-84db-11eb-9f83-15452e32dd28.gif)
-
-### 📼 프로필사진 수정
-
-![https://user-images.githubusercontent.com/69143207/111059875-0d8dcb00-84dc-11eb-8172-b65f0898afd4.gif](https://user-images.githubusercontent.com/69143207/111059875-0d8dcb00-84dc-11eb-8172-b65f0898afd4.gif)
-
-### 📼 회원정보 수정 및 회원탈퇴
-
-![https://user-images.githubusercontent.com/69143207/111059950-b5a39400-84dc-11eb-883d-81e8ab395dea.gif](https://user-images.githubusercontent.com/69143207/111059950-b5a39400-84dc-11eb-883d-81e8ab395dea.gif)
-
-### 📼 스케줄
-
-![https://user-images.githubusercontent.com/69143207/111060326-4bd8b980-84df-11eb-9146-e70aa9a346e6.gif](https://user-images.githubusercontent.com/69143207/111060326-4bd8b980-84df-11eb-9146-e70aa9a346e6.gif)
+## 📹 주요 
 
 ### 📼 스케줄 작성
 
@@ -100,4 +68,4 @@
 |박수현|🎠Backend|tngus2057@gmail.com|
 
 # For project details
-## 🧚‍♀[Checkout WIKI](https://github.com/codestates/naganda-client/wiki)🧚‍♂
+### 🧚‍♀[Checkout WIKI](https://github.com/codestates/naganda-client/wiki)🧚‍♂
