@@ -89,3 +89,15 @@
 ### 📼 검색결과
 
 ![https://user-images.githubusercontent.com/69143207/108855568-7ea03800-762c-11eb-8680-825a1e821210.png](https://user-images.githubusercontent.com/69143207/108855568-7ea03800-762c-11eb-8680-825a1e821210.png)
+
+# Member Info
+
+|팀원|담당|이메일|
+|------|---|----|
+|정광묵|🎡Frontend|seolleung22@gmail.com|
+|이정환|🎡Frontend|ljh8842@gmail.com|
+|박단비|🎠Backend|risha939@gmail.com|
+|박수현|🎠Backend|tngus2057@gmail.com|
+
+# For project details
+🧚‍♀[Checkout WIKI](https://github.com/codestates/naganda-client/wiki)🧚‍♂
