@@ -56,7 +56,7 @@
 
 ### 📼 검색결과
 
-![https://user-images.githubusercontent.com/69143207/108855568-7ea03800-762c-11eb-8680-825a1e821210.png](https://user-images.githubusercontent.com/69143207/108855568-7ea03800-762c-11eb-8680-825a1e821210.png)
+![searchpage](https://user-images.githubusercontent.com/69143207/111068209-337e9400-850b-11eb-8f7b-369544d88c71.gif)
 
 # Member Info
 
