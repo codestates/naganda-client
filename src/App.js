@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage';
 import SignInUp from './pages/SignInUp';
 import MyPage from './pages/MyPage';
 import Scheduler from './pages/Scheduler';
+import SearchPage from './pages/SearchPage';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Route path="/mypage/:username" component={MyPage} />
         <Route path="/mypage" component={MyPage} />
         <Route path="/scheduler" component={Scheduler} />
+        <Route path="/search" component={SearchPage} />
+        <Route path="/search/:name" component={SearchPage} />
       </Switch>
     </Router>
   );
