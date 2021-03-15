@@ -4,6 +4,13 @@
 </p>
 <br><br>
 
+---
+<p align="center">
+<img src="https://img.shields.io/badge/Version-v.1.0.0-important"> <img src="https://img.shields.io/badge/Maintained-yes-success"> <img src="https://img.shields.io/badge/node-v14.15.5-green"> <img src="https://img.shields.io/badge/npm-v6.14.11-red">
+</p>
+
+---
+
 ### `당신의 하루를 정리해 보세요!`
 
 **nAgAndA** 는 계획된 일정을 공유하고 정리할수 있는 서비스 입니다.
