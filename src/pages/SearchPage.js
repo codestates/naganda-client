@@ -35,7 +35,7 @@ class SearchPage extends Component {
   getData() {
     axios({
       method: 'post',
-      url: 'https://naganda.tk/main/search',
+      url: 'https://s.naganda.tk/main/search',
       data: { hashtag: this.props.location.pathname.split('/')[2] },
     }).then((res) => {
       // console.log('응답!', res.data);
