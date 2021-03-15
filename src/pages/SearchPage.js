@@ -40,14 +40,6 @@ class SearchPage extends Component {
     }).then((res) => {
       // console.log('응답!', res.data);
       this.setState({ data: res.data });
-      // res.data.map((item) => {
-      //   this.setState({
-      //     keyword: item.hashtag,
-      //     // thumbnail: item.thumbnail,
-      //     status: false,
-      //     data: [res.data],
-      //   });
-      // });
     });
   }
 
@@ -62,11 +54,11 @@ class SearchPage extends Component {
                 <li key={i}>
                   <figure>
                     <button type="button" onClick={this.showModal}>
-                      {console.log(item.thumbnail[0].img.slice(0, 5))}
-                      {item.thumbnail[0].img.slice(0, 5) === 'https' ? (
-                        <img src={item.thumbnail[0].img} />
+                      {console.log(item.thumbnail.slice(0, 5))}
+                      {item.thumbnail.slice(0, 5) === 'https' ? (
+                        <img src={item.thumbnail} />
                       ) : (
-                        <img src={`https://${item.thumbnail[0].img}`} />
+                        <img src={`https://${item.thumbnail}`} />
                       )}
                       <div className="contentList-info">
                         <i className="fab fa-slack-hash"></i>
