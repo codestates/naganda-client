@@ -138,6 +138,7 @@ header.sticky {
     text-align: center;
     color: black;
     padding-left: 10px;
+    padding-top: 5px;
   }
 
   input {
@@ -149,13 +150,13 @@ header.sticky {
     text-align: center;
     width: 80%;
     float: left;
-    margin: 0 10px;
+    margin-left: 30px;
   }
 }
 
 // ! LandingPage 내 추천 해시태그를 누를 것을 강조하는 프로모션 메시지 스타일링.
 .desc-hashtag {
-  line-height: 1.5em;
+  line-height: 2.5em;
   background-image: linear-gradient(120deg, $btn-hover2 0%, $btn-color1 100%);
   background-repeat: no-repeat;
   background-size: 100% 10%;
@@ -163,7 +164,8 @@ header.sticky {
   transition: background-size 0.25s ease-in;
   border-radius: 5px;
   padding: 10px 15px;
-
+  position: relative;
+  bottom: 10px;
   &:hover {
     background-size: 100% 100%;
   }
