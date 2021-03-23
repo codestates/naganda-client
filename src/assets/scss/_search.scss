@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+//! ------------ searchPage------------------------------------------
+//? ------------ searchPage-initialization------------------------------------------
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR';
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+//? ------------ searchPage-header------------------------------------------
+.navbar {
+  display: flex;
+  width: 100%;
+  // width: 101%;
+  // width: 1920px;
+  justify-content: space-between;
+  align-items: center;
+  background: #263343;
+  // padding: 0 5%;
+  // margin-left: 6.3%;
+  // max-width: 1920px;
+}
+
+.navbar_logo img {
+  margin-left: 4em;
+  width: 8em;
+  height: 4em;
+}
+
+.navbar_icon img {
+  // color: #ffffff;
+  background-color: #ffffff;
+  width: 2em;
+  height: 2em;
+  border: 2px solid black;
+}
+
+.navbar_menu {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+.navbar_menu li {
+  padding: 8px 12px;
+}
+
+.navbar_menu li:hover {
+  background-color: #d49466;
+  border-radius: 4px;
+}
+
+.navbar_btn {
+  display: inline-block;
+  flex-direction: row;
+  padding: 0;
+  border: 0;
+  // width: 3em;
+  height: 1.2em;
+  background: #838383;
+
+  .navbar {
+    display: flex;
+  }
+}
+
+.navbar_toogleBtn {
+  display: none;
+  position: absolute;
+  right: 32px;
+  font-size: 24px;
+  color: #d49466;
+  background: none;
+}
+
+// @media screen and (max-width: 48em) {
+@media screen and (max-width: 768px) {
+  .sch-content {
+    width: 40vw;
+    // flex-direction: column;
+    background-color: yellow;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 24px;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    vertical-align: center;
+  }
+
+  .navbar_menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .navbar_menu li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar_icon {
+    display: none;
+    justify-content: center;
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .navbar_toogleBtn {
+    // position: absolute;
+    display: inline-block;
+    top: 1.5em;
+    // vertical-align: center;
+  }
+
+  .navbar_menu.active,
+  .navbar_icon.active {
+    display: flex;
+  }
+
+  .navbar_logo img {
+    margin: 0;
+  }
+
+  .navbar_icon img {
+    display: none;
+  }
+}
+
+//? ------------ searchPage-content------------------------------------------
+
+.contentCard {
+  position: relative;
+  margin: 0 auto;
+  height: 580vh;
+  width: 100%;
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: flex-end;
+}
+
+.contentList {
+  position: absolute;
+  // column-width: 18rem;
+  column-width: 18rem;
+  column-gap: 3rem;
+  margin: 9rem 50px 0 50px;
+  padding: 30px;
+  height: 100%;
+}
+
+.contentList li {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  list-style: none;
+  margin: 10px 0;
+}
+
+.contentList figure button {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.contentList figure img {
+  width: 80%;
+  background-size: cover;
+  max-height: 30em;
+  border-radius: 50px;
+  filter: drop-shadow(10px 10px 4px gray);
+}
+
+.contentList figure > .contentList figure img {
+  width: 100%;
+}
+
+.contentList-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contentList-info i {
+  margin-left: 15px;
+}
+
+.contentList figure figcaption {
+  font-weight: bold;
+  // margin: 0 12px;
+  font-size: small;
+  // display: none;
+}
+
+.contentList:hover figure:not(:hover) {
+  opacity: 0.4;
+}

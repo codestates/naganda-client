@@ -11,10 +11,16 @@ const Footer = () => {
           <p>
             코드스테이츠 25기 2차 프로젝트 팀 &quot;ZoomInCenter&quot; 입니다.
             <br />
-            자세한 정보를 확인하고 싶으시다면 저희의 로고 를 클릭해 주세요!
+            상세 기획서를 확인하고 싶으시다면 저희의 로고 를 클릭해 주세요!
           </p>
           <div className="logoToGithub">
-            <img src={logo1} alt="logo-image" className="logo-img" />
+            <a
+              href="https://www.notion.so/codestates/06-nAgAndA-Zoom-In-Center-c67a1d3208c34f3891a64d82687b435a"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={logo1} alt="logo-image" className="logo-img" />
+            </a>
           </div>
         </div>
         <div className="footer-width link">
@@ -48,9 +54,15 @@ const Footer = () => {
             </li>
             <li>
               <span>
-                <i className="fas fa-envelope"></i>
+                <i className="fab fa-github"></i>
               </span>
-              <a href="#">ZoominCenter@gmail.com</a>
+              <a
+                href="https://github.com/codestates/naganda-client"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Naganda Github Repo
+              </a>
             </li>
             <li>
               <span>

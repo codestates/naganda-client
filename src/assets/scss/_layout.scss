@@ -162,19 +162,27 @@ header {
   .search-box {
     width: 60%;
   }
+  .inputbox {
+    input {
+      font-size: 0.9em;
+      padding-top: 5px;
+      text-align: center;
+    }
+  }
 }
 
 // ! 추천 스케줄 (4개에 대한) 에 바로 들어갈 수 있게 해주는 Recommended
 .recommend {
   border-top: 5px solid $text-white;
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 70vh;
   background: $bg-color1;
   display: flex;
+  padding: 0 80px;
 
   .recommend-box {
-    width: 600px;
+    width: 600px; //! min-width?
     height: 100%;
     color: $text-white;
     border-radius: 5px;
@@ -182,19 +190,21 @@ header {
     flex-direction: column;
     justify-content: center;
 
+    margin-left: 60px;
+
     h2 {
       font-size: 35px;
       font-weight: 700;
       text-align: center;
-      margin-left: 100px;
+      margin-left: 35px;
       position: relative;
-      width: 80%;
-      top: 6%;
+      line-height: 1.7em;
+      min-width: 100%;
+      top: 8%;
       left: 2%;
 
       span {
         background: $btn-color1;
-        line-height: 1.5em;
       }
     }
   }
@@ -204,18 +214,19 @@ header {
 .top4box {
   position: relative;
   height: 100%;
-  background: url('../images/custom-frame.svg');
+  width: 100%;
+  background: url('../images/custom-frame2.svg');
   background-size: cover;
-
+  background-position: 50% 50%;
   display: grid;
   grid-template-columns: repeat(2, 140px);
   grid-template-rows: repeat(2, 140px);
   gap: 10px;
-
   justify-content: center;
   align-content: center;
 
-  padding-left: 20px;
+  margin-left: 20px;
+  padding: 30px;
 
   // ! 각각의 top4 스케줄러 썸네일 이미지는 현재 mockup 데이터로 대체하였음. 이점 기능구현시 재확인 요함.
   .item {
@@ -241,7 +252,7 @@ header {
       background-position: 50% 50%;
     }
     &:nth-child(4) {
-      background: url('../images/mockup-thumb4.jpg');
+      background: url('../images/jungsikdang.jpg');
       background-size: cover;
       background-position: 50% 50%;
       opacity: 1;
@@ -255,13 +266,13 @@ header {
 
 // ! 추천 네 종류 썸네일 중 하나를 눌렀을 때 나오는 선택된 이미지에 대한 정보가 담긴 selected-box
 .selected-box {
-  width: 500px;
-  min-width: 350px;
+  min-width: 320px;
   height: 100%;
   flex-grow: 2;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-left: 30px;
 
   h2 {
     position: relative;
@@ -276,8 +287,8 @@ header {
 }
 
 .items-hashtags {
-  width: 85%;
-  height: 85%;
+  min-width: 70%;
+  height: 70%;
   background: $text-white;
   border-radius: 15px;
 
@@ -289,15 +300,19 @@ header {
     position: relative;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-    width: 50%;
+    width: 60%;
     height: 100%;
-    background: url('../images/mockup-thumb4.jpg');
+    background: url('../images/jungsikdang.jpg');
     background-size: cover;
     background-position: 50% 50%;
+
+    h2 {
+      padding-bottom: 30px;
+    }
   }
   .hashtags {
     position: relative;
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 500;
     display: flex;
     flex-direction: column;
@@ -325,13 +340,19 @@ header {
 }
 
 @include tablet {
+  .recommend {
+    padding: 0px 50px;
+  }
   .selected-box {
     display: none;
   }
+
   .hide {
     color: $text-white;
     display: block;
     position: relative;
+    top: 10%;
+    left: -4%;
     font-size: 1.8em;
 
     font-weight: 500;
@@ -339,11 +360,13 @@ header {
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
-    margin: auto auto;
+    margin: 0;
 
     .tag {
       margin-top: 20px;
-      width: 200px;
+      margin-left: 15px;
+      min-width: 150px;
+      font-size: 20px;
       height: 50px;
       display: flex;
       justify-content: center;
@@ -372,15 +395,16 @@ header {
   }
   .top4box {
     background-image: none;
-    padding-left: 0;
+    margin-left: 0;
     width: 100%;
   }
-  .recommend-box {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    h2 {
-      margin-left: 0;
+  .recommend {
+    .recommend-box {
+      margin: 0 auto;
+      h2 {
+        margin: 0 auto;
+        min-width: 100%;
+      }
     }
   }
 
@@ -421,18 +445,18 @@ header {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding: 0 140px;
 
   .intro-gif {
-    background: url('../images/ghost.gif');
+    background: url('../images/movingSchedule.gif');
     background-size: cover;
     background-position: 50% 50%;
     position: relative;
     height: 50vh;
     border-radius: 10px;
-    min-width: 50%;
-    padding: 20px 40px;
+    min-width: 41%;
+    width: 40vw;
+    margin-left: 50px;
     box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.2),
       0 6px 20px 0 rgba(255, 255, 255, 0.19);
   }
@@ -441,9 +465,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    min-width: 400px;
-    flex-shrink: 3;
+    min-width: 350px;
     padding: 0 20px;
 
     h2,
@@ -451,12 +473,12 @@ header {
       color: $text-white;
     }
     h2 {
-      font-size: 2.4em;
+      font-size: 2.2em;
       font-weight: 500;
     }
     p {
-      font-size: 1.7em;
-      margin-top: 80px;
+      font-size: 1.5em;
+      margin-top: 60px;
       line-height: 150%;
     }
   }
@@ -464,12 +486,17 @@ header {
 
 .second-intro {
   background: $bg-color3;
+  .intro-text {
+    margin-left: 40px;
+  }
 
   .intro-gif {
     order: 1;
-    background: url('../images/hammerdins.gif');
+    background: url('../images/searchpage.gif');
     background-size: cover;
     background-position: 50% 50%;
+    margin-left: 0;
+    margin-right: 40px;
   }
 }
 
@@ -501,6 +528,7 @@ footer {
     font-size: 1.5em;
     margin-bottom: 20px;
   }
+  padding: 0 140px;
   background: rgb(34, 34, 34);
   color: #fff;
 
@@ -573,7 +601,6 @@ footer {
   .copy-right {
     padding: 15px 0;
     text-align: center;
-    background: black;
   }
   @media screen and (max-width: 992px) {
     .about,

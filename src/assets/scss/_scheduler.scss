@@ -8,7 +8,7 @@
   width: 100%;
   height: 50vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url('../images/churros.jpeg');
+    url('../images/jungsikbar.jpg');
   background-size: cover;
   background-position: 50% 50%;
   //   filter: brightness(50%);
@@ -407,10 +407,9 @@
       }
     }
   }
-  .afternoon,
-  .night,
-  .empty {
-    margin-top: 20px;
+
+  .morning {
+    margin-bottom: 40px;
   }
   .empty {
     min-height: 80vh;
@@ -436,5 +435,34 @@
 @include tablet {
   .sc-container {
     max-width: 555px;
+  }
+}
+
+.textareaInput {
+  color: $bg-color1;
+  background: $text-white;
+  resize: none;
+  width: 100%;
+  padding: 10px 15px;
+  margin-top: 13px;
+  border-radius: 5px;
+  border: none;
+  text-overflow: hidden;
+  overflow: scroll;
+  white-space: wrap;
+}
+
+.btn-addCard {
+  border: none;
+  width: 60px;
+  height: 35px;
+  position: relative;
+  top: -22%;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: $btn-color1;
+  color: $text-white;
+  &:hover {
+    background-color: $btn-hover2;
   }
 }

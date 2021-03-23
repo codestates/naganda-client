@@ -6,68 +6,62 @@ const MySchedulesList = () => {
     {
       id: 1,
       thumbnail: '/images/mockup-thumb1.jpg',
-      scheduleTitle: 'Traditional place to travel in Seoul',
+      scheduleTitle: '친구와 함께 한복 코스프레 나들이🥋🥋',
       desc:
-        '한옥마을 및 경복궁 체험 후 인사동 먹거리 체험해 보고 전통 가양주 맛보기',
+        '한옥마을에 가서 한복 코스프레하기! 생각만해도 재밌겠다!!😁😁😁 그다음엔 행사로 열린다는 전통 가양주 체험을 해보겠어! (취하진 않겠지?)',
     },
     {
       id: 2,
-      thumbnail: '/images/animal-crossing.gif',
-      scheduleTitle: '무인도에서 시작하는 새로운 생활',
-      desc: `현실과 동일한 시간이 흐르는 세계에서, 마음 가는 대로 하루하루를
-        보내는 「동물의 숲」 시리즈.낚시나 곤충 채집, 가드닝 등 집
-        밖에서 즐길 수 있는 요소부터 집 꾸미기・패션까지, 다양한 취미를
-        1년 내내 즐기실 수 있습니다. 「모여봐요 동물의 숲」에서는 「Nook
-        Inc.」에서 제공하는 「무인도 이주 패키지 플랜」에 참가하여
-        무인도로 이주, 하나하나 내 손으로 꾸려 나가는 새로운 생활이
-        시작됩니다.`,
+      thumbnail: '/images/sundae.jpeg',
+      scheduleTitle: '선릉 농민백암순대',
+      desc: `코로나 시국에 사람이 많은 곳은 피해야 한다.😳😳 하지만... 이곳은 한번도 맛보지 않은 사람은 있어도 결코 단 한번만 맛본 사람은 없다는 유명한 순대국밥 맛집이다.
+      마침 내 친구가 서울에 올라온다고 하니, 같이 먹으러 가기로 했다!😋😋😋 매장이 어찌나 잘되는지 양쪽 건물로 손님을 줄세워 받는다..`,
     },
     {
       id: 3,
-      thumbnail: '/images/mockup-thumb2.jpg',
-      scheduleTitle: '밤에 골목 맛집 탐방🍺',
-      desc: `이것저것 먹는 것도 좋지만, 가끔은 단일메뉴를 고집하고 싶을 때.
-      ‘먹자골목’이 당긴다. 모인 데는 다 그만한 이유가 있다. 한 식당의
-      성공에 뒤이어 주변 다른 식당들이 메뉴를 변경한다거나, 흩어져
-      있던 노포들이 한곳에 모였다거나. 딱히 개성이 없던 전통시장이
-      하나의 먹거리로 새롭게 재조명되며 전에 없던 방문객의 발길을
-      끌기도 한다.`,
+      thumbnail: '/images/jungsikbar.jpg',
+      scheduleTitle: '서울의 밤거리 투어🍷🥃',
+      desc: `미슐랭 2스타🌟🌟 정식당에서 운영하는 정식바, 연인과 혹은 친구와 분위기를 내면 좋은 곳이다! 하지만 혼자 가도 그 분위기를 120% 느낄 수 있다!🚨🚨
+      치즈에🧀🧀 레드와인🍷🍷 감튀🍟 면 모든게 끝난다!`,
     },
     {
       id: 4,
-      thumbnail: '/images/mockup-thumb3.jpg',
-      scheduleTitle: '서울 전통시장 투어',
-      desc: `많은 여행객들이 한국의 전통 음식과 문화를 느끼기 위해서 해마다
-      서울의 전통시장들을 찾는다. 그러나 계속해서 생겨나는
-      대형할인매장이나 인터넷 유통, 홈쇼핑 등으로 한국의 전통시장들은
-      점점 사라져가는 추세이다. 하지만 그 가운데에서도 변함없이 오랜
-      전통을 보여주며 수 많은 시장과는 다른 특색으로 꾸준히 인기를
-      유지하는 시장이 있다.`,
+      thumbnail: '/images/hadongkwan.jpg',
+      scheduleTitle: '하동관 강남분점 (선릉)',
+      desc: `오후 네시 반 이후로는 주문을 받지 않는다. 가격은 만원 대 이지만 고기 고명을 추가함으로써 🍲곰탕을 더욱 맛있게 즐길 수 있다! (하지만 돈은 2배로 든다는거!💰)`,
     },
     {
       id: 5,
-      thumbnail: '/images/landingPage-tablet.jpg',
-      scheduleTitle: 'Traditional place to travel in Seoul',
-      desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
-      delectus dolorum modi reiciendis, minus vero fugiat libero!`,
+      thumbnail: '/images/tourkorea.jpeg',
+      scheduleTitle: '연남동 예술골목🛣',
+      desc: `연희동이 고급 중식당의 집합소로 이름을 떨칠 때, 소소한 중국집과 분식당, 대만 만둣집이 연남동을 지켰다. 그러나 지금 연남동은
+      술집이나 밥집 이름을 한 번에 읊지 못할 정도로 맛이 창궐하는 골목이 되었고, 주민이 주체가 된 예술마을로 변모했다.👨🏻‍🎨🎨`,
     },
     {
       id: 6,
-      thumbnail: '/images/mockup-thumb4.jpg',
-      scheduleTitle: 'Traditional place to travel in Seoul',
-      desc: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. In,
-      cum suscipit asperiores non praesentium ex autem dolorum animi
-      dicta, quod et fuga quibusdam ea ratione mollitia reiciendis.
-      Deserunt, aspernatur dignissimos.`,
+      thumbnail: '/images/terarosa.jpeg',
+      scheduleTitle: '테라로사 포스코센터점☕️☕️',
+      desc: `테헤란로의 포스코센터 1층에 위치하고 있는 정말정말 큰 카페☕️☕️ 창가쪽에 앉아서 좋아하는 사람이나 친구들과 도란도란 이야기를 나누거나
+      잘 사용하지 않는 맥북💻 을 들고 가서 공부하는 척 하면 정말 공부가 잘 될까?`,
     },
     {
       id: 7,
-      thumbnail: '/images/landingPage-img.jpg',
-      scheduleTitle: 'Traditional place to travel in Seoul',
-      desc: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. In,
-      cum suscipit asperiores non praesentium ex autem dolorum animi
-      dicta, quod et fuga quibusdam ea ratione mollitia reiciendis.
-      Deserunt, aspernatur dignissimos.`,
+      thumbnail: '/images/marioburger.jpeg',
+      scheduleTitle: 'Mario 마리오 버거🍔🍔',
+      desc: `강남역 인근 패스트파이브가 있는 건물 안으로 들어서면, 엘리베이터가 있는 곳을 지나 한번더 안으로 들어가면 마리오 버거를 파는 가게가 있다!🍔🍔
+      으오오오... 먹으면 살찐단 Mario...`,
+    },
+    {
+      id: 8,
+      thumbnail: '/images/skewer.jpeg',
+      scheduleTitle: '아 양꼬치가 땡긴다🍢🍢🍢',
+      desc: `양꼬치엔 칭따오 란 옛말이다....🥴🥴🥴🥴🥴 그럼 뭘까? 맞추면 내가 산다! 아 배고파졌어..`,
+    },
+    {
+      id: 9,
+      thumbnail: '/images/hambag.jpeg',
+      scheduleTitle: '함박스테이크 짱맛🥩🥩',
+      desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
     },
   ]);
   return (
