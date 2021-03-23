@@ -182,7 +182,7 @@ header {
   padding: 0 80px;
 
   .recommend-box {
-    width: 600px;
+    width: 600px; //! min-width?
     height: 100%;
     color: $text-white;
     border-radius: 5px;
@@ -190,14 +190,16 @@ header {
     flex-direction: column;
     justify-content: center;
 
+    margin-left: 60px;
+
     h2 {
       font-size: 35px;
       font-weight: 700;
       text-align: center;
-      margin-left: 70px;
+      margin-left: 35px;
       position: relative;
       line-height: 1.7em;
-      width: 80%;
+      min-width: 100%;
       top: 8%;
       left: 2%;
 
@@ -213,8 +215,8 @@ header {
   position: relative;
   height: 100%;
   width: 100%;
-  background: url('../images/custom-frame.svg');
-  // background-size: cover;
+  background: url('../images/custom-frame2.svg');
+  background-size: cover;
   background-position: 50% 50%;
   display: grid;
   grid-template-columns: repeat(2, 140px);
@@ -264,12 +266,13 @@ header {
 
 // ! 추천 네 종류 썸네일 중 하나를 눌렀을 때 나오는 선택된 이미지에 대한 정보가 담긴 selected-box
 .selected-box {
-  min-width: 350px;
+  min-width: 320px;
   height: 100%;
   flex-grow: 2;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-left: 30px;
 
   h2 {
     position: relative;
@@ -284,8 +287,8 @@ header {
 }
 
 .items-hashtags {
-  width: 85%;
-  height: 85%;
+  min-width: 70%;
+  height: 70%;
   background: $text-white;
   border-radius: 15px;
 
@@ -297,7 +300,7 @@ header {
     position: relative;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-    width: 50%;
+    width: 60%;
     height: 100%;
     background: url('../images/jungsikdang.jpg');
     background-size: cover;
@@ -309,7 +312,7 @@ header {
   }
   .hashtags {
     position: relative;
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 500;
     display: flex;
     flex-direction: column;
@@ -361,8 +364,9 @@ header {
 
     .tag {
       margin-top: 20px;
-      margin-left: 25px;
-      width: 180px;
+      margin-left: 15px;
+      min-width: 150px;
+      font-size: 20px;
       height: 50px;
       display: flex;
       justify-content: center;
@@ -441,7 +445,7 @@ header {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding: 0 100px;
+  padding: 0 140px;
 
   .intro-gif {
     background: url('../images/movingSchedule.gif');
@@ -450,8 +454,9 @@ header {
     position: relative;
     height: 50vh;
     border-radius: 10px;
-    min-width: 50%;
-    padding: 20px 40px;
+    min-width: 41%;
+    width: 40vw;
+    margin-left: 50px;
     box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.2),
       0 6px 20px 0 rgba(255, 255, 255, 0.19);
   }
@@ -460,8 +465,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-width: 400px;
-    flex-shrink: 3;
+    min-width: 350px;
     padding: 0 20px;
 
     h2,
@@ -482,12 +486,17 @@ header {
 
 .second-intro {
   background: $bg-color3;
+  .intro-text {
+    margin-left: 40px;
+  }
 
   .intro-gif {
     order: 1;
     background: url('../images/searchpage.gif');
     background-size: cover;
     background-position: 50% 50%;
+    margin-left: 0;
+    margin-right: 40px;
   }
 }
 
@@ -519,7 +528,7 @@ footer {
     font-size: 1.5em;
     margin-bottom: 20px;
   }
-  padding: 0 80px;
+  padding: 0 140px;
   background: rgb(34, 34, 34);
   color: #fff;
 
