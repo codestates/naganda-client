@@ -19,14 +19,14 @@ const ModifyEmail = ({ toggleModifyEmail, modifyUserInfo, match }) => {
             match.params.username = `:${newParam}`;
           }}
         >
-          Make A Change
+          변경하기
         </button>
         <button className="btn-closed" onClick={toggleModifyEmail}>
-          X
+          <i className="far fa-minus-square"></i>
         </button>
         <img className="logo1" src={Logo} alt="logo" />
         <form onSubmit={(e) => e.preventDefault()}>
-          <label htmlFor="changeEmail">Input Your New Email below📨</label>
+          <label htmlFor="changeEmail">새로운 이메일을 입력해 주세요.</label>
           <input
             id="changeEmail"
             type="text"

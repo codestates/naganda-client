@@ -7,9 +7,13 @@ const ModifyAvatar = (props) => {
 
   return (
     <form onSubmit={props.onSubmit} className="avatar">
-      <img className="avatar-img" src={props.avatar} alt="avatar" />
+      <img
+        className="avatar-img"
+        src={props.avatar ? props.avatar : '/images/user.png'}
+        alt="avatar"
+      />
       <h3>{props.UploadedImg.fileName}</h3>
-      <label htmlFor="upload">Upload</label>
+      <label htmlFor="upload">이미지선택</label>
       <input
         id="upload"
         className="upload-files"
@@ -17,8 +21,8 @@ const ModifyAvatar = (props) => {
         onChange={onChange}
       />
       <button className="btn-avatar-modify" type="submit">
-        <i className="fas fa-cloud-upload-alt">
-          <span>업로드 후 눌러요!</span>
+        <i className="fas fa-sync-alt">
+          <span>이미지변경</span>
         </i>
       </button>
     </form>

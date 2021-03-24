@@ -299,7 +299,7 @@
 // ! Schedule kanbanboards
 .schedules-container {
   position: relative;
-  width: 88%;
+  width: 85%;
   // ! min-height 신의 한 수
   min-height: 150vh;
   margin: 5px auto;
@@ -311,13 +311,18 @@
 
   .sc-container {
     background: $text-white;
+    // border: 2px solid red;
     padding: 10px 15px;
     border-radius: 10px;
     width: 80%;
     min-width: 360px;
+    max-width: 300px; // ! 여기 바꿈...
     margin-right: 0;
     margin-left: 0;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .card-header {
       display: flex;
@@ -338,7 +343,7 @@
 
     .sc-card {
       background: $bg-color1;
-      width: 100%;
+      width: 80%;
       min-width: 320px;
       height: 230px;
       border-radius: 15px;
@@ -361,7 +366,7 @@
 
         .card-info {
           h4 {
-            font-size: 1.4em;
+            font-size: 1.3em;
             padding-bottom: 15px;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -404,6 +409,8 @@
         text-overflow: ellipsis;
         overflow: scroll;
         white-space: wrap;
+        font-size: 1.2em;
+        line-height: 1.1em;
       }
       .address-info {
         display: flex;

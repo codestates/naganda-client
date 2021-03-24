@@ -176,8 +176,10 @@ header.sticky {
   height: 80vh;
   position: relative;
   width: 100%;
-  background: #515151;
-
+  // background: #515151;
+  background: url('../images/profile-bg4.jpg');
+  background-size: cover;
+  background-position: 50% 50%;
   .mypage-title {
     color: $text-white;
     font-size: 1.8em;
@@ -225,7 +227,7 @@ header.sticky {
             display: block;
             border: 8px solid white;
             border-radius: 50%;
-            background: $btn-color1;
+            background: #e2e0e0;
             background-size: cover;
           }
           h3 {
@@ -235,17 +237,17 @@ header.sticky {
             display: inline-block;
             padding: 0.5em 0.75em;
             color: $text-white;
-            font-size: inherit;
+            font-size: 0.8em;
             line-height: normal;
             vertical-align: middle;
-            background-color: $bg-color1;
+            background-color: $bg-color2;
             cursor: pointer;
             border-radius: 0.25em;
             position: absolute;
-            top: 90%;
-            left: 10%;
+            top: 73%;
+            right: -43%;
             &:hover {
-              background: $bg-color2;
+              background: $btn-color2;
               transition-duration: 0.1s;
             }
           }
@@ -265,15 +267,16 @@ header.sticky {
           }
           .btn-avatar-modify {
             position: absolute;
-            top: 102%;
-            left: 110%;
+            top: 82%;
+            right: -170%;
+            width: 100%;
             transform: translate(-50%, -50%);
             background: none;
             border: none;
             cursor: pointer;
             i {
-              font-size: 3em;
-              color: $btn-color1;
+              font-size: 2em;
+              color: $bg-color2;
               display: flex;
               justify-content: center;
               align-items: center;
@@ -283,7 +286,7 @@ header.sticky {
               }
 
               &:hover {
-                color: $btn-hover1;
+                color: $btn-color2;
               }
             }
           }
@@ -353,7 +356,7 @@ header.sticky {
             line-height: 30px;
             text-overflow: ellipsis;
             text-align: start;
-            padding-left: 100px;
+            padding-left: 120px;
           }
           button {
             border-radius: 10px;
@@ -362,7 +365,7 @@ header.sticky {
             background-color: $bg-color2;
             color: $text-white;
             font-size: 14px;
-            padding: 12px 23px;
+            padding: 10px 23px;
             letter-spacing: 1px;
             text-transform: uppercase;
             transition: transform 80ms ease-in;
@@ -379,7 +382,8 @@ header.sticky {
 
 // ! 스케줄 카드 리스트 스타일링 부분
 .schedules {
-  height: 200vh;
+  height: 300vh;
+  padding: 0 250px;
   background-color: $bg-color1;
   line-height: 1.3;
   font-size: 1.25rem;
@@ -393,12 +397,24 @@ header.sticky {
     font-weight: 500;
     align-self: flex-start;
     padding: 3rem;
+    white-space: nowrap;
+  }
+}
+
+@include tablet {
+  .schedules {
+    padding: 0px 0px;
+    height: 200vh;
   }
 }
 
 @include mobile {
   .schedules {
-    height: 300vh;
+    height: 360vh;
+
+    .mypage-title {
+      align-self: center;
+    }
   }
 }
 
@@ -577,23 +593,23 @@ div[id*='modify'] {
 
     .btn-closed {
       position: absolute;
-      top: 0%;
-      right: 0%;
+      top: 10%;
+      right: 5%;
       transform: translate(50%, -50%);
-      padding: 10px 20px;
-      // width: 200px;
-      background: $btn-color2;
-      border-radius: 100%;
+      // padding: 10px 20px;
+      // background: $btn-color2;
+      // border-radius: 100%;
+      background: none;
       border: none;
       z-index: 1;
-      color: $text-white;
+      color: $btn-color1;
       font-weight: 500;
-      font-size: 1em;
+      font-size: 1.4em;
       cursor: pointer;
 
       &:hover {
-        background: $btn-hover1;
-        transition-duration: 0.5s;
+        color: $btn-color2;
+        transition-duration: 0.2s;
       }
     }
 
@@ -603,9 +619,8 @@ div[id*='modify'] {
       right: 50%;
       transform: translate(50%, -50%);
       padding: 10px 20px;
-      // width: 200px;
-      background: $btn-color1;
-      border-radius: 15px;
+      background: $bg-color2;
+      border-radius: 10px;
       border: none;
       z-index: 1;
       color: $text-white;
@@ -614,7 +629,7 @@ div[id*='modify'] {
       cursor: pointer;
 
       &:hover {
-        background: $btn-hover1;
+        background: $btn-color2;
         transition-duration: 0.5s;
       }
     }
@@ -629,12 +644,12 @@ div[id*='modify'] {
         padding-bottom: 20px;
       }
       input {
-        border: 2px solid $btn-color1;
-        border-radius: 10px;
+        border: 1.5px solid black;
+        border-radius: 3px;
         outline: none;
         background: none;
         color: black;
-        font-size: 24px;
+        font-size: 20px;
         text-align: center;
         width: 100%;
         float: left;
