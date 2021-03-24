@@ -12,9 +12,9 @@ import UnauthorizedPopup from '../components/UnauthorizedPopup';
 import queryString from 'query-string';
 
 const axios = require('axios');
-// const DOMAIN = 'http://localhost:4000';
+const DOMAIN = 'http://localhost:4000';
 // const DOMAIN = 'http://13.125.241.217:4000';
-const DOMAIN = 'https://s.naganda.tk';
+// const DOMAIN = 'https://s.naganda.tk';
 
 const MyPage = ({ location, match }) => {
   const query = queryString.parse(location.search);

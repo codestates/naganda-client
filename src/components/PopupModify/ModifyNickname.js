@@ -15,16 +15,17 @@ const ModifyNickname = ({ toggleModifyNickname, modifyUserInfo }) => {
           className="btn-changed"
           onClick={() => modifyUserInfo({ nickname: NewNickname })}
         >
-          Make A Change
+          변경하기
         </button>
-        <button className="btn-closed" onClick={toggleModifyNickname}>
+        {/* <button className="btn-closed" onClick={toggleModifyNickname}>
           X
+        </button> */}
+        <button className="btn-closed" onClick={toggleModifyNickname}>
+          <i className="far fa-minus-square"></i>
         </button>
         <img className="logo1" src={Logo} alt="logo" />
         <form onSubmit={(e) => e.preventDefault()}>
-          <label htmlFor="changeNickname">
-            Input Your New Nickname below🍭
-          </label>
+          <label htmlFor="changeNickname">새로운 닉네임을 입력해 주세요.</label>
           <input
             id="changeNickname"
             type="text"
