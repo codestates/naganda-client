@@ -24,7 +24,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-width link">
-          <h2>Quick Link</h2>
+          <h2>Link</h2>
           <ul>
             <li>
               <a href="#">Home</a>

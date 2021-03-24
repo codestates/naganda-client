@@ -481,7 +481,7 @@ header {
     flex-direction: column;
     justify-content: center;
     min-width: 350px;
-    padding: 0 20px;
+    padding: 40px 20px;
 
     h2,
     p {
@@ -525,6 +525,14 @@ header {
     .intro-gif {
       min-width: 80%;
     }
+    .intro-text {
+      h2 {
+        font-size: 2.2em;
+      }
+      p {
+        font-size: 1.4em;
+      }
+    }
   }
 }
 @include mobile {
@@ -543,6 +551,7 @@ header {
     .intro-gif {
       display: block;
       min-width: 150%;
+      margin-right: 0;
     }
   }
 }
