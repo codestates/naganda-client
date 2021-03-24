@@ -13,9 +13,9 @@ const axios = require('axios');
 
 const USER_URL = '/users';
 
-const DOMAIN = 'http://localhost:4000';
+// const DOMAIN = 'http://localhost:4000';
 // const DOMAIN = 'http://13.125.241.217:4000';
-// const DOMAIN = 'https://s.naganda.tk';
+const DOMAIN = 'https://s.naganda.tk';
 
 export function registerUser(dataToSubmit) {
   const data = request('post', USER_URL + '/signup', dataToSubmit);
