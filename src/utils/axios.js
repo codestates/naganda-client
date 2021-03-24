@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const DOMAIN = 'http://localhost:4000';
+// const DOMAIN = 'http://localhost:4000';
 // const DOMAIN = 'http://13.125.241.217:4000';
-// const DOMAIN = 'https://s.naganda.tk';
+const DOMAIN = 'https://s.naganda.tk';
 
 // ! 쿠키 데이터를 전송받기 위함.
 axios.defaults.withCredentials = true;
