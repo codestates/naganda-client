@@ -60,7 +60,9 @@
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
 
-    width: 100%;
+    // width: 100%;
+    width: 850px;
+
     height: 200px;
     padding: 30px 50px;
     padding-right: 0;
@@ -71,13 +73,24 @@
     align-items: flex-start;
     position: relative;
 
+    // ! 새로 추가 들어간다.
+    textarea {
+      resize: none;
+      font-size: 1.5em;
+      font-weight: 500;
+      line-height: 1.5em;
+      width: 100%;
+      background: opacify($color: #f3c1c1, $amount: 0.2);
+      border: none;
+      border-radius: 10px;
+    }
+
     h2 {
       font-weight: 500;
       font-size: 1.5em;
       text-align: center;
       height: 100px;
       width: 100%;
-      //   border: 2px solid black;
       display: -webkit-box;
       -webkit-line-clamp: 3; /* 라인수 */
       -webkit-box-orient: vertical;
@@ -90,7 +103,6 @@
       padding: 5px 10px;
     }
     .thumbs {
-      //   border: 2px solid black;
       font-size: 1.5em;
       display: flex;
       justify-content: flex-end;
@@ -152,6 +164,93 @@
   .far {
     padding: 15px;
   }
+}
+
+// 버튼을 통해 숨겨졌다 나타나게 하는 모달 컨테이너 전체. 먼저 position 으로 고정해줘야 할듯.
+.modal-container {
+  // display: none;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  //전체 너비와 높이를 덮기 위해 viewport 로 높이, 너비 지정
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  // 위치 지정, flex.
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // ! 기본적으로 불투명도 (Opacity: 0) 를 적용해서 modal-container 가 안보이게 함
+  opacity: 0;
+
+  // pointer 이벤트를 none 으로 두면 이벤트를 캡처하지 않으므로 클릭이 가능해짐.
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+// 실제 나타났다 사라지는 모달 창
+.modal {
+  background-color: #fff;
+  width: 600px;
+  max-width: 100%;
+  height: 300px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 30px 20px;
+  text-align: center;
+  .logo1 {
+    width: 50%;
+  }
+
+  h1,
+  p {
+    padding: 10px 0;
+  }
+  h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+  ul {
+    padding: 5px;
+    line-height: 2em;
+    li {
+      font-size: 18px;
+    }
+  }
+  p {
+    font-size: 14px;
+    opacity: 0.7;
+  }
+  .btn-thumbmodal {
+    padding: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    button {
+      background-color: $bg-color2;
+      border: 0;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      color: #fff;
+      font-size: 14px;
+      padding: 10px 25px;
+    }
+    button:nth-child(2) {
+      background: $btn-color2;
+    }
+    button:nth-child(3) {
+      background: $btn-hover1;
+    }
+  }
+}
+
+.modal-container.show {
+  pointer-events: auto;
+  opacity: 1;
 }
 
 // ! 관련 해쉬 태그를 보여주는 related-hashtags
@@ -267,6 +366,10 @@
       margin-bottom: 20px;
     }
   }
+
+  .schedule-title {
+    max-width: 500px;
+  }
 }
 
 @include mobile {
@@ -293,6 +396,10 @@
     h2 {
       display: none;
     }
+  }
+
+  .schedule-title {
+    max-width: 500px;
   }
 }
 
