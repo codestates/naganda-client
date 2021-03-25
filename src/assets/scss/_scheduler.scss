@@ -9,7 +9,7 @@
   width: 100%;
   height: 50vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url('../images/jungsikbar.jpg');
+    url('../images/profile-bg2.jpg');
   background-size: cover;
   background-position: 50% 50%;
   //   filter: brightness(50%);
@@ -43,7 +43,7 @@
       border: 8px solid white;
       border-radius: 50%;
 
-      background: $btn-color1;
+      background: #e2e0e0;
       background-size: cover;
       position: absolute;
 
@@ -84,6 +84,9 @@
       border: none;
       border-radius: 10px;
     }
+    textarea::placeholder {
+      font-size: 1em;
+    }
 
     h2 {
       font-weight: 500;
@@ -102,8 +105,9 @@
       white-space: wrap;
       padding: 5px 10px;
     }
+
     .thumbs {
-      font-size: 1.5em;
+      font-size: 1.3em;
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -111,6 +115,7 @@
       bottom: 0;
       margin-bottom: 10px;
       margin-left: 10px;
+      white-space: nowrap;
 
       .fa-thumbs-up {
         color: $btn-color1;
@@ -119,6 +124,13 @@
       .fa-thumbs-down {
         color: $btn-color2;
         cursor: pointer;
+      }
+      .fa-eraser {
+        cursor: pointer;
+        margin-left: 30px;
+        &:hover {
+          color: $btn-color1;
+        }
       }
       i {
         padding: 5px 10px;
@@ -176,7 +188,7 @@
   //전체 너비와 높이를 덮기 위해 viewport 로 높이, 너비 지정
   height: 100vh;
   width: 100vw;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
 
   // 위치 지정, flex.
   display: flex;
@@ -255,12 +267,16 @@
 
 // ! 관련 해쉬 태그를 보여주는 related-hashtags
 .related-hashtags {
-  height: 13vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 16vh;
   position: relative;
   width: 100%;
   background: $bg-color1;
   margin-top: 5px;
-  padding: 20px 330px;
+  padding: 20px 200px;
   border-top: 5px solid $text-white;
   border-bottom: 5px solid $text-white;
 
@@ -271,135 +287,106 @@
     margin-right: 80px;
     white-space: nowrap;
   }
-
-  .re-hashtags {
-    width: 60%;
-    height: 100%;
-    display: flex;
-    justify-content: space-around;
-    font-size: 1.2em;
-    align-items: center;
-
-    span.hash-tag {
-      color: $text-white;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-width: 140px;
-      height: 100%;
-      border-radius: 5px;
-      margin: 5px 10px;
-      padding: 5px 10px;
-      box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.15),
-        0 6px 20px 0 rgba(255, 255, 255, 0.15);
-      cursor: pointer;
-      &:hover {
-        transition-duration: 0.3s;
-      }
-    }
-    span.hash-tag:nth-child(1) {
-      background: #26001b;
-      &:hover {
-        background: #440a67;
-      }
-    }
-    span.hash-tag:nth-child(2) {
-      background: #810034;
-      &:hover {
-        background: #93329e;
-      }
-    }
-    span.hash-tag:nth-child(3) {
-      background: #ff005c;
-      &:hover {
-        background: #b4aee8;
-      }
-    }
-    span.hash-tag:nth-child(4) {
-      background: #fff600;
-      color: black;
-      &:hover {
-        background: #ffe3fe;
-      }
-    }
-  }
-}
-
-@include desktop {
-  .related-hashtags {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    .re-hashtags {
-      display: flex;
-      justify-content: center;
-      padding: 0 300px;
-      span.hash-tag {
-        height: 60%;
-        white-space: nowrap;
-      }
-    }
-  }
 }
 
 @include tablet {
   .related-hashtags {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-
-    .re-hashtags {
-      min-width: 75%;
-      height: 50%;
-      span.hash-tag {
-        white-space: nowrap;
-      }
-    }
-
-    h2 {
-      font-size: 1.7em;
-      margin-right: 0;
-      margin-bottom: 20px;
-    }
+    padding: 20px 30px;
   }
-
   .schedule-title {
     max-width: 500px;
+  }
+  .tags-input {
+    width: 100%;
+    margin-top: 15px;
+    overflow: scroll;
+  }
+
+  .schedule-info .schedule-title .thumbs {
+    font-size: 1em;
   }
 }
 
 @include mobile {
   .related-hashtags {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 20px 30px;
+  }
+  .schedule-title {
+    max-width: 480px;
+  }
+  .tags-input {
+    margin-top: 15px;
+    min-width: 480px;
+    overflow: scroll;
+  }
+  .schedule-info .schedule-title .thumbs {
+    font-size: 1em;
+  }
+}
 
-    .re-hashtags {
-      display: grid;
-      gap: 5px;
-      grid-template-columns: repeat(2, 150px);
-      grid-template-rows: repeat(2, 50px);
-      justify-content: center;
-      align-content: center;
-      span.hash-tag {
-        white-space: nowrap;
-        box-shadow: none;
-      }
-    }
-    h2 {
-      display: none;
+// ! refactor hashtag elements
+.tags-input {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 68px;
+  max-height: 100%;
+  overflow: scroll;
+  width: 100%;
+  padding: 0 8px;
+  border: 1px solid rgb(214, 216, 218);
+  background-color: #fff;
+  border-radius: 6px;
+
+  &:focus-within {
+    border: 1px solid #0052cc;
+  }
+  input {
+    flex: 1;
+    border: none;
+    height: 46px;
+    font-size: 18px;
+    padding: 4px 0 0 0;
+    &:focus {
+      outline: transparent;
     }
   }
+}
 
-  .schedule-title {
-    max-width: 500px;
+#tags {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 8px 0 0 0;
+}
+
+.tag {
+  width: auto;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 0 8px;
+  font-size: 18px;
+  border-radius: 6px;
+  margin: 0 8px 8px 0;
+  // background: #0052cc;
+  // background: $btn-color1;
+  background: #7285a5;
+
+  .tag-close-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    font-size: 18px;
+    margin-left: 8px;
+    color: #fff;
+    cursor: pointer;
   }
 }
 
