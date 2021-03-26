@@ -14,7 +14,6 @@ const ScColumn = ({ listID, title, cards, props }) => {
         >
           <div className="card-header">
             <h4>{title}</h4>
-            <i className="fas fa-ellipsis-h"></i>
           </div>
           {cards.map((card, index) => (
             <ScCard
