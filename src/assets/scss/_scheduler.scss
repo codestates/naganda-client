@@ -127,7 +127,8 @@
       }
       .fa-eraser {
         cursor: pointer;
-        margin-left: 30px;
+        color: $bg-color1;
+
         &:hover {
           color: $btn-color1;
         }
@@ -288,6 +289,11 @@
     white-space: nowrap;
   }
 }
+@include desktop {
+  .fa-eraser {
+    margin-left: 200px;
+  }
+}
 
 @include tablet {
   .related-hashtags {
@@ -306,6 +312,9 @@
   .schedule-info .schedule-title .thumbs {
     font-size: 1em;
   }
+  .fa-eraser {
+    margin-left: 65px;
+  }
 }
 
 @include mobile {
@@ -323,6 +332,9 @@
   }
   .schedule-info .schedule-title .thumbs {
     font-size: 1em;
+  }
+  .fa-eraser {
+    margin-left: 60px;
   }
 }
 
@@ -426,13 +438,6 @@
       font-size: 1.5em;
       width: 100%;
       height: 50px;
-
-      i {
-        cursor: pointer;
-        &:hover {
-          color: $btn-color1;
-        }
-      }
     }
 
     .sc-card {
@@ -441,16 +446,9 @@
       min-width: 320px;
       height: 230px;
       border-radius: 15px;
-      //   display: flex;
-      //   justify-content: space-between;
-      //   border: 2px solid red;
       color: $text-white;
       padding: 20px 30px;
       margin-bottom: 15px;
-
-      //   text-overflow: ellipsis;
-      //   white-space: nowrap;
-      //   overflow: hidden;
 
       .card-infos {
         display: flex;
