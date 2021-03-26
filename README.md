@@ -63,7 +63,7 @@
 
 ### 📼 검색결과
 
-![searchpage](https://user-images.githubusercontent.com/69143207/111068209-337e9400-850b-11eb-8f7b-369544d88c71.gif)
+![searchpage](https://user-images.githubusercontent.com/69143207/112614113-3c089000-8e64-11eb-9503-a187709190fd.gif)
 
 # Member Info
 
