@@ -1,13 +1,13 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import logo1 from '../../assets/images/logo1.png';
 
 const Header = (props) => {
   const headerRef = useRef(null);
-  //   const headEmail = Email.split('@')[0];
+
   const onScroll = () => {
-    headerRef.current.classList.toggle('sticky', window.scrollY > 0);
+    headerRef.current.classList.toggle('header-bar', window.scrollY > 0);
   };
 
   useEffect(() => {
@@ -16,18 +16,19 @@ const Header = (props) => {
   }, [headerRef]);
 
   return (
-    <header ref={headerRef} style={{ backgroundColor: '#262626' }}>
+    <header ref={headerRef} style={{ backgroundColor: '#fff' }}>
       <Link to="/" className="logo1">
         <img className="logo-img" src={logo1} alt="logo-image" />
       </Link>
+
       <ul>
         <li>
-          <Link to="/signin" className="login-btn">
+          <Link to="/signin" className="searchPageHeaderBanner-login-btn">
             Login
           </Link>
         </li>
         <li>
-          <Link to="/signin" className="signup-btn">
+          <Link to="/signin" className="searchPageHeaderBanner-signup-btn">
             Signup
           </Link>
         </li>
