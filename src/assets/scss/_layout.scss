@@ -3,6 +3,21 @@
 @import 'mixin';
 @import 'reset';
 
+@font-face {
+  font-family: 'paybooc-Medium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Medium.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'paybooc-ExtraBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-ExtraBold.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body * {
   font-family: 'Noto Sans KR', sans-serif;
   letter-spacing: 1px;
@@ -466,17 +481,20 @@ header {
     flex-direction: column;
     justify-content: center;
     min-width: 350px;
-    padding: 0 20px;
+    padding: 40px 20px;
 
     h2,
     p {
       color: $text-white;
     }
     h2 {
-      font-size: 2.2em;
+      font-family: 'paybooc-ExtraBold';
+      font-size: 2.6em;
       font-weight: 500;
+      line-height: 1.4em;
     }
     p {
+      font-family: 'paybooc-Medium';
       font-size: 1.5em;
       margin-top: 60px;
       line-height: 150%;
@@ -501,13 +519,29 @@ header {
 }
 
 // ! 모바일 화면일 때 설명과, gif 레이아웃
+
+@include tablet {
+  .intro-description {
+    .intro-gif {
+      min-width: 80%;
+    }
+    .intro-text {
+      h2 {
+        font-size: 2.2em;
+      }
+      p {
+        font-size: 1.4em;
+      }
+    }
+  }
+}
 @include mobile {
   .intro-description {
     display: flex;
   }
   .intro-gif {
     display: none;
-    width: 100%;
+    min-width: 100%;
   }
 
   .second-intro {
@@ -516,7 +550,8 @@ header {
     }
     .intro-gif {
       display: block;
-      width: 100%;
+      min-width: 150%;
+      margin-right: 0;
     }
   }
 }
@@ -551,13 +586,18 @@ footer {
     }
   }
 
-  .about,
-  .contact {
+  .about {
     width: 40%;
+  }
+
+  .contact {
+    width: 25%;
+    margin-left: 100px;
   }
 
   .link {
     width: 20%;
+    margin-left: 100px;
 
     li {
       margin-bottom: 15px;
@@ -578,7 +618,7 @@ footer {
     position: relative;
     left: -10px;
     .logo-img {
-      width: 55%;
+      width: 200px;
     }
   }
 
@@ -602,15 +642,15 @@ footer {
     padding: 15px 0;
     text-align: center;
   }
-  @media screen and (max-width: 992px) {
-    .about,
-    .contact {
-      width: 35%;
-    }
-    .link {
-      width: 30%;
-    }
-  }
+  // @media screen and (max-width: 992px) {
+  //   .about,
+  //   .contact {
+  //     width: 35%;
+  //   }
+  //   .link {
+  //     width: 30%;
+  //   }
+  // }
   @media screen and (max-width: 767px) {
     .about,
     .link,
@@ -622,6 +662,29 @@ footer {
     .footer-info {
       flex-direction: column;
     }
+  }
+}
+@include tablet {
+  footer .contact,
+  footer .link {
+    margin-left: 0px;
+  }
+  footer .about,
+  footer .link,
+  footer .contact {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .footer-info {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@include mobile {
+  footer .contact,
+  footer .link {
+    margin-left: 0px;
   }
 }
 

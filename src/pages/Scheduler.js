@@ -37,7 +37,7 @@ const Scheduler = () => {
     setScheduleList(MockData);
   }, []);
   return (
-    <div className="wrapper">
+    <div className="wrapper schedule-page">
       <ScheduleHeader Email={Email} />
       <SchedulerMain />
       <SchedulerHashtags />

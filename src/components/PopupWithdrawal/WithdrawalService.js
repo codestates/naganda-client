@@ -22,18 +22,23 @@ const WithdrawalService = ({ toggleWithdrawal }) => {
     <div id="modify">
       <div>
         <button className="btn-changed" onClick={handleUnregister}>
-          Yes, I want
+          네, 탈퇴합니다.
         </button>
         <button className="btn-closed" onClick={toggleWithdrawal}>
-          X
+          <i className="far fa-minus-square"></i>
         </button>
         <img className="logo1" src={Logo} alt="logo" />
         <form onSubmit={(e) => e.preventDefault()}>
-          <h2 style={{ color: 'red', paddingBottom: '10px' }}>
-            회원탈퇴는 신중히 생각해 주세요😭
+          <h2 style={{ paddingBottom: '20px' }}>
+            <span style={{ color: 'red' }}>회원탈퇴</span>는 신중히 생각해
+            주세요
           </h2>
           <label htmlFor="changeNickname">
-            Are You Sure to Quit from our Service?
+            <span style={{ lineHeight: '1.2em' }}>
+              아래의 버튼을 눌러주세요. <br />
+              탈퇴 이후
+              <u style={{ color: 'red' }}> 계정은 복구되지 않습니다.</u>
+            </span>
           </label>
         </form>
       </div>

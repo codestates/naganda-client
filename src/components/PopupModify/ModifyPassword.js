@@ -26,17 +26,20 @@ const ModifyPassword = ({ toggleModifyPassword, modifyUserInfo }) => {
           }}
           style={{ marginTop: '10px' }}
         >
-          Make A Change
+          변경하기
         </button>
         <button className="btn-closed" onClick={toggleModifyPassword}>
-          X
+          <i className="far fa-minus-square"></i>
         </button>
         <img className="logo1" src={Logo} alt="logo" />
         <form onSubmit={(e) => e.preventDefault()} style={{ paddingTop: 0 }}>
-          <label htmlFor="changePassword" style={{ paddingBottom: '10px' }}>
+          <label
+            htmlFor="changePassword"
+            style={{ paddingBottom: '10px', marginTop: '10px' }}
+          >
             {NewPassword !== RePassword
               ? '비밀번호를 동일하게 입력하세요'
-              : 'Input Your New PW below🔐'}
+              : '새로운 비밀번호를 입력해 주세요.'}
           </label>
           <input
             id="changePassword"
@@ -44,6 +47,7 @@ const ModifyPassword = ({ toggleModifyPassword, modifyUserInfo }) => {
             onChange={onChangePassword}
             defaultValue={NewPassword}
             placeholder="변경할 비밀번호 입력"
+            style={{ marginTop: '10px' }}
           />
           <input
             id="changeRePassword"

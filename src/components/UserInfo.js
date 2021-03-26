@@ -55,7 +55,7 @@ const UserInfo = (props) => {
   return (
     <section className="mypage">
       <div className="profile-section">
-        <h1 className="mypage-title">🚌Profile Page🚕</h1>
+        <h1 className="mypage-title">My Profile</h1>
 
         <div className="mypage-info">
           <div className="avatar-name">
@@ -67,7 +67,7 @@ const UserInfo = (props) => {
               UploadedImg={props.UploadedImg}
             />
             <div className="username-title">
-              <h1>🚨{props.nickname}</h1>
+              <h1>{props.nickname}</h1>
             </div>
           </div>
           <div className="white-space"></div>
