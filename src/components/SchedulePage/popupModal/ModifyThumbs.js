@@ -5,7 +5,7 @@ const ModifyThumbs = ({ thumbnailRef }) => {
   return (
     <div className="modal-container" id="modal_container" ref={thumbnailRef}>
       <div className="modal">
-        <img className="logo1" src={Logo} alt="logo" />
+        <img className="logo2" src={Logo} alt="logo" />
         <h1>썸네일 변경하기</h1>
         <ul>
           <li>
