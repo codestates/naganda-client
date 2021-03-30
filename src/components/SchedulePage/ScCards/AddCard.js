@@ -14,7 +14,7 @@ const AddCard = (props) => {
   // const { lists } = props.props;
   // console.log(lists);
 
-  console.log('프롭스', props);
+  // console.log('프롭스', props);
 
   const openForm = () => {
     setIsFormOpen(true);
