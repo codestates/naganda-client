@@ -200,7 +200,7 @@ const MySchedulesList = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', infiniteScroll, true);
+    window.addEventListener('scroll', infiniteScroll);
     return () => window.removeEventListener('scroll', infiniteScroll);
   });
 
