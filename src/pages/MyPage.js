@@ -74,7 +74,7 @@ const MyPage = ({ location, match }) => {
       });
   }, []);
   return (
-    <div className="wrapper">
+    <div className="mypage-wrapper">
       <MypageHeader email={Email} />
       <UserInfo
         nickname={Nickname}
