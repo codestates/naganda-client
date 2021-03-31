@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { deleteCard } from '../../../_actions';
+import { deleteCard, addCard } from '../../../_actions';
 import { connect } from 'react-redux';
 const ScCard = ({
   id,
@@ -12,13 +12,12 @@ const ScCard = ({
   text,
   listID,
   props,
-  // handleChangeMyText,
 }) => {
   const ref = useRef(null);
   const [deleted, setDeleted] = useState(false);
 
   // state 내리기를 통해 기본 으로 보여지는 목업의 schedule text 를 초기 state 로 지정했다.
-  const [editedText, setEditedText] = useState(text);
+  const [editedText, setEditedText] = useState('');
   const [editable, setEditable] = useState(false);
   const editOn = () => {
     setEditable(true);
@@ -45,29 +44,26 @@ const ScCard = ({
     window.addEventListener('click', handleClickOutside, true);
   });
 
-  // useEffect(() => {
-  //   handleChangeMyText(editedText);
-  // }, [editedText]);
-
   const handleDeleteCard = (e) => {
     // console.log(listID);
     // props.dispatch(deleteCard(id, listID));
     setDeleted(true);
   };
 
-  // useEffect(() => {
-  //   for (let i = 0; i < props.lists; i++) {
-  //     if (props.lists[i].id !== listID) {
-  //       props.lists[i].id = listID;
-  //     }
-  //   }
-  // });
-
   // ! props.lists 를 반복돌려서 props.lists[i].id 와 listID 가  가 다르다면, listID 에 props.lists[i].id 를 할당한다?!
   // console.log('프롭스', props);
   // console.log('이거슨 리스트 아이디라네', listID);
   // console.log('텍스트 확인해봐', text);
   // console.log('수정된 텍스트가 있는가', editedText);
+
+  // useEffect(() => {
+  //   if (props.listID !== listID) {
+  //     console.log('있으');
+  //     props.dispatch(
+  //       addCard(props.listID, editedText, detailTitle, time, place),
+  //     );
+  //   }
+  // }, [editedText]);
 
   return (
     <>
@@ -105,8 +101,8 @@ const ScCard = ({
                   />
                 ) : (
                   <div onClick={() => editOn()}>
-                    {/* {!editedText ? text : editedText} */}
-                    {editedText}
+                    {!editedText ? text : editedText}
+                    {/* {editedText} */}
                   </div>
                 )}
               </div>

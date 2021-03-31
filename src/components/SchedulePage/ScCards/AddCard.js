@@ -44,7 +44,7 @@ const AddCard = (props) => {
     // const { dispatch, listID } = props.props;
     // const { text } = this.state;
 
-    if (Text && Title && Time && Place) {
+    if (Text || Title || Time || Place) {
       props.props.dispatch(addCard(props.listID, Text, Title, Time, Place));
     }
   };
