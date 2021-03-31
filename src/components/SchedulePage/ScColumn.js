@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ScCard from './ScCards/ScCard';
 import AddCard from './ScCards/AddCard';
 import { Droppable } from 'react-beautiful-dnd';
 
 const ScColumn = ({ listID, title, cards, props }) => {
+  // const [modifiedText, setModifiedText] = useState([]);
+  // const handleChangeMyText = (text) => {
+  //   setModifiedText([...modifiedText, text]);
+  // };
+  // console.log('modified text', modifiedText);
   return (
     <Droppable droppableId={String(listID)}>
       {(provided) => (
@@ -25,9 +30,9 @@ const ScColumn = ({ listID, title, cards, props }) => {
               type={card.type}
               time={card.time}
               place={card.place}
-              comment={card.comment}
               listID={listID}
               props={props}
+              // handleChangeMyText={handleChangeMyText}
             />
           ))}
 

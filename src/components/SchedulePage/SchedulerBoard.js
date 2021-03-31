@@ -4,7 +4,6 @@ import ScColumn from './ScColumn';
 import { connect } from 'react-redux';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { sort } from '../../_actions';
-import MockData from '../mock/ScheduleListData';
 
 const SchedulerBoard = (props) => {
   const onDragEnd = (result) => {
@@ -27,7 +26,7 @@ const SchedulerBoard = (props) => {
     );
   };
 
-  // console.log(props);
+  console.log('스케줄러에서 내린 프롭스라는데?!', props);
 
   const { lists } = props;
   // console.log(lists);

@@ -12,6 +12,7 @@ const ScCard = ({
   text,
   listID,
   props,
+  // handleChangeMyText,
 }) => {
   const ref = useRef(null);
   const [deleted, setDeleted] = useState(false);
@@ -44,11 +45,30 @@ const ScCard = ({
     window.addEventListener('click', handleClickOutside, true);
   });
 
+  // useEffect(() => {
+  //   handleChangeMyText(editedText);
+  // }, [editedText]);
+
   const handleDeleteCard = (e) => {
     // console.log(listID);
     // props.dispatch(deleteCard(id, listID));
     setDeleted(true);
   };
+
+  // useEffect(() => {
+  //   for (let i = 0; i < props.lists; i++) {
+  //     if (props.lists[i].id !== listID) {
+  //       props.lists[i].id = listID;
+  //     }
+  //   }
+  // });
+
+  // ! props.lists 를 반복돌려서 props.lists[i].id 와 listID 가  가 다르다면, listID 에 props.lists[i].id 를 할당한다?!
+  // console.log('프롭스', props);
+  // console.log('이거슨 리스트 아이디라네', listID);
+  // console.log('텍스트 확인해봐', text);
+  // console.log('수정된 텍스트가 있는가', editedText);
+
   return (
     <>
       {deleted ? (
@@ -84,7 +104,10 @@ const ScCard = ({
                     placeholder="스케줄의 내용을 입력하세요!"
                   />
                 ) : (
-                  <div onClick={() => editOn()}>{editedText}</div>
+                  <div onClick={() => editOn()}>
+                    {/* {!editedText ? text : editedText} */}
+                    {editedText}
+                  </div>
                 )}
               </div>
               <div className="address-info">
