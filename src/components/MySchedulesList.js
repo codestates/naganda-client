@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MySchedulesItem from './MySchedulesItem';
 
 const MySchedulesList = () => {
@@ -63,12 +63,154 @@ const MySchedulesList = () => {
       scheduleTitle: '함박스테이크 짱맛🥩🥩',
       desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
     },
+    // {
+    //   id: 10,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 11,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 12,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 13,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 14,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 15,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 16,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 17,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 18,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 19,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 20,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 21,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 22,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 23,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 24,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 25,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 26,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 27,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
+    // {
+    //   id: 28,
+    //   thumbnail: '/images/hambag.jpeg',
+    //   scheduleTitle: '함박스테이크 짱맛🥩🥩',
+    //   desc: `함박스테이크 꿀맛꿀맛 줄서서 대기하는 곳..`,
+    // },
   ]);
+
+  const [items, setItems] = useState(0);
+
+  const infiniteScroll = () => {
+    let scrollHeight = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight,
+    );
+    let scrollTop = Math.max(
+      document.documentElement.scrollTop,
+      document.body.scrollTop,
+    );
+    let clientHeight = Math.max(document.documentElement.clientHeight);
+    // console.log(clientHeight, ',', scrollTop, '=', scrollHeight);
+    // console.log(clientHeight + scrollTop);
+    // console.log(clientHeight + scrollTop >= scrollHeight);
+    if (clientHeight + scrollTop >= scrollHeight - 500) {
+      setItems(items + 4);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', infiniteScroll);
+    return () => window.removeEventListener('scroll', infiniteScroll);
+  });
+
+  let slicedSchedules = schedules.slice(0, items);
+
   return (
     <section className="schedules">
       <h1 className="mypage-title">My Schedules</h1>
       <div className="cards">
-        <MySchedulesItem schedules={schedules} />
+        <MySchedulesItem schedules={slicedSchedules} />
       </div>
     </section>
   );

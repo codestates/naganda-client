@@ -10,7 +10,7 @@ const SearchBanner = () => {
   const history = useHistory();
 
   const handleInputChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setKeyword(e.target.value);
   };
 

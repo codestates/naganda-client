@@ -3,7 +3,7 @@ import react from 'react';
 const SearchItems = ({ items }) => {
   return items.map((item, i) => {
     {
-      console.log(item);
+      // console.log(item);
     }
     return (
       <li key={i} className="search-item-list">

@@ -381,8 +381,12 @@ header.sticky {
 }
 
 // ! 스케줄 카드 리스트 스타일링 부분
+.mypage-wrapper {
+  height: 100%;
+}
 .schedules {
-  height: 300vh;
+  // height: 300vh;
+  height: 100%;
   padding: 0 250px;
   background-color: $bg-color1;
   line-height: 1.3;
@@ -404,13 +408,13 @@ header.sticky {
 @include tablet {
   .schedules {
     padding: 0px 0px;
-    height: 200vh;
+    // height: 200vh;
   }
 }
 
 @include mobile {
   .schedules {
-    height: 360vh;
+    // height: 360vh;
 
     .mypage-title {
       align-self: center;

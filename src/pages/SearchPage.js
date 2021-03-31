@@ -14,25 +14,18 @@ class SearchPage extends Component {
       status: true,
       show: false,
       data: [],
+      items: 20,
+      preItems: 0,
     };
-    this.showModal = this.showModal.bind(this);
-    this.hideModal = this.hideModal.bind(this);
   }
 
   componentDidMount() {
     if (this.state.status) {
       this.getData();
-      this.setState({ status: false });
+      // this.setState({ status: true });
+      window.addEventListener('scroll', this.infiniteScroll, true);
     }
   }
-
-  showModal = () => {
-    this.setState({ show: true });
-  };
-
-  hideModal = () => {
-    this.setState({ show: false });
-  };
 
   getData() {
     axios({
@@ -45,19 +38,45 @@ class SearchPage extends Component {
     });
   }
 
+  infiniteScroll = () => {
+    let scrollHeight = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight,
+    );
+
+    let scrollTop = Math.max(
+      document.documentElement.scrollTop,
+      document.body.scrollTop,
+    );
+    let clientHeight = Math.max(document.documentElement.clientHeight);
+
+    if (clientHeight + scrollTop >= scrollHeight - 500) {
+      this.setState({
+        preItem: this.state.items,
+        items: this.state.items + 20,
+        status: true,
+      });
+      this.getData();
+    }
+  };
+
   render() {
+    let ret = this.state.data.slice(this.state.preItems, this.state.items);
+
     return this.props.location.pathname.split('/')[2] ? (
       <main>
         <SearchPageHeader />
         <SeachPageSearchbar />
         <div className="search-main-image">
           {/* <img src={'/images/beach_illustration.jpg'}></img> */}
-          <img src="https://cdn.dribbble.com/assets/searches/search-header-medium-53708b5f94932b0cba44602a53c34bf97989c1acb51b926d36841ed4626c9d4d.webp"></img>
+          {/* <img src="https://img.lovepik.com/photo/50070/8369.jpg_wh860.jpg"></img> */}
+          {/* <img src="https://cdn.dribbble.com/assets/searches/search-header-medium-53708b5f94932b0cba44602a53c34bf97989c1acb51b926d36841ed4626c9d4d.webp"></img> */}
+          <img src="/images/search_bg_3.png"></img>
         </div>
         <section className="search-container">
           <ul className="search-item">
             {/* <button type="button" onClick={this.showModal}></button> */}
-            <SearchItems items={this.state.data} />
+            <SearchItems items={ret} />
           </ul>
           <div className="search-container-suggest">
             <ul className="search-container-suggest-ul">
@@ -77,9 +96,6 @@ class SearchPage extends Component {
               <li>
                 <a>#데이트</a>
               </li>
-              {/* <li>
-                <a>#관광지</a>
-              </li> */}
             </ul>
           </div>
         </section>
@@ -89,7 +105,10 @@ class SearchPage extends Component {
       <div className="search-container-keyword">
         <div>{`요청받은 키워드가 없습니다. 다시 검색해주세요.`}</div>
         <img
-          src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5dff4c68-9075-4691-bf21-c75683c6d87d/no_keyword.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210324%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210324T061210Z&X-Amz-Expires=86400&X-Amz-Signature=6753d5ca26c116568812c65e82252fe5eb125a49e99699b9c18f6126a6edf7fc&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22no_keyword.svg%22"
+          src="/images/no_keyword.svg"
+          // src="/images/no_keyword.svg"
+          // src="../../public/images/no_keyword.svg"
+          // src={'../../public/images/no_keyword.svg'}
           alt="You haven't keyword. Check your keyword"
         />
       </div>

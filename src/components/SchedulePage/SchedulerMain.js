@@ -41,8 +41,10 @@ const SchedulerMain = () => {
   };
 
   const handleClickOutside = (e) => {
-    if (editable === true && !ref.current.contains(e.target)) {
-      setEditable(false);
+    if (ref.current !== null) {
+      if (editable === true && !ref.current.contains(e.target)) {
+        setEditable(false);
+      }
     }
   };
   useEffect(() => {
