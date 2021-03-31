@@ -4,11 +4,6 @@ import AddCard from './ScCards/AddCard';
 import { Droppable } from 'react-beautiful-dnd';
 
 const ScColumn = ({ listID, title, cards, props }) => {
-  // const [modifiedText, setModifiedText] = useState([]);
-  // const handleChangeMyText = (text) => {
-  //   setModifiedText([...modifiedText, text]);
-  // };
-  // console.log('modified text', modifiedText);
   return (
     <Droppable droppableId={String(listID)}>
       {(provided) => (
@@ -32,7 +27,6 @@ const ScColumn = ({ listID, title, cards, props }) => {
               place={card.place}
               listID={listID}
               props={props}
-              // handleChangeMyText={handleChangeMyText}
             />
           ))}
 

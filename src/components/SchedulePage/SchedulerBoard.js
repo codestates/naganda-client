@@ -26,7 +26,7 @@ const SchedulerBoard = (props) => {
     );
   };
 
-  console.log('스케줄러에서 내린 프롭스라는데?!', props);
+  // console.log('스케줄러에서 내린 프롭스라는데?!', props);
 
   const { lists } = props;
   // console.log(lists);
