@@ -22,9 +22,13 @@ class SearchPage extends Component {
   componentDidMount() {
     if (this.state.status) {
       this.getData();
-      // this.setState({ status: true });
-      window.addEventListener('scroll', this.infiniteScroll, true);
+      window.addEventListener('scroll', this.infiniteScroll);
     }
+  }
+
+  componentWillUnmount() {
+    this.setState({ status: false });
+    window.removeEventListener('scroll', this.infiniteScroll);
   }
 
   getData() {
@@ -33,7 +37,6 @@ class SearchPage extends Component {
       url: 'https://s.naganda.tk/main/search',
       data: { hashtag: this.props.location.pathname.split('/')[2] },
     }).then((res) => {
-      // console.log('응답!', res.data);
       this.setState({ data: res.data });
     });
   }
@@ -68,14 +71,10 @@ class SearchPage extends Component {
         <SearchPageHeader />
         <SeachPageSearchbar />
         <div className="search-main-image">
-          {/* <img src={'/images/beach_illustration.jpg'}></img> */}
-          {/* <img src="https://img.lovepik.com/photo/50070/8369.jpg_wh860.jpg"></img> */}
-          {/* <img src="https://cdn.dribbble.com/assets/searches/search-header-medium-53708b5f94932b0cba44602a53c34bf97989c1acb51b926d36841ed4626c9d4d.webp"></img> */}
           <img src="/images/search_bg_3.png"></img>
         </div>
         <section className="search-container">
           <ul className="search-item">
-            {/* <button type="button" onClick={this.showModal}></button> */}
             <SearchItems items={ret} />
           </ul>
           <div className="search-container-suggest">
@@ -106,9 +105,6 @@ class SearchPage extends Component {
         <div>{`요청받은 키워드가 없습니다. 다시 검색해주세요.`}</div>
         <img
           src="/images/no_keyword.svg"
-          // src="/images/no_keyword.svg"
-          // src="../../public/images/no_keyword.svg"
-          // src={'../../public/images/no_keyword.svg'}
           alt="You haven't keyword. Check your keyword"
         />
       </div>
