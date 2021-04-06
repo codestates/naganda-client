@@ -80,7 +80,7 @@ const SearchPage = (props) => {
           <SearchPageHeader email={email} />
           <SeachPageSearchbar />
           <div className="search-main-image">
-            <img src="/images/search_bg_3.png"></img>
+            <img src="/images/search_bg.png"></img>
           </div>
           <section className="search-container">
             <ul className="search-item">
