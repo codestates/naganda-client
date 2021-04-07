@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ScCard from './ScCards/ScCard';
 import AddCard from './ScCards/AddCard';
+import { connect } from 'react-redux';
 import { Droppable } from 'react-beautiful-dnd';
 
 const ScColumn = ({ listID, title, cards, props }) => {
@@ -39,4 +40,4 @@ const ScColumn = ({ listID, title, cards, props }) => {
   );
 };
 
-export default ScColumn;
+export default connect()(ScColumn);

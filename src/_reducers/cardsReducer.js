@@ -1,8 +1,4 @@
 import { CONSTANTS } from '../_actions';
-import { v4 as uuid } from 'uuid';
-
-const listID = 4;
-let cardID = 10;
 
 const initialState = [
   {
@@ -118,97 +114,53 @@ const initialState = [
   },
 ];
 
-const listsReducer = (state = initialState, action) => {
+const cardsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CONSTANTS.ADD_LIST: {
-      const newList = {
-        // title: action.payload, //! check : action.payload
-        title: action.payload.title, //! check : action.payload
-        cards: [],
-        id: `list-${listID}`,
-      };
-      // listID += 1; //! check : !//
-      return [...state, newList];
-    }
-
     case CONSTANTS.ADD_CARD: {
-      const newCard = {
-        text: action.payload.text,
-        detailTitle: action.payload.detailTitle,
-        time: action.payload.time,
-        place: action.payload.place,
-        id: `card-${cardID}`,
-      };
-      cardID += 1; //! check : !//
+      const { text, listID, id } = action.payload;
 
+      const newCard = {
+        text,
+        id: `card-${id}`,
+        list: listID,
+      };
+
+      return { ...state, [`card-${id}`]: newCard };
+    }
+    case CONSTANTS.EDIT_CARD: {
+      const { id, listID, newText } = action.payload;
+      let selectedArr = state.filter((list) => list.id === listID);
+      const editedCard = selectedArr[0].cards.filter((card) => card.id === id);
+      // const card = state[id];
+      const card = editedCard[0];
+      // console.log('바로 그 카드!', editedCard[0].text);
+      // console.log('새로운 텍스트', newText);
+      console.log(card);
+      card.text = newText;
+      // editedCard[0].text = newText;
+      console.log(selectedArr);
       const newState = state.map((list) => {
         if (list.id === action.payload.listID) {
           return {
             ...list,
-            cards: [...list.cards, newCard],
+            cards: [...list.cards, card],
           };
         } else {
-          return list;
+          return {
+            ...list,
+            cards: [...list.cards, card],
+          };
         }
       });
 
       return newState;
+      // return { ...state, [`card-${id}`]: card };
     }
 
     case CONSTANTS.DELETE_CARD: {
-      const { listID, id } = action.payload;
-      // console.log('aaaaaaa', action.payload);
-      // console.log(action.payload.listID);
-      const mylist = state.filter((list) => list.id === listID);
-      console.log('마이리스트', mylist);
-      // const list = state[listID];
-      console.log('리스트리스트', mylist);
-      const newCards = mylist[0].cards.filter((cardID) => cardID !== id);
-
-      return { ...state, [listID]: { ...mylist, cards: newCards } };
-    }
-
-    case CONSTANTS.DRAG_HAPPENED: {
-      const {
-        droppableIdStart,
-        droppableIdEnd,
-        droppableIndexStart,
-        droppableIndexEnd,
-        draggableId,
-        type,
-      } = action.payload;
-
-      const newState = [...state];
-
-      //? dragging lists around
-      if (type === 'list') {
-        const list = newState.splice(droppableIdStart, 1);
-        newState.splice(droppableIndexEnd, 0, ...list);
-        return newState;
-      }
-
-      //? in the same list
-      if (droppableIdStart === droppableIdEnd) {
-        const list = state.find((list) => droppableIdStart === list.id);
-        const card = list.cards.splice(droppableIndexStart, 1);
-        list.cards.splice(droppableIndexEnd, 0, ...card);
-      }
-
-      //? other list
-      if (droppableIdStart !== droppableIdEnd) {
-        //? find the list where drag happened
-        const listStart = state.find((list) => droppableIdStart === list.id);
-
-        //? pull out the card from this list
-        const card = listStart.cards.splice(droppableIndexStart, 1);
-
-        //? find the list where drag ended
-        const listEnd = state.find((list) => droppableIdEnd === list.id);
-
-        //? put the card in the new list
-        listEnd.cards.splice(droppableIndexEnd, 0, ...card);
-      }
-
+      const { id } = action.payload;
+      const newState = state;
+      delete newState[id];
       return newState;
     }
     default:
@@ -216,4 +168,4 @@ const listsReducer = (state = initialState, action) => {
   }
 };
 
-export default listsReducer;
+export default cardsReducer;
