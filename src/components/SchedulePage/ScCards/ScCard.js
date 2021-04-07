@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { deleteCard, addCard } from '../../../_actions';
+import { deleteCard, addCard, editCard } from '../../../_actions';
 import { connect } from 'react-redux';
 const ScCard = ({
   id,
@@ -50,20 +50,12 @@ const ScCard = ({
     setDeleted(true);
   };
 
-  // ! props.lists 를 반복돌려서 props.lists[i].id 와 listID 가  가 다르다면, listID 에 props.lists[i].id 를 할당한다?!
-  // console.log('프롭스', props);
-  // console.log('이거슨 리스트 아이디라네', listID);
-  // console.log('텍스트 확인해봐', text);
-  // console.log('수정된 텍스트가 있는가', editedText);
+  const saveCard = (e) => {
+    e.preventDefault();
 
-  // useEffect(() => {
-  //   if (props.listID !== listID) {
-  //     console.log('있으');
-  //     props.dispatch(
-  //       addCard(props.listID, editedText, detailTitle, time, place),
-  //     );
-  //   }
-  // }, [editedText]);
+    props.dispatch(editCard(id, listID, editedText));
+    setEditable(false);
+  };
 
   return (
     <>
@@ -91,14 +83,17 @@ const ScCard = ({
               </div>
               <div ref={ref} className="text-content">
                 {editable ? (
-                  <textarea
-                    type="text"
-                    value={editedText}
-                    onChange={(e) => handleEditedText(e)}
-                    onKeyDown={handleKeyDownText}
-                    rows="3"
-                    placeholder="스케줄의 내용을 입력하세요!"
-                  />
+                  <>
+                    <textarea
+                      type="text"
+                      value={editedText}
+                      onChange={(e) => handleEditedText(e)}
+                      onKeyDown={handleKeyDownText}
+                      rows="3"
+                      placeholder="스케줄의 내용을 입력하세요!"
+                    />
+                    <button onClick={saveCard}>add</button>
+                  </>
                 ) : (
                   <div onClick={() => editOn()}>
                     {!editedText ? text : editedText}
