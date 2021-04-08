@@ -31,6 +31,9 @@ const ScCard = ({
     }
   };
 
+  const { lists } = props;
+  console.log('자 현재의 리스트다!!!', lists);
+
   // ref.current 가 null 일 때 처리 (칸반보드를 움직일때)
   const handleClickOutside = (e) => {
     if (ref.current !== null) {
@@ -53,7 +56,12 @@ const ScCard = ({
   const saveCard = (e) => {
     e.preventDefault();
 
-    props.dispatch(editCard(id, listID, editedText));
+    // props.dispatch(editCard(id, listID, editedText));
+    if (editedText) {
+      setDeleted(true);
+      props.dispatch(addCard(listID, editedText, detailTitle, time, place));
+    }
+
     setEditable(false);
   };
 

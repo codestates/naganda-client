@@ -116,17 +116,6 @@ const initialState = [
 
 const cardsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CONSTANTS.ADD_CARD: {
-      const { text, listID, id } = action.payload;
-
-      const newCard = {
-        text,
-        id: `card-${id}`,
-        list: listID,
-      };
-
-      return { ...state, [`card-${id}`]: newCard };
-    }
     case CONSTANTS.EDIT_CARD: {
       const { id, listID, newText } = action.payload;
       let selectedArr = state.filter((list) => list.id === listID);
@@ -140,28 +129,14 @@ const cardsReducer = (state = initialState, action) => {
       // editedCard[0].text = newText;
       console.log(selectedArr);
       const newState = state.map((list) => {
-        if (list.id === action.payload.listID) {
-          return {
-            ...list,
-            cards: [...list.cards, card],
-          };
-        } else {
-          return {
-            ...list,
-            cards: [...list.cards, card],
-          };
-        }
+        return {
+          ...list,
+          cards: [...list.cards, card],
+        };
       });
 
       return newState;
       // return { ...state, [`card-${id}`]: card };
-    }
-
-    case CONSTANTS.DELETE_CARD: {
-      const { id } = action.payload;
-      const newState = state;
-      delete newState[id];
-      return newState;
     }
     default:
       return state;

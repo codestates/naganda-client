@@ -142,7 +142,24 @@ const listsReducer = (state = initialState, action) => {
       cardID += 1; //! check : !//
 
       const newState = state.map((list) => {
+        let newList = list.cards.filter(
+          (card) => card.detailTitle === newCard.detailTitle,
+        );
+        // console.log('새로운리스트', newList);
         if (list.id === action.payload.listID) {
+          if (newList.length > 0) {
+            newList[0].text = newCard.text;
+            // console.log(newList);
+            let idx = list.cards.indexOf(newList[0]);
+            // console.log(idx);
+            // list.cards.splice(idx, 1);
+            list.cards.splice(idx, 1, newCard);
+            // console.log('aaaa', list.cards);
+            return {
+              ...list,
+              cards: [...list.cards],
+            };
+          }
           return {
             ...list,
             cards: [...list.cards, newCard],
@@ -151,6 +168,7 @@ const listsReducer = (state = initialState, action) => {
           return list;
         }
       });
+      // console.log('새로운 state!', newState);
 
       return newState;
     }
@@ -174,7 +192,6 @@ const listsReducer = (state = initialState, action) => {
         droppableIdEnd,
         droppableIndexStart,
         droppableIndexEnd,
-        draggableId,
         type,
       } = action.payload;
 
@@ -196,6 +213,7 @@ const listsReducer = (state = initialState, action) => {
 
       //? other list
       if (droppableIdStart !== droppableIdEnd) {
+        console.log('other list!');
         //? find the list where drag happened
         const listStart = state.find((list) => droppableIdStart === list.id);
 
