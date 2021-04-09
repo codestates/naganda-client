@@ -503,6 +503,18 @@
         white-space: wrap;
         font-size: 1.2em;
         line-height: 1.1em;
+        textarea {
+          resize: none;
+          margin-top: 3px;
+          width: 100%;
+          background: opacify($color: #dddddd, $amount: 0.2);
+          border: 2px solid #999999;
+          border-radius: 5px;
+        }
+        textarea::placeholder {
+          font-size: 1.1em;
+          font-weight: 500;
+        }
       }
       .address-info {
         display: flex;
