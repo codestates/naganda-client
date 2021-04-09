@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { deleteCard, addCard, editCard } from '../../../_actions';
+import { deleteCard, addCard } from '../../../_actions';
 import { connect } from 'react-redux';
 const ScCard = ({
   id,
@@ -16,7 +16,6 @@ const ScCard = ({
   const ref = useRef(null);
   const [deleted, setDeleted] = useState(false);
 
-  // state 내리기를 통해 기본 으로 보여지는 목업의 schedule text 를 초기 state 로 지정했다.
   const [editedText, setEditedText] = useState('');
   const [editable, setEditable] = useState(false);
   const editOn = () => {
@@ -31,8 +30,8 @@ const ScCard = ({
     }
   };
 
-  const { lists } = props;
-  console.log('자 현재의 리스트다!!!', lists);
+  // const { lists } = props;
+  // console.log('자 현재의 리스트다!!!', lists);
 
   // ref.current 가 null 일 때 처리 (칸반보드를 움직일때)
   const handleClickOutside = (e) => {
@@ -48,15 +47,14 @@ const ScCard = ({
   });
 
   const handleDeleteCard = (e) => {
-    // console.log(listID);
-    // props.dispatch(deleteCard(id, listID));
+    e.preventDefault();
+    props.dispatch(deleteCard(id, listID));
     setDeleted(true);
   };
 
   const saveCard = (e) => {
     e.preventDefault();
 
-    // props.dispatch(editCard(id, listID, editedText));
     if (editedText) {
       setDeleted(true);
       props.dispatch(addCard(listID, editedText, detailTitle, time, place));
