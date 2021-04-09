@@ -158,15 +158,30 @@
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   .add-thumbnail,
   .bookmark-share {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: $text-white;
     font-size: 2em;
     cursor: pointer;
 
+    button {
+      border: none;
+      background-color: #ff514f;
+      padding: 10px;
+      border-radius: 5px;
+      color: #fff;
+      font-weight: 500;
+      font-size: 0.6em;
+      margin-right: 40px;
+      &:hover {
+        background-color: $btn-color2;
+        transition-duration: 0.2s;
+      }
+    }
+
     i {
-      //   border: 2px solid red;
-
       display: inline-block;
-
       &:hover {
         color: $btn-color1;
       }
