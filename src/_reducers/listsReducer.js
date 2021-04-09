@@ -175,15 +175,26 @@ const listsReducer = (state = initialState, action) => {
 
     case CONSTANTS.DELETE_CARD: {
       const { listID, id } = action.payload;
-      // console.log('aaaaaaa', action.payload);
-      // console.log(action.payload.listID);
-      const mylist = state.filter((list) => list.id === listID);
-      console.log('마이리스트', mylist);
-      // const list = state[listID];
-      console.log('리스트리스트', mylist);
-      const newCards = mylist[0].cards.filter((cardID) => cardID !== id);
 
-      return { ...state, [listID]: { ...mylist, cards: newCards } };
+      const newState = state.map((list) => {
+        const array = state.filter((list) => list.id === listID);
+        array[0].cards.map((card) => {
+          if (card.id === id) {
+            let idx = array[0].cards.indexOf(card);
+            console.log('인덱스값', idx);
+            array[0].cards.splice(idx, 1);
+          }
+        });
+
+        return {
+          ...list,
+          cards: [...array[0].cards],
+        };
+      });
+
+      console.log('기존 state 에 변화!', state);
+
+      return state;
     }
 
     case CONSTANTS.DRAG_HAPPENED: {
