@@ -23,7 +23,6 @@ const ScColumn = ({ listID, title, cards, props }) => {
               index={index}
               text={card.text}
               detailTitle={card.detailTitle}
-              type={card.type}
               time={card.time}
               place={card.place}
               listID={listID}

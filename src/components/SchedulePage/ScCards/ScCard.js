@@ -6,7 +6,6 @@ const ScCard = ({
   id,
   index,
   detailTitle,
-  type,
   time,
   place,
   text,
@@ -79,9 +78,7 @@ const ScCard = ({
               <div className="card-infos">
                 <div className="card-info">
                   <h4>{detailTitle}</h4>
-                  <span className="time">
-                    Estimated time: {type} {time}
-                  </span>
+                  <span className="time">Estimated time: {time}</span>
                 </div>
                 <span className="btn-closed" onClick={handleDeleteCard}>
                   <i className="far fa-trash-alt"></i>

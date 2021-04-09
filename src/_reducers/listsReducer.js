@@ -11,7 +11,6 @@ const initialState = [
     cards: [
       {
         id: `card-${0}`,
-        type: 'am',
         detailTitle: '카페 OO 주먹밥 GET🍙🍙',
         time: '09:00',
         place: 'Gangnam-gu, seolleung-ro 123',
@@ -20,7 +19,6 @@ const initialState = [
       },
       {
         id: `card-${1}`,
-        type: 'am',
         detailTitle: 'Cafe Terarosa☕️☕️',
         time: '11:00',
         place: '1F, Teheran-ro, PoscoCenter 440',
@@ -35,7 +33,6 @@ const initialState = [
     cards: [
       {
         id: `card-${2}`,
-        type: 'pm',
         detailTitle: 'Cafe Terarosa☕️☕️',
         time: '14:00',
         place: '1F, Teheran-ro, PoscoCenter 440',
@@ -44,7 +41,6 @@ const initialState = [
       },
       {
         id: `card-${3}`,
-        type: 'pm',
         detailTitle: 'OOO 작가 팬사인회🍿',
         time: '16:00',
         place: 'Gangnam-gu, seolleung-ro 123',
@@ -53,7 +49,6 @@ const initialState = [
       },
       {
         id: `card-${4}`,
-        type: 'pm',
         detailTitle: '친구와 서울근교 여행계획🎒',
         time: '17:00',
         place: 'Gangnam-gu, seolleung-ro 123',
@@ -62,7 +57,6 @@ const initialState = [
       },
       {
         id: `card-${5}`,
-        type: 'pm',
         detailTitle: '부모님 생신 케이크 예약🎂🎂',
         time: '18:00',
         place: 'Gangnam-gu, seolleung-ro 123',
@@ -77,7 +71,6 @@ const initialState = [
     cards: [
       {
         id: `card-${6}`,
-        type: 'mid',
         detailTitle: '정식바 와인 앤 감튀🍷🍟',
         time: '20:00',
         place: 'Gangnam-gu, seolleung-ro 158',
@@ -86,7 +79,6 @@ const initialState = [
       },
       {
         id: `card-${7}`,
-        type: 'mid',
         detailTitle: '소주와 곱창🥴🥴',
         time: '22:00',
         place: 'Gangnam-gu, seolleung-ro 123',
@@ -94,7 +86,6 @@ const initialState = [
       },
       {
         id: `card-${8}`,
-        type: 'mid',
         detailTitle: '정해지지 않은 일과',
         time: '23:40',
         place: 'Gangnam-gu, seolleung-ro 123',
@@ -108,7 +99,6 @@ const initialState = [
     cards: [
       {
         id: `card-${9}`,
-        type: 'mid',
         detailTitle: '파인다이닝 코스 만들기 체험👨🏻‍🎨',
         time: '미정',
         place: 'Yeongdongdaero, 622, Samsung - 1 dong',
