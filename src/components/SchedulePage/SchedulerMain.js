@@ -8,17 +8,11 @@ const SchedulerMain = () => {
   const [likeCount, setLikeCount] = useState(0);
   const [dislikeCount, setDislikeCount] = useState(0);
 
-  const [isBookmarked, setIsBookmarked] = useState(false);
-
   const increaseLikeCount = () => {
     setLikeCount(likeCount + 1);
   };
   const increaseDislikeCount = () => {
     setDislikeCount(dislikeCount + 1);
-  };
-
-  const handleBookmark = () => {
-    setIsBookmarked(!isBookmarked);
   };
 
   const thumbnailRef = useRef(null);
@@ -95,20 +89,9 @@ const SchedulerMain = () => {
               }
             }}
           ></i>
-          {/* <i className="fas fa-edit"></i> */}
         </div>
         <div className="bookmark-share">
-          {!isBookmarked ? (
-            <i className="far fa-star" onClick={handleBookmark}></i>
-          ) : (
-            <i
-              className="fas fa-star"
-              onClick={handleBookmark}
-              style={{ color: '#ff514f' }}
-            ></i>
-          )}
-
-          <i className="far fa-share-square"></i>
+          <button>모든 변경사항 저장</button>
         </div>
       </div>
     </section>

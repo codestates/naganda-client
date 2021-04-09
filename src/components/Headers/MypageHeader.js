@@ -49,6 +49,8 @@ const MypageHeader = (props) => {
     return () => window.removeEventListener('scroll', onScroll);
   }, [headerRef]);
 
+  const token = localStorage.getItem('CC_Token');
+
   return (
     <header ref={headerRef}>
       <Link to="/" className="logo1">
@@ -60,7 +62,7 @@ const MypageHeader = (props) => {
             Scheduler
           </Link>
         </li>
-        {userEmail ? (
+        {token ? (
           <li>
             <Link to="#" className="login-btn" onClick={handleLogout}>
               Logout

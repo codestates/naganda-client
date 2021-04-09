@@ -42,13 +42,15 @@ const Header = (props) => {
     }
   };
 
+  const token = localStorage.getItem('CC_Token');
+
   return (
     <header ref={headerRef} style={{ backgroundColor: '#fff' }}>
       <Link to="/" className="logo1">
         <img className="logo-img" src={logo1} alt="logo-image" />
       </Link>
       <ul>
-        {!userEmail ? (
+        {!token ? (
           <>
             <li>
               <Link to="/signin" className="searchPageHeaderBanner-login-btn">
