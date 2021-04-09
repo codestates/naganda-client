@@ -74,7 +74,7 @@ const AddCard = (props) => {
                   Estimated time:
                   <input
                     type="text"
-                    placeholder="AM 10:00"
+                    placeholder="10:00"
                     style={{
                       border: 'none',
                       width: '43%',

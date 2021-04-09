@@ -25,6 +25,10 @@ const ScCard = ({
   };
   const handleKeyDownText = (e) => {
     if (e.key === 'Enter') {
+      if (editedText) {
+        setDeleted(true);
+        props.dispatch(addCard(listID, editedText, detailTitle, time, place));
+      }
       setEditable(!editable);
     }
   };
@@ -36,7 +40,10 @@ const ScCard = ({
   const handleClickOutside = (e) => {
     if (ref.current !== null) {
       if (editable === true && !ref.current.contains(e.target)) {
+        setEditedText(text);
         setEditable(false);
+      } else if (editable === false) {
+        setEditedText('');
       }
     }
   };
@@ -51,16 +58,15 @@ const ScCard = ({
     setDeleted(true);
   };
 
-  const saveCard = (e) => {
-    e.preventDefault();
+  // const saveCard = (e) => {
+  //   e.preventDefault();
+  //   if (editedText) {
+  //     setDeleted(true);
+  //     props.dispatch(addCard(listID, editedText, detailTitle, time, place));
+  //   }
 
-    if (editedText) {
-      setDeleted(true);
-      props.dispatch(addCard(listID, editedText, detailTitle, time, place));
-    }
-
-    setEditable(false);
-  };
+  //   setEditable(false);
+  // };
 
   return (
     <>
@@ -93,14 +99,14 @@ const ScCard = ({
                       onChange={(e) => handleEditedText(e)}
                       onKeyDown={handleKeyDownText}
                       rows="3"
-                      placeholder="스케줄의 내용을 입력하세요!"
+                      placeholder="스케줄의 내용을 입력 후 Enter!"
+                      autoFocus
                     />
-                    <button onClick={saveCard}>add</button>
+                    {/* <button onClick={saveCard}>add</button> */}
                   </>
                 ) : (
                   <div onClick={() => editOn()}>
                     {!editedText ? text : editedText}
-                    {/* {editedText} */}
                   </div>
                 )}
               </div>
