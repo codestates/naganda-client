@@ -1,7 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ModifyThumbs from './popupModal/ModifyThumbs';
+import Background from '../../assets/images/profile-bg2.jpg';
 
-const SchedulerMain = () => {
+const SchedulerMain = ({
+  Avatar,
+  Thumbnail,
+  setContent,
+  UploadedImg,
+  onSubmit,
+}) => {
   const initial = `미슐랭 2스타🌟🌟 정식당에서 운영하는 정식바, 연인과 혹은 친구와 분위기를 내면 좋은 곳이다! 하지만 혼자 가도 그 분위기를 120% 느낄 수 있다!🚨🚨 치즈에🧀🧀 레드와인🍷🍷 감튀🍟 면 모든게 끝난다!`;
   const ref = useRef(null);
 
@@ -45,11 +52,24 @@ const SchedulerMain = () => {
     window.addEventListener('click', handleClickOutside, true);
   });
 
+  // let myThumbnail = localStorage.setItem('SC_Thumb', Thumbnail);
+
   return (
-    <section className="schedule-banner">
+    <section
+      className="schedule-banner"
+      style={
+        Thumbnail
+          ? {
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${Thumbnail})`,
+            }
+          : {
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${Background})`,
+            }
+      }
+    >
       <div className="schedule-info">
         <div className="schedule-avatar">
-          <img src={'/images/user.png'} alt="avatar" />
+          <img src={Avatar ? Avatar : '/images/user.png'} alt="avatar" />
         </div>
         <div ref={ref} className="schedule-title">
           {editable ? (
@@ -77,7 +97,13 @@ const SchedulerMain = () => {
           </div>
         </div>
       </div>
-      <ModifyThumbs thumbnailRef={thumbnailRef} />
+      <ModifyThumbs
+        thumbnailRef={thumbnailRef}
+        Thumbnail={Thumbnail}
+        setContent={setContent}
+        onSubmit={onSubmit}
+        UploadedImg={UploadedImg}
+      />
       <div className="shortcut-icons">
         <div className="add-thumbnail">
           <i

@@ -1,6 +1,8 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 const ModifyAvatar = (props) => {
+  const history = useHistory();
   const onChange = (e) => {
     props.setContent(e.target.files[0]);
   };
@@ -20,7 +22,11 @@ const ModifyAvatar = (props) => {
         type="file"
         onChange={onChange}
       />
-      <button className="btn-avatar-modify" type="submit">
+      <button
+        className="btn-avatar-modify"
+        type="submit"
+        onClick={() => history.go(0)}
+      >
         <i className="fas fa-sync-alt">
           <span>이미지변경</span>
         </i>

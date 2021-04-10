@@ -26,8 +26,10 @@ const ScCard = ({
   const handleKeyDownText = (e) => {
     if (e.key === 'Enter') {
       if (editedText) {
-        setDeleted(true);
+        // setDeleted(true);
+        e.preventDefault();
         props.dispatch(addCard(listID, editedText, detailTitle, time, place));
+        setDeleted(true);
       }
       setEditable(!editable);
     }

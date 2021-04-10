@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { myinfoUser } from '../_actions/userAction';
 
@@ -9,11 +9,54 @@ import SchedulerMain from '../components/SchedulePage/SchedulerMain';
 import SchedulerHashtags from '../components/SchedulePage/SchedulerHashtags';
 import SchedulerBoard from '../components/SchedulePage/SchedulerBoard';
 
+const axios = require('axios');
+const DOMAIN = 'http://localhost:4000';
+// const DOMAIN = 'http://13.125.241.217:4000';
+// const DOMAIN = 'https://s.naganda.tk';
+
 const Scheduler = () => {
   const [Nickname, setNickname] = useState('');
   const [Email, setEmail] = useState('');
   const [Avatar, setAvatar] = useState('');
 
+  const [Thumbnail, setThumbnail] = useState('');
+  // ! Thumbnail 의 초기 값을 여기서 먼저 설정해 주어야 할까?
+  const [Content, setContent] = useState('');
+  const [UploadedImg, setUploadedImg] = useState({
+    filePath: '',
+  });
+  const [UserParamsId, setUserParamsId] = useState('');
+
+  console.log(UserParamsId);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('img', Content);
+
+    const token = localStorage.getItem('CC_Token');
+
+    axios
+      .post(`${DOMAIN}/schedule/save`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log('파일 들어간다!', res.data);
+
+        setUploadedImg({
+          filePath: res.data.thumbnail,
+        });
+        setUserParamsId(res.data.id);
+        setThumbnail(res.data.thumbnail);
+
+        // history.go(0);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -32,7 +75,13 @@ const Scheduler = () => {
   return (
     <div className="wrapper schedule-page">
       <ScheduleHeader Email={Email} />
-      <SchedulerMain />
+      <SchedulerMain
+        Avatar={Avatar}
+        Thumbnail={Thumbnail}
+        setContent={setContent}
+        onSubmit={onSubmit}
+        UploadedImg={UploadedImg}
+      />
       <SchedulerHashtags />
       <SchedulerBoard />
       <Footer />
