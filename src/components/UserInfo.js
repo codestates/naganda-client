@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { updateUserInfo } from '../_actions/userAction';
 
@@ -12,6 +12,8 @@ import WithdrawalService from './PopupWithdrawal/WithdrawalService';
 
 const UserInfo = (props) => {
   const dispatch = useDispatch();
+
+  const history = useHistory();
 
   const [Modify, setModify] = useState({
     nickname: false,
@@ -47,7 +49,8 @@ const UserInfo = (props) => {
   const modifyUserInfo = (body) => {
     dispatch(updateUserInfo(body))
       .then((res) => {
-        window.location.reload();
+        // window.location.reload();
+        history.go(0);
       })
       .catch((err) => console.log(err));
   };

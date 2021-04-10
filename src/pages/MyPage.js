@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { myinfoUser } from '../_actions/userAction';
 
@@ -12,9 +12,9 @@ import UnauthorizedPopup from '../components/UnauthorizedPopup';
 import queryString from 'query-string';
 
 const axios = require('axios');
-// const DOMAIN = 'http://localhost:4000';
+const DOMAIN = 'http://localhost:4000';
 // const DOMAIN = 'http://13.125.241.217:4000';
-const DOMAIN = 'https://s.naganda.tk';
+// const DOMAIN = 'https://s.naganda.tk';
 
 const MyPage = ({ location, match }) => {
   const query = queryString.parse(location.search);
@@ -25,6 +25,7 @@ const MyPage = ({ location, match }) => {
   const [Email, setEmail] = useState('');
   const [Avatar, setAvatar] = useState('');
 
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const [Content, setContent] = useState('');
@@ -51,12 +52,12 @@ const MyPage = ({ location, match }) => {
         },
       })
       .then((res) => {
-        console.log('파일 들어간다!', res.data);
+        // console.log('파일 들어간다!', res.data);
         setUploadedImg({
           fileName: res.data.fileName,
           filePath: res.data.filePath,
         });
-        window.location.reload();
+        // !ModifyAvatar.js 내 '이미지변경' 버튼에 onClick 으로 () => history.go(0); 를 적용함.
       })
       .catch((err) => console.log(err));
   };

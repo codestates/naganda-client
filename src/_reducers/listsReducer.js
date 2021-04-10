@@ -214,7 +214,7 @@ const listsReducer = (state = initialState, action) => {
 
       //? other list
       if (droppableIdStart !== droppableIdEnd) {
-        console.log('other list!');
+        // console.log('other list!');
         //? find the list where drag happened
         const listStart = state.find((list) => droppableIdStart === list.id);
 
