@@ -34,6 +34,10 @@ const Header = (props) => {
       dispatch(logoutUser())
         .then((res) => {
           console.log('당신은 게스트이므로 유저정보를 모두 삭제합니다.', res);
+          let sc_id = localStorage.getItem('SC_id');
+          if (sc_id) {
+            localStorage.removeItem('SC_id');
+          }
           localStorage.removeItem('CC_Token');
           localStorage.removeItem('RF_Token');
           history.push('/');
@@ -41,6 +45,10 @@ const Header = (props) => {
         .catch((err) => console.log(err));
     } else {
       console.log('로그아웃이 되었습니다.');
+      let sc_id = localStorage.getItem('SC_id');
+      if (sc_id) {
+        localStorage.removeItem('SC_id');
+      }
       localStorage.removeItem('CC_Token');
       localStorage.removeItem('RF_Token');
       history.push('/');

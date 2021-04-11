@@ -6,6 +6,7 @@ import {
   REGISTER_GUEST,
   DELETE_USER,
   UPDATE_USERINFO,
+  GET_SCHEDULER_INFO,
 } from '../_actions/types';
 
 export default function (state = {}, action) {
@@ -24,6 +25,8 @@ export default function (state = {}, action) {
       return { ...state, updateInfoSuccess: action.payload };
     case DELETE_USER:
       return { ...state, unregisterSuccess: action.payload };
+    case GET_SCHEDULER_INFO:
+      return { ...state, getschedulerInfoSuccess: action.payload };
 
     default:
       return state;

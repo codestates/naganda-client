@@ -14,6 +14,10 @@ const WithdrawalService = ({ toggleWithdrawal }) => {
       .then((res) => {
         console.log(res);
         console.log('회원탈퇴가 되었군요..');
+        let sc_id = localStorage.getItem('SC_id');
+        if (sc_id) {
+          localStorage.removeItem('SC_id');
+        }
         localStorage.removeItem('CC_Token');
         localStorage.removeItem('RF_Token');
         history.push('/');
