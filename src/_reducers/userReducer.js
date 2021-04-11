@@ -7,6 +7,7 @@ import {
   DELETE_USER,
   UPDATE_USERINFO,
   GET_SCHEDULER_INFO,
+  UPDATE_SCHEDULER_INFO,
 } from '../_actions/types';
 
 export default function (state = {}, action) {
@@ -27,6 +28,8 @@ export default function (state = {}, action) {
       return { ...state, unregisterSuccess: action.payload };
     case GET_SCHEDULER_INFO:
       return { ...state, getschedulerInfoSuccess: action.payload };
+    case UPDATE_SCHEDULER_INFO:
+      return { ...state, updateSchedulerInfoSuccess: action.payload };
 
     default:
       return state;
