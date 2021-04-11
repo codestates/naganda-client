@@ -7,6 +7,7 @@ import {
   DELETE_USER,
   UPDATE_USERINFO,
   GET_SCHEDULER_INFO,
+  UPDATE_SCHEDULER_INFO,
 } from './types';
 import { request } from '../utils/axios';
 
@@ -120,6 +121,26 @@ export const getSchedulerInfo = async (scheduleParam) => {
 
   return {
     type: GET_SCHEDULER_INFO,
+    payload: data,
+  };
+};
+
+export const updateSchedulerInfo = async (scheduleParam, dataToSubmit) => {
+  const token = localStorage.getItem('CC_Token');
+
+  const data = await axios.patch(
+    DOMAIN + SCHEDULER_URL + `/modify/${scheduleParam}`,
+    dataToSubmit,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
+
+  return {
+    type: UPDATE_SCHEDULER_INFO,
     payload: data,
   };
 };
