@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import ScColumn from './ScColumn';
 import { connect } from 'react-redux';
@@ -27,7 +27,6 @@ const SchedulerBoard = (props) => {
   };
 
   // console.log('스케줄러에서 내린 프롭스라는데?!', props);
-
   const { lists } = props;
   // console.log(lists);
 
@@ -42,6 +41,7 @@ const SchedulerBoard = (props) => {
             cards={list.cards}
             index={index}
             props={props}
+            getDetailCards={props.getDetailCards}
           />
         ))}
       </section>

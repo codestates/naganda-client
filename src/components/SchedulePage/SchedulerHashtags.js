@@ -1,13 +1,20 @@
 import React from 'react';
 
-const SchedulerHashtags = () => {
+const SchedulerHashtags = (props) => {
   const selectedTags = (tags) => {
-    console.log(tags);
+    props.getAllTags(tags);
   };
+
   return (
     <section className="related-hashtags">
       <h2># 해시태그</h2>
-      <TagsInput selectedTags={selectedTags} tags={['카페', '맛집']} />
+      {props.AllTags !== null && props.AllTags.length > 0 ? (
+        <>
+          <TagsInput selectedTags={selectedTags} tags={props.AllTags} />
+        </>
+      ) : (
+        <TagsInput selectedTags={selectedTags} tags={['카페', '맛집']} />
+      )}
     </section>
   );
 };
@@ -24,6 +31,7 @@ const TagsInput = (props) => {
       event.target.value = '';
     }
   };
+
   return (
     <div className="tags-input">
       <ul id="tags">

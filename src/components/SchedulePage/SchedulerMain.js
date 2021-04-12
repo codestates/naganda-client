@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import ModifyThumbs from './popupModal/ModifyThumbs';
 import Background from '../../assets/images/profile-bg2.jpg';
 
@@ -8,8 +9,13 @@ const SchedulerMain = ({
   setContent,
   UploadedImg,
   onSubmit,
+  handleSaveData,
+  getTitle,
+  UserParamsId,
+  MyTitle,
+  setMyTitle,
 }) => {
-  const initial = `미슐랭 2스타🌟🌟 정식당에서 운영하는 정식바, 연인과 혹은 친구와 분위기를 내면 좋은 곳이다! 하지만 혼자 가도 그 분위기를 120% 느낄 수 있다!🚨🚨 치즈에🧀🧀 레드와인🍷🍷 감튀🍟 면 모든게 끝난다!`;
+  const initial = `제목을 입력하고 Enter 해주세요.`;
   const ref = useRef(null);
 
   const [likeCount, setLikeCount] = useState(0);
@@ -34,10 +40,16 @@ const SchedulerMain = ({
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       setEditable(!editable);
+      // ! 별표!!!!!!!!!!!!!!!!!!!
+      getTitle(text);
     }
   };
 
   const handleRemoveTitle = () => {
+    // ! 데이터로 받은 MyTitle 이 있을 때는 setMyTitle 로 초기화 시켜준다.
+    if (MyTitle) {
+      setMyTitle('');
+    }
     setText('');
   };
 
@@ -45,14 +57,14 @@ const SchedulerMain = ({
     if (ref.current !== null) {
       if (editable === true && !ref.current.contains(e.target)) {
         setEditable(false);
+        setText('');
       }
     }
   };
   useEffect(() => {
+    // ! getTitle(text); useEffect 로 타이틀을 가져오게 하면 추후 MyTitle 데이터를 props 로 받아오질 못했다.
     window.addEventListener('click', handleClickOutside, true);
   });
-
-  // let myThumbnail = localStorage.setItem('SC_Thumb', Thumbnail);
 
   return (
     <section
@@ -79,10 +91,10 @@ const SchedulerMain = ({
               onChange={(e) => handleChange(e)}
               onKeyDown={handleKeyDown}
               rows="3"
-              placeholder="스케줄에 맞는 제목을 입력해 보세요!"
+              placeholder="스케줄에 맞는 제목을 입력후 ENTER!"
             />
           ) : (
-            <h2 onClick={() => editOn()}>{text}</h2>
+            <h2 onClick={() => editOn()}>{MyTitle ? MyTitle : text}</h2>
           )}
           <div className="thumbs">
             <i className="fas fa-thumbs-up" onClick={increaseLikeCount}>
@@ -117,7 +129,7 @@ const SchedulerMain = ({
           ></i>
         </div>
         <div className="bookmark-share">
-          <button>모든 변경사항 저장</button>
+          <button onClick={handleSaveData}>모든 변경사항 저장</button>
         </div>
       </div>
     </section>
