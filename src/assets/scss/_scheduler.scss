@@ -8,8 +8,8 @@
   position: relative;
   width: 100%;
   height: 50vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url('../images/profile-bg2.jpg');
+  // background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+  //   url('../images/profile-bg2.jpg');
   background-size: cover;
   background-position: 50% 50%;
   //   filter: brightness(50%);
@@ -158,15 +158,30 @@
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   .add-thumbnail,
   .bookmark-share {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: $text-white;
     font-size: 2em;
     cursor: pointer;
 
+    button {
+      border: none;
+      background-color: #ff514f;
+      padding: 10px;
+      border-radius: 5px;
+      color: #fff;
+      font-weight: 500;
+      font-size: 0.6em;
+      margin-right: 40px;
+      &:hover {
+        background-color: $btn-color2;
+        transition-duration: 0.2s;
+      }
+    }
+
     i {
-      //   border: 2px solid red;
-
       display: inline-block;
-
       &:hover {
         color: $btn-color1;
       }
@@ -243,8 +258,24 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+
+    form {
+      display: flex;
+      label {
+        background-color: $bg-color2;
+        border: 0;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        color: #fff;
+        font-size: 14px;
+        padding: 10px 25px;
+        cursor: pointer;
+      }
+      input {
+        display: none;
+      }
+    }
     button {
-      background-color: $bg-color2;
       border: 0;
       border-radius: 5px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -252,6 +283,7 @@
       font-size: 14px;
       padding: 10px 25px;
     }
+
     button:nth-child(2) {
       background: $btn-color2;
     }
@@ -259,6 +291,9 @@
       background: $btn-hover1;
     }
   }
+}
+.modal .btn-thumbmodal button:nth-child(3) {
+  margin-left: 54px;
 }
 
 .modal-container.show {
@@ -503,6 +538,18 @@
         white-space: wrap;
         font-size: 1.2em;
         line-height: 1.1em;
+        textarea {
+          resize: none;
+          margin-top: 3px;
+          width: 100%;
+          background: opacify($color: #dddddd, $amount: 0.2);
+          border: 2px solid #999999;
+          border-radius: 5px;
+        }
+        textarea::placeholder {
+          font-size: 1.1em;
+          font-weight: 500;
+        }
       }
       .address-info {
         display: flex;

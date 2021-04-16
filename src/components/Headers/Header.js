@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../_actions/userAction';
 import logo1 from '../../assets/images/logo1.png';
@@ -8,14 +8,14 @@ import logo1 from '../../assets/images/logo1.png';
 const Header = (props) => {
   const headerRef = useRef(null);
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const Email = props.Email;
   const headEmail = Email.split('@')[0];
   const onScroll = () => {
     if (headerRef.current !== null) {
       headerRef.current.classList.toggle('sticky', window.scrollY > 0);
     } else {
-      console.log('HeaderRef.current is NULL');
+      // console.log('HeaderRef.current is NULL');
       return;
     }
   };
@@ -34,25 +34,35 @@ const Header = (props) => {
       dispatch(logoutUser())
         .then((res) => {
           console.log('당신은 게스트이므로 유저정보를 모두 삭제합니다.', res);
+          let sc_id = localStorage.getItem('SC_id');
+          if (sc_id) {
+            localStorage.removeItem('SC_id');
+          }
           localStorage.removeItem('CC_Token');
           localStorage.removeItem('RF_Token');
-          window.location.replace('/');
+          history.push('/');
         })
         .catch((err) => console.log(err));
     } else {
       console.log('로그아웃이 되었습니다.');
+      let sc_id = localStorage.getItem('SC_id');
+      if (sc_id) {
+        localStorage.removeItem('SC_id');
+      }
       localStorage.removeItem('CC_Token');
       localStorage.removeItem('RF_Token');
-      window.location.replace('/');
+      history.push('/');
     }
   };
+
+  const token = localStorage.getItem('CC_Token');
 
   return (
     <header ref={headerRef}>
       <Link to="/" className="logo1">
         <img className="logo-img" src={logo1} alt="logo-image" />
       </Link>
-      {props.Email ? (
+      {token ? (
         <ul>
           <li>
             <Link to={'/scheduler'} className="scheduler-btn">

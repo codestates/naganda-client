@@ -22,6 +22,10 @@ const MypageHeader = (props) => {
       dispatch(logoutUser())
         .then((res) => {
           console.log('당신은 게스트이므로 유저정보를 모두 삭제합니다.', res);
+          let sc_id = localStorage.getItem('SC_id');
+          if (sc_id) {
+            localStorage.removeItem('SC_id');
+          }
           localStorage.removeItem('CC_Token');
           localStorage.removeItem('RF_Token');
           history.push('/');
@@ -29,6 +33,10 @@ const MypageHeader = (props) => {
         .catch((err) => console.log(err));
     } else {
       console.log('로그아웃이 되었습니다.');
+      let sc_id = localStorage.getItem('SC_id');
+      if (sc_id) {
+        localStorage.removeItem('SC_id');
+      }
       localStorage.removeItem('CC_Token');
       localStorage.removeItem('RF_Token');
       history.push('/');
@@ -39,17 +47,17 @@ const MypageHeader = (props) => {
     if (headerRef.current !== null) {
       headerRef.current.classList.toggle('sticky', window.scrollY > 0);
     } else {
-      console.log('HeaderRef.current is NULL');
+      // console.log('HeaderRef.current is NULL');
       return;
     }
   };
 
   useEffect(() => {
-    // console.log(headerRef.current);
-    // console.log(headerRef);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, [headerRef]);
+
+  const token = localStorage.getItem('CC_Token');
 
   return (
     <header ref={headerRef}>
@@ -62,7 +70,7 @@ const MypageHeader = (props) => {
             Scheduler
           </Link>
         </li>
-        {userEmail ? (
+        {token ? (
           <li>
             <Link to="#" className="login-btn" onClick={handleLogout}>
               Logout

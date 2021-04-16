@@ -1,8 +1,4 @@
 import { CONSTANTS } from '../_actions';
-import { v4 as uuid } from 'uuid';
-
-const listID = 4;
-let cardID = 10;
 
 const initialState = [
   {
@@ -11,6 +7,7 @@ const initialState = [
     cards: [
       {
         id: `card-${0}`,
+        type: 'am',
         detailTitle: '카페 OO 주먹밥 GET🍙🍙',
         time: '09:00',
         place: 'Gangnam-gu, seolleung-ro 123',
@@ -19,6 +16,7 @@ const initialState = [
       },
       {
         id: `card-${1}`,
+        type: 'am',
         detailTitle: 'Cafe Terarosa☕️☕️',
         time: '11:00',
         place: '1F, Teheran-ro, PoscoCenter 440',
@@ -33,6 +31,7 @@ const initialState = [
     cards: [
       {
         id: `card-${2}`,
+        type: 'pm',
         detailTitle: 'Cafe Terarosa☕️☕️',
         time: '14:00',
         place: '1F, Teheran-ro, PoscoCenter 440',
@@ -41,6 +40,7 @@ const initialState = [
       },
       {
         id: `card-${3}`,
+        type: 'pm',
         detailTitle: 'OOO 작가 팬사인회🍿',
         time: '16:00',
         place: 'Gangnam-gu, seolleung-ro 123',
@@ -49,6 +49,7 @@ const initialState = [
       },
       {
         id: `card-${4}`,
+        type: 'pm',
         detailTitle: '친구와 서울근교 여행계획🎒',
         time: '17:00',
         place: 'Gangnam-gu, seolleung-ro 123',
@@ -57,6 +58,7 @@ const initialState = [
       },
       {
         id: `card-${5}`,
+        type: 'pm',
         detailTitle: '부모님 생신 케이크 예약🎂🎂',
         time: '18:00',
         place: 'Gangnam-gu, seolleung-ro 123',
@@ -71,6 +73,7 @@ const initialState = [
     cards: [
       {
         id: `card-${6}`,
+        type: 'mid',
         detailTitle: '정식바 와인 앤 감튀🍷🍟',
         time: '20:00',
         place: 'Gangnam-gu, seolleung-ro 158',
@@ -79,6 +82,7 @@ const initialState = [
       },
       {
         id: `card-${7}`,
+        type: 'mid',
         detailTitle: '소주와 곱창🥴🥴',
         time: '22:00',
         place: 'Gangnam-gu, seolleung-ro 123',
@@ -86,6 +90,7 @@ const initialState = [
       },
       {
         id: `card-${8}`,
+        type: 'mid',
         detailTitle: '정해지지 않은 일과',
         time: '23:40',
         place: 'Gangnam-gu, seolleung-ro 123',
@@ -99,6 +104,7 @@ const initialState = [
     cards: [
       {
         id: `card-${9}`,
+        type: 'mid',
         detailTitle: '파인다이닝 코스 만들기 체험👨🏻‍🎨',
         time: '미정',
         place: 'Yeongdongdaero, 622, Samsung - 1 dong',
@@ -108,131 +114,33 @@ const initialState = [
   },
 ];
 
-const listsReducer = (state = initialState, action) => {
+const cardsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CONSTANTS.ADD_LIST: {
-      const newList = {
-        // title: action.payload, //! check : action.payload
-        title: action.payload.title, //! check : action.payload
-        cards: [],
-        id: `list-${listID}`,
-      };
-      // listID += 1; //! check : !//
-      return [...state, newList];
-    }
-
-    case CONSTANTS.ADD_CARD: {
-      const newCard = {
-        text: action.payload.text,
-        detailTitle: action.payload.detailTitle,
-        time: action.payload.time,
-        place: action.payload.place,
-        id: `card-${cardID}`,
-      };
-      cardID += 1; //! check : !//
-
+    case CONSTANTS.EDIT_CARD: {
+      const { id, listID, newText } = action.payload;
+      let selectedArr = state.filter((list) => list.id === listID);
+      const editedCard = selectedArr[0].cards.filter((card) => card.id === id);
+      // const card = state[id];
+      const card = editedCard[0];
+      // console.log('바로 그 카드!', editedCard[0].text);
+      // console.log('새로운 텍스트', newText);
+      console.log(card);
+      card.text = newText;
+      // editedCard[0].text = newText;
+      console.log(selectedArr);
       const newState = state.map((list) => {
-        let newList = list.cards.filter(
-          (card) => card.detailTitle === newCard.detailTitle,
-        );
-        // console.log('새로운리스트', newList);
-        if (list.id === action.payload.listID) {
-          if (newList.length > 0) {
-            newList[0].text = newCard.text;
-            // console.log(newList);
-            let idx = list.cards.indexOf(newList[0]);
-            // console.log(idx);
-            // list.cards.splice(idx, 1);
-            list.cards.splice(idx, 1, newCard);
-            // console.log('aaaa', list.cards);
-            return {
-              ...list,
-              cards: [...list.cards],
-            };
-          }
-          return {
-            ...list,
-            cards: [...list.cards, newCard],
-          };
-        } else {
-          return list;
-        }
-      });
-      // console.log('새로운 state!', newState);
-
-      return newState;
-    }
-
-    case CONSTANTS.DELETE_CARD: {
-      const { listID, id } = action.payload;
-
-      const newState = state.map((list) => {
-        const array = state.filter((list) => list.id === listID);
-        array[0].cards.map((card) => {
-          if (card.id === id) {
-            let idx = array[0].cards.indexOf(card);
-            console.log('인덱스값', idx);
-            array[0].cards.splice(idx, 1);
-          }
-        });
-
         return {
           ...list,
-          cards: [...array[0].cards],
+          cards: [...list.cards, card],
         };
       });
 
-      console.log('기존 state 에 변화!', state);
-
-      return state;
-    }
-
-    case CONSTANTS.DRAG_HAPPENED: {
-      const {
-        droppableIdStart,
-        droppableIdEnd,
-        droppableIndexStart,
-        droppableIndexEnd,
-        type,
-      } = action.payload;
-
-      const newState = [...state];
-
-      //? dragging lists around
-      if (type === 'list') {
-        const list = newState.splice(droppableIdStart, 1);
-        newState.splice(droppableIndexEnd, 0, ...list);
-        return newState;
-      }
-
-      //? in the same list
-      if (droppableIdStart === droppableIdEnd) {
-        const list = state.find((list) => droppableIdStart === list.id);
-        const card = list.cards.splice(droppableIndexStart, 1);
-        list.cards.splice(droppableIndexEnd, 0, ...card);
-      }
-
-      //? other list
-      if (droppableIdStart !== droppableIdEnd) {
-        // console.log('other list!');
-        //? find the list where drag happened
-        const listStart = state.find((list) => droppableIdStart === list.id);
-
-        //? pull out the card from this list
-        const card = listStart.cards.splice(droppableIndexStart, 1);
-
-        //? find the list where drag ended
-        const listEnd = state.find((list) => droppableIdEnd === list.id);
-
-        //? put the card in the new list
-        listEnd.cards.splice(droppableIndexEnd, 0, ...card);
-      }
-
       return newState;
+      // return { ...state, [`card-${id}`]: card };
     }
     default:
       return state;
   }
 };
 
-export default listsReducer;
+export default cardsReducer;

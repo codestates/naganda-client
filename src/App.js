@@ -15,6 +15,7 @@ function App() {
         <Route path="/signin" component={SignInUp} />
         <Route path="/mypage/:username" component={MyPage} />
         <Route path="/mypage" component={MyPage} />
+        <Route path="/scheduler/:schedulerid" component={Scheduler} />
         <Route path="/scheduler" component={Scheduler} />
         <Route path="/search" component={SearchPage} />
         <Route path="/search/:name" component={SearchPage} />

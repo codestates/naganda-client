@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import ScCard from './ScCards/ScCard';
 import AddCard from './ScCards/AddCard';
+import { connect } from 'react-redux';
 import { Droppable } from 'react-beautiful-dnd';
 
-const ScColumn = ({ listID, title, cards, props }) => {
+const ScColumn = ({ listID, title, cards, props, getDetailCards }) => {
   return (
     <Droppable droppableId={String(listID)}>
       {(provided) => (
@@ -22,11 +23,11 @@ const ScColumn = ({ listID, title, cards, props }) => {
               index={index}
               text={card.text}
               detailTitle={card.detailTitle}
-              type={card.type}
               time={card.time}
               place={card.place}
               listID={listID}
               props={props}
+              getDetailCards={getDetailCards}
             />
           ))}
 
@@ -39,4 +40,4 @@ const ScColumn = ({ listID, title, cards, props }) => {
   );
 };
 
-export default ScColumn;
+export default connect()(ScColumn);

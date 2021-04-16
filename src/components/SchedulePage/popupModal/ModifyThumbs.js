@@ -1,7 +1,16 @@
 import React, { useRef } from 'react';
 import Logo from '../../../assets/images/logo1.png';
 
-const ModifyThumbs = ({ thumbnailRef }) => {
+const ModifyThumbs = ({
+  thumbnailRef,
+  Thumbnail,
+  setContent,
+  onSubmit,
+  UploadedImg,
+}) => {
+  const onChange = (e) => {
+    setContent(e.target.files[0]);
+  };
   return (
     <div className="modal-container" id="modal_container" ref={thumbnailRef}>
       <div className="modal">
@@ -27,6 +36,7 @@ const ModifyThumbs = ({ thumbnailRef }) => {
                 color: '#fff',
                 padding: '2px',
               }}
+              type="submit"
             >
               이미지 변경
             </span>
@@ -34,26 +44,16 @@ const ModifyThumbs = ({ thumbnailRef }) => {
           </li>
         </ul>
         <div className="btn-thumbmodal">
-          <button
-            id="close"
-            onClick={() => {
-              if (thumbnailRef.current !== null) {
-                thumbnailRef.current.classList.remove('show');
-              }
-            }}
-          >
-            이미지 선택
-          </button>
-          <button
-            id="close"
-            onClick={() => {
-              if (thumbnailRef.current !== null) {
-                thumbnailRef.current.classList.remove('show');
-              }
-            }}
-          >
-            이미지 변경
-          </button>
+          <form onSubmit={onSubmit}>
+            <label htmlFor="upload">이미지 선택</label>
+            <input
+              id="upload"
+              className="upload-files"
+              type="file"
+              onChange={onChange}
+            />
+            <button type="submit">이미지 변경</button>
+          </form>
           <button
             id="close"
             onClick={() => {
