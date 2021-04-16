@@ -21,9 +21,9 @@ import SchedulerHashtags from '../components/SchedulePage/SchedulerHashtags';
 import SchedulerBoard from '../components/SchedulePage/SchedulerBoard';
 
 const axios = require('axios');
-const DOMAIN = 'http://localhost:4000';
+// const DOMAIN = 'http://localhost:4000';
 // const DOMAIN = 'http://13.125.241.217:4000';
-// const DOMAIN = 'https://s.naganda.tk';
+const DOMAIN = 'https://s.naganda.tk';
 
 const Scheduler = ({ match, location }) => {
   const [Nickname, setNickname] = useState('');
@@ -50,7 +50,7 @@ const Scheduler = ({ match, location }) => {
   useEffect(() => {
     if (params.schedulerid) {
       dispatch(getSchedulerInfo(params.schedulerid)).then((res) => {
-        console.log('확인해보자!!!', res);
+        // console.log('확인해보자!!!', res);
         setThumbnail(res.payload.data.thumbnail);
         setMyTitle(res.payload.data.scheduleTitle);
         setAllTags(res.payload.data.hashtag);

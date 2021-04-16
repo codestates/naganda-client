@@ -180,9 +180,9 @@ const MySchedulesList = () => {
   ]);
 
   const axios = require('axios');
-  const DOMAIN = 'http://localhost:4000';
+  // const DOMAIN = 'http://localhost:4000';
   // const DOMAIN = 'http://13.125.241.217:4000';
-  // const DOMAIN = 'https://s.naganda.tk';
+  const DOMAIN = 'https://s.naganda.tk';
 
   const token = localStorage.getItem('CC_Token');
 
